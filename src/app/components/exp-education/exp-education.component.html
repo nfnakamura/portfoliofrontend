@@ -1,0 +1,122 @@
+<div class="card mat-card">
+    <div id="experience">
+        <div class="card-titles">
+          <h2>Experiencia</h2>
+          <div *ngIf="userLogged|async" class="btn-edit" (click)="agregar_experiencia()"><i class="fa fa-plus btn-right"></i></div>
+        </div>
+        <div>
+          <ul class="items-list" id="expList">
+            <li *ngFor="let experiencia of experienciaList; let i = index">
+              <div class="data-container">
+                <a>
+                  <div class="logo-image-container">
+                    <img class="logo-image" [src]="experiencia.img">
+                  </div>
+                  <div class="list-info">
+                    <div>
+                      <div class="icono-titulo">
+                          <h3>{{experiencia.position}}</h3> 
+                          <i *ngIf="userLogged|async" (click)="borrarExperiencia(i)" class="fas fa-trash-alt btn"></i>
+                      </div>
+                      <p>{{experiencia.company}} - {{experiencia.mode}}</p>
+                      <p><time>{{experiencia.start}}</time> - <time>{{experiencia.end}}</time> <time>{{experiencia.timeElapsed}}</time></p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </li>
+
+            <!-- Muestra los inputs para agregar experiencia -->
+               <form class="agrega-exp" *ngIf="agregaexperiencia">
+                 <h4>Agregar experiencia</h4>
+                  <div>
+                    <div>
+                      <label>Cargo*</label>
+                      <div><input type="text" name="cargo" [(ngModel)]="cargo"></div>
+                      <label>Lugar de Trabajo*</label>
+                      <div><input type="text" name="compania" [(ngModel)]="compania"></div>
+                      <label>Formato*</label>
+                      <div><input type="text" name="modo" [(ngModel)]="modo"></div>
+                      <label>Inicio*</label>
+                      <div><time><input type="text" name="anioInicio" [(ngModel)]="anioInicio"></time></div>
+                      <label>Finalización*</label>
+                      <div><time><input type="text" name="anioFin" [(ngModel)]="anioFin"></time></div> 
+                      <label>Duracion</label>
+                      <div><time><input  id="duracion" type="text"  name="duracion" [(ngModel)]="duracion"></time></div>
+                    </div>
+                  </div> 
+                  <div class="botones">
+                      <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarExp()">      
+                      <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarExp()">     
+                  </div>
+                <div class="alert-container" *ngIf="mostrarAlert">
+                  <p id="alert">Complete los campos de experiencia obligatorios(*)</p>
+                </div>
+              </form>
+            
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="education">
+        <div class="card-titles">
+          <h2>Educación</h2>
+          <div *ngIf="userLogged|async" class="btn-edit" (click)="agregarEdu()"><i class="fa fa-plus btn-right"></i></div>
+        </div>
+        <div>
+          <ul class="items-list" id="eduList">
+              <li *ngFor="let educacion of educacionList; let i = index">
+                <div class="data-container">
+                  <a>
+                    <div class="logo-image-container">
+                      <img class="logo-image" [src]="educacion.img">
+                    </div>
+                    <div class="list-info">
+                      <div>
+                        <div class="icono-titulo">
+                          <h3>{{educacion.school}}</h3> 
+                          <i *ngIf="userLogged|async" (click)="borrarEducacion(i)" class="fas fa-trash-alt btn"></i>
+                        </div>
+                        <p>{{educacion.title}} - {{educacion.career}}</p>
+                        <p><time>{{educacion.start}}</time> - <time>{{educacion.end}}</time></p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </li>
+
+
+              <!-- Muestra los inputs para Educacion  -->
+            <form class="agrega-edu" *ngIf="agregaEdu">
+                <h4>Agregar educación</h4>             
+                 <div>
+                   <div>
+                     <label>Nombre de la institución*</label>
+                     <div><input type="text" name="escuela" [(ngModel)]="escuela"></div>
+                     <label>Titulo*</label>
+                     <div><input type="text" name="titulo" [(ngModel)]="titulo"></div>
+                     <label>Tipo*</label>
+                      <div><input type="text" name="career" [(ngModel)]="career"></div>
+                     <label>Inicio*</label>
+                     <div><time><input type="text" name="anioInicioEdu" [(ngModel)]="anioInicioEdu"></time> </div>
+                     <label>Finalización*</label>
+                     <div> <time><input type="text" name="anioFinEdu" [(ngModel)]="anioFinEdu"></time></div>
+                   </div>
+                 </div> 
+
+               <div class="botones"> 
+                  <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarEdu()"> 
+                  <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarEdu()">
+                </div>  
+
+               <div class="alert-container" *ngIf="mostrarAlertEdu">
+                <p id="alert">Todos los campos de educación son obligatorios(*)</p>
+              </div>
+                          
+            </form>
+
+          </ul>
+        </div>
+      </div>
+</div>

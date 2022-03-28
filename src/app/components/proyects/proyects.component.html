@@ -1,0 +1,80 @@
+
+<div class="card mat-card">
+  <div class="card-titles">
+    <h2>Logros</h2>
+    <div *ngIf="userLogged|async" class="btn-edit"(click)="agregarProy()"> <i class="fa fa-plus btn-right"></i>  </div>
+    
+  </div>
+  <div class="achivements">
+    <div class="titulo">  
+
+      <h3 class="data-proyectos">{{proyectosLista.length}} </h3>
+    
+      <div class="project-title">
+          <h3 class="data-proyectos">Proyectos</h3>
+      </div>
+    </div> 
+  
+    <div class="project-container">
+      <ul class="project-list">
+        <li *ngFor="let proyect of proyectosLista; let i = index" >
+          <div class="proyecto-titulo-icono">
+            <a target="_blank" href="{{proyect.link}}"><h2 class="titulo-proyecto">{{proyect.format}} - {{proyect.name}}</h2></a> 
+            <i *ngIf="userLogged|async" (click)="borrarProyecto(i)" class="fas fa-trash-alt btn"></i>   
+           </div>                            
+          <p>{{proyect.description}}</p>   
+        </li>
+      </ul>            
+
+    </div>
+  </div>
+     
+  <form class="agregar-proyecto" *ngIf="agregaProyecto">
+    <h4>Agregar Proyecto</h4>
+    <div>
+      <label>Formato del proyecto*</label>
+    </div>  
+      <input 
+      type="text" 
+      name="formatoProyecto" 
+      [(ngModel)]="formatoProyecto">
+    
+    <div>
+      <label>Nombre del proyecto*</label>
+    </div> 
+      <input type="text" 
+      name="nombreProyecto" 
+      [(ngModel)]="nombreProyecto">  
+
+      <div>
+        <label>Link del proyecto</label>
+      </div> 
+        <input type="text"
+         name="linkProyecto" 
+         [(ngModel)]="linkProyecto">    
+    
+    <div>
+      <div id="titulo-textarea">
+        <label>Breve descripción del proyecto:</label>
+      </div>
+      <textarea 
+      id="text-area" 
+      cols="35" 
+      rows="5" 
+      name="descripcionProyecto" 
+      [(ngModel)]="descripcionProyecto"></textarea>
+    </div>
+
+    <div class="botones">
+      <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarProy()">      
+      <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarProy()"> 
+    </div>
+
+    <div class="alert-container" *ngIf="mostrarAlert">
+      <p id="alert">Complete los campos obligatorios*</p>
+    </div>
+  </form>
+  
+
+  
+ </div>

@@ -1,0 +1,54 @@
+.mat-card {
+    
+    border-radius: 32px;
+    margin: 10px 10px;
+    padding: 20px;
+}
+.mat-card#first-card {
+    padding: 0;
+}
+
+.about-edit{
+        
+    margin-top:1%;
+    margin-bottom: 1%;
+}
+
+.botones{
+    margin-top: 2%;
+    margin-right: 0.5%;
+}
+
+.edit-about{
+    display:flex;
+    flex-direction: column;      
+    justify-content: center;
+    border: solid rgb(187, 187, 187) 1px;
+    width: 300px;
+    padding: 1.5%;  
+  
+}
+
+div h4{
+    text-align: center;
+}
+
+.botones{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2%;
+}
+
+.alert-container{
+    margin-top: 3%;
+}
+
+#alert{
+    color: red;
+    font-weight: bold;
+
+}
+
+.fa:hover{
+    cursor:pointer;
+}

@@ -1,0 +1,179 @@
+{
+     "name": "Nahuel Nakamura",
+    "backImage": "../../../assets/imagenes/banner3.jpg",
+    "image": "../../../assets/imagenes/avatar.png",
+    "position": "Web Developer Jr. - Freelancer - Músico - Docente",
+    "company":{
+        "name": "Argentina Programa",
+        "img": "../../../assets/imagenes/argProgLogo.png",
+        "url": "#"
+    },
+    "school":{
+        "name": "Colegio Nacional de Buenos Aires",
+        "img": "../../../assets/imagenes/Uba.png"
+    },
+
+    "ubication": "Buenos Aires (Argentina)",
+    "about": "Músico, docente y estudiante de programación, nacido en Buenos Aires, Argentina en septiembre del año '91.",
+
+    "experience": [{
+        "position": "Profesor de Percusión ",
+        "company": "Escuela Nº6 D.E. Nº5",
+        "img": "../../../assets/imagenes/OrquestaVioletaLogo.jpg",
+        "mode": "Orquesta Popular Violeta Parra",
+        "start": "2019",
+        "end": "actualidad",
+        "timeElapsed": ""
+    },
+    {
+        "position": "Profesor de Percusión",
+        "company": "UTEP",
+        "img": "../../../assets/imagenes/logo-utep.png",
+        "mode": "Orquesta Infanto-Juvenil Trascartón",
+        "start": "2019",
+        "end": "actualidad",
+        "timeElapsed": ""
+    },
+    {
+        "position": "Profesor del Taller de Percusión Colectiva",
+        "company": "La Quince Espacio Cultural",
+        "img": "../../../assets/imagenes/logo-laquince.jpg",
+        "mode": "Taller Grupal",
+        "start": "2017",
+        "end": "actualidad",
+        "timeElapsed": ""
+    },
+    {
+        "position": "Profesor de Percusión",
+        "company": "Clases Particulares",
+        "img": "../../../assets/imagenes/Percu-logo.png",
+        "mode": "Individuales y Grupales",
+        "start": "2012",
+        "end": "actualidad",
+        "timeElapsed": ""
+    }
+
+
+],
+    
+    "education": [
+        {
+            "school": "Argentina Programa",
+            "title": "#YoProgramo",
+            "img": "../../../assets/imagenes/logoArgProg2.jpg",
+            "career": "Web Full Stack Jr. (Java, Html, CSS, Javascript, Typescript, Angular, MySQL, Sringboot)",
+            "score": "",
+            "start": "jun 2021",
+            "end": "actualidad"
+        },
+        {
+            "school": "CFP31",
+            "title": "Trayecto Programador",
+            "img": "../../../assets/imagenes/cfp31logo.png",
+            "career": "Orientado a objetos (Java, MySQL)",
+            "score": "",
+            "start": "mar 2021",
+            "end": "agosto 2021"
+        },
+        {
+            "school": "Codo a Codo 4.0",
+            "title": "Programador",
+            "img": "../../../assets/imagenes/codo-a-codo.jpg",
+            "career": "Web Full Stack Jr. (Python, Html, CSS, JavaScript, VUE, Django, MySQL, MongoDB)",
+            "score": "",
+            "start": "ago 2021",
+            "end": "dic 2021"
+        },        
+        {
+        "school": "Escuela de Música Popular de Avellaneda",
+        "title": "Técnico Percusionista Folklore",
+        "img": "../../../assets/imagenes/Empa-logo.jpg",
+        "career": "Orientación en Música Popular Argentina",
+        "score": "",
+        "start": "2013",
+        "end": "actualidad"
+    },
+    {
+        "school": "Colegio Nacional de Buenos Aires",
+        "title": "Bachiller",
+        "img": "../../../assets/imagenes/Uba.png",
+        "career":"Universitario",
+        "score": "",
+        "start": "2005",
+        "end": "2009"
+
+    }    
+
+],
+
+    "aptitudes": [
+        {
+        "name": "HTML",
+        "progress": 90,
+        "value": "html"
+    },
+    {
+
+        "name": "CSS",
+        "progress": 90,
+        "value": "css"        
+
+    },
+    {
+
+        "name": "JavaScript",
+        "progress": 75,
+        "value": "javascript"        
+
+    },
+    {
+
+        "name": "TypeScript",
+        "progress": 75,
+        "value": "typescript"        
+
+    },{
+
+        "name": "Java",
+        "progress": 60,
+        "value": "java"      
+
+    },
+    {
+
+        "name": "Python",
+        "progress": 60,
+        "value": "python"        
+
+    },
+    {
+
+        "name": "MySQL",
+        "progress": 80,
+        "value": "mysql"       
+
+    }
+    
+],
+
+    "achivements": [
+    {   "format":"Porfolio Web",
+        "name":"Portfolio Nahuel Nakamura",
+        "link": "http://localhost:4200/home",
+        "description":"Trabajo práctico final en el marco de Argentina Programa. Lenguajes Utilizados: HTML, CSS, JavaScript, Java, MySQL. Frameworks: Angular, Springboot."
+    },
+    {   "format":"Pagina Web",
+        "name":"BuenAndar Podología",
+        "link":"https://buenandarpodologia.netlify.app/",
+        "description":"Página Web realizada con HTML, CSS y JavaScript."
+    },
+    {   "format":"Aplicación de Escritorio",
+        "name": "BuenAndar Podologia ",
+        "link":"https://github.com/nfnakamura/buenandarpodologia",
+        "description":"Aplicación realizada en Java (NetBeans) y MySQL (Workbench)."
+    }
+]
+ 
+}
+
+

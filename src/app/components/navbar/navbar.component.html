@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark ">
+    
+  
+  <a class="navbar-brand" target="_blank" href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa"><img id="logo-arg-prog" src="../../../assets/imagenes/argProgLogo.png"></a>
+   
+  <div class="elementos-nav">
+        
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link waves-effect waves-light">
+              <i class="grey-text fab fa-linkedin fa-2x"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://github.com/nfnakamura" target="_blank" class="nav-link waves-effect waves-light">
+              <i class="grey-text fab fa-github fa-2x"></i>
+            </a>
+          </li>
+         </ul>
+      
+
+
+        <form class="form-inline my-2 my-lg-0">
+    
+         <div class="dropdown"  *ngIf="userLogged|async as user; else btnIngresar">
+           
+                <button class="btn btn-outline-success my-2 my-sm-0 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img style="border-radius: 100%;" *ngIf="user.photoURL" src="{{user.photoURL}}"
+                    width="30" height="30" class="align-top" alt="">                
+                    {{user.displayName?user.displayName : user.email}}
+                </button>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><button class="dropdown-item" (click)="logout()">Salir</button></li>
+                </ul>
+        </div> 
+       
+        <ng-template #btnIngresar>
+
+            <a class="login" routerLink="/login"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ingresar</button></a>
+
+        </ng-template>  
+ 
+        </form>
+
+  </div>
+</nav> 
+
+
+

@@ -1,0 +1,33 @@
+
+
+
+<div class="card mat-card">
+    <div class="card-titles">
+        <h2>Acerca de</h2>
+        <div *ngIf="userLogged|async" class="btn-edit" (click)="habilitar_edicion()">
+            <i class="fa fa-pen btn-right" ></i>            
+        </div>
+    </div>    
+    <div id="text-acercade" >
+        <p>
+            {{miPorfolio.about}}
+        </p>
+
+         
+    </div>
+    <div class="edit-about" *ngIf="editarParrafo">
+        <h4>Editar acerca de</h4>
+       <textarea class="about-edit" cols="35" rows="5"  name="texto" id="edit-acercade" style="display:block" [(ngModel)]="texto"></textarea>
+        <div class="botones">  
+        <input *ngIf="editarParrafo" (click)="aceptar_edicion()"  value="Aceptar" class="btn btn-success botones" type="submit">
+        <input *ngIf="editarParrafo" (click)="cancelar_edicion()"  value="Cancelar" class="btn btn-danger botones" type="submit">
+        </div>      
+        <div class="alert-container" *ngIf="mostrarAlert">
+                <p id="alert">Debe introducir texto para aceptar la edición</p>
+        </div>    
+       
+    </div>
+</div>
+
+
+

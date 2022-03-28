@@ -1,0 +1,86 @@
+
+  
+  <div class="card mat-card" id="first-card">
+    <div class="contenedor">  
+      <figure>
+        <div id="profile-background"><img id="info-back-img" [src]="miPorfolio.backImage"></div>
+        <div class="capa">
+          <h2 *ngIf="load" > {{separaNombre(nombreApellido[0])}}<span> {{separaApellido(nombreApellido[1])}}</span></h2>
+          <p>Web Developer </p>         
+        </div>
+      </figure> 
+    </div>  
+
+       <div id="info" style="padding: 16px">
+        <div id="info-img">
+           <img id="info-user-img" class="profile-image" [src]="miPorfolio.image">
+          <div *ngIf="userLogged|async" class="btn-edit" (click)="editarInfo()"><i class="fa fa-pen btn-right"></i></div>
+        </div>
+        <div id="info-data">
+          <div>
+            <h1 id="info-name">{{miPorfolio.name}}</h1>
+            <div id="info-position">{{miPorfolio.position}}</div>
+            <div id="info-contact">
+              <span id="info-ubication">{{miPorfolio.ubication}} </span>
+              <span><a href="#">Información de contacto</a></span>
+            </div>
+          </div>
+     
+          <!-- <ul id="info-details">
+            <li><a href="#">
+              <img id="info-company-img" [src]="miPorfolio.company.img">
+              <h2 id="info-company-name">{{miPorfolio.company.name}}</h2>
+            </a></li>
+            <li><a href="#">
+              <img id="info-school-img" [src]="miPorfolio.school.img" >
+              <h2 id="info-school-name">{{miPorfolio.school.name}}</h2>
+            </a></li>
+          </ul> -->
+        </div>
+
+        <div id="info-actions">
+          <button type="button" class="btn btn-primary">Tengo interés en</button>
+          <button type="button" class="btn btn-light">Añadir Sección</button>
+          <button type="button" class="btn btn-light">Más</button>
+        </div>
+
+        <form *ngIf="editaInfo" class="editForm">
+
+          <h4>Editar información</h4>
+          <div>
+            <label>Nombre</label>
+          </div>  
+            <input type="text" name="nombre" [(ngModel)]="nombre">
+         
+          <div>
+            <label>Apellido</label>
+          </div>  
+            <input type="text" name="apellido" [(ngModel)]="apellido">
+          
+          <div>
+            <label>Trabajos</label>
+          </div>
+            <input type="text" name="trabajos" [(ngModel)]="trabajos">
+          
+          <div>
+            <label>Lugar de residencia</label>
+          </div>  
+            <input type="text" name="lugar" [(ngModel)]="lugar">
+
+
+          <div class="botones">
+            <input (click)="aceptarEdicion()"  value="Aceptar" class="btn btn-success botones" type="submit">
+            <input (click)="cancelarEdicion()"  value="Cancelar" class="btn btn-danger botones" type="submit">
+          </div>
+
+          <div class="alert-container" *ngIf="mostrarAlert">
+            <p id="alert">Debe completar al menos un campo para aceptar la edición</p>
+          </div>
+
+        </form>
+
+     
+
+      </div>
+  </div>
+

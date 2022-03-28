@@ -1,0 +1,135 @@
+.mat-card {   
+    border-radius: 32px;
+    margin: 10px 10px;
+    padding: 20px;
+}
+.mat-card#first-card {
+    padding: 0;
+}
+
+.achivements{
+    display: block;
+}
+
+.titulo{
+    display:flex;
+}
+
+.project-container{
+    margin-top: 1%;
+
+}
+
+#text-area{
+    margin:1%;
+}
+
+.botones{
+    display:flex;
+    justify-content: space-around;
+    
+}
+
+form h4{
+ text-align: center;
+}
+
+.agregar-proyecto{
+    display:flex;
+    flex-direction: column;    
+    justify-content: center;
+    border: solid rgb(187, 187, 187) 1px;
+    width: 320px;
+    padding: 1%;
+    margin-left: 3%;    
+}
+
+.agregar-proyecto div{
+   padding: 2%;
+}
+
+
+.agregar-proyecto input{
+    margin-left: 2%;
+}
+
+#titulo-textarea{
+    padding: 0%;
+    padding-bottom: 1%;
+    margin-left: 0%;
+}
+
+#alert{
+    color: red;
+    font-weight: bold;
+}
+
+#mostrarMas{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(82, 81, 81);
+    border-radius: 100%;
+    padding-bottom: 0.2%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    padding-top: 0% ;
+}
+
+#mostrarMas:hover{
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    border-radius: 100%;
+    padding-bottom: 0.2%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    padding-top: 0% ;
+}
+
+
+.project-list{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+
+.titulo-proyecto{
+    font-size: 1.7em;
+}
+
+.proyecto-titulo-icono{
+    display:flex;
+    gap: 30px;    
+}
+
+.proyecto-titulo-icono i{
+    color: rgb(224, 6, 6);
+    align-self: center;
+    border-radius: 100%;
+}
+
+
+.fas:hover{
+    cursor:pointer;
+    border-radius: 100%;
+    background-color: rgb(224, 6, 6);
+}
+
+.proyecto-titulo-icono i:hover{
+    color: white;
+}
+
+.validacion-borrar{
+    display:flex;
+    flex-direction: column;
+    border: solid 1px rgba(0, 0, 0, 0.76);
+    padding:2%;
+}
+

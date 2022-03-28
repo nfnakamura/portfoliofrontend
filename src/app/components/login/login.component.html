@@ -1,0 +1,28 @@
+
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+          <b>LOGIN</b>
+        </div>
+        <div class="card-body">
+            <label>Email</label>
+            <input class="form-control" type="email" placeholder="Ingrese su email" [(ngModel)]="usuario.email">
+            
+            <label>Password</label>
+            <input class="form-control" type="password" placeholder="Ingrese su password" [(ngModel)]="usuario.password">
+
+                
+            <div class="errores">
+              <p class="errorLogin" *ngIf="errorVacio">*Error debe completar los campos email y usuario</p>
+              <p class="errorLogin" *ngIf="errorIngresoMail">*Error usuario o contraseña inválidos</p>           
+            </div>
+
+            <button class="btn btn-primary btn-block" (click)="ingresar()">Ingresar</button> <br>
+            <button class="btn btn-info btn-block" (click)="ingresarConGoogle()">Ingresar con Google</button>
+            <label>Aún no tienes cuenta? <a routerLink="/register">Registrarse</a></label>
+        
+          
+          </div>    
+      
+      </div>
+</div>

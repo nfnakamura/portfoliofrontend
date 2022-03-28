@@ -1,0 +1,38 @@
+.container{
+    background-color: rgb(236, 236, 236); 
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.card-body{
+    padding:4%;
+}
+
+label{
+    float:left;
+}
+
+input{
+    margin:2%;
+}
+
+button{
+    width: 100%;
+    margin:2%;
+    color: white;
+}
+
+.errores{
+    text-align: start;    
+}
+
+
+.errorLogin{
+    margin-top: 1% ;
+    float:left;
+    font-weight: bold;
+    color:red;
+}

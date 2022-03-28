@@ -1,0 +1,26 @@
+
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+          <b>REGISTRO</b>
+        </div>
+        <div class="card-body">
+            <label>Email</label>
+            <input class="form-control" type="email" placeholder="Ingrese su email" [(ngModel)]="usuario.email">
+            
+            <label>Password</label>
+            <input class="form-control" type="password" placeholder="Ingrese su password" [(ngModel)]="usuario.password">
+            
+            <div class="errores">
+              <p class="errorRegister" *ngIf="errorVacio">*Error debe completar los campos email y usuario</p>
+              <p class="errorRegister" *ngIf="errorRegistrando">*Error email ya registrado anteriormente</p>           
+            </div>
+
+            <button class="btn btn-primary btn-block"(click)="registrarse()">Registrarse</button> <br>
+            <label>Ya tienes cuenta? <a routerLink="/login" >Ingresar</a></label>
+         
+            
+          </div>
+      </div>
+</div>
+

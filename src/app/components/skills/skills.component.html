@@ -1,0 +1,59 @@
+<div class="card mat-card">
+  <div class="card-titles">
+      <h2>Hard Skills & Soft Skills</h2>
+      <div *ngIf="userLogged|async"  class="btn-edit" (click)="agregarHabilidad()"><i class="fa fa-plus btn-right"></i></div>
+  </div> 
+    <div class="container">
+      <div class="skills-bar">
+
+        
+        <!-- <div *ngFor="let aptitud of aptitudesList" class="bar">
+          <div class="info">
+            <span>{{aptitud.name}}</span>
+          </div>
+          <div class="progress-line {{aptitud.value}}"><span></span></div>
+        </div> -->
+
+        <div *ngFor="let aptitud of listaAptitudes; let i=index" class="bar">
+          <div class="info">
+            <span class="habilidad-nombre">{{aptitud.name}}<div class="icono-trash"><i *ngIf="userLogged|async"  (click)="borrarHabilidad(i)" class="fas fa-trash-alt btn"></i></div></span>             
+          </div>
+          <div class="progress-line {{aptitud.value}}"><span [ngStyle]="{'width': aptitud.progress + '%'}"><span id="porcentajeSpan">{{aptitud.progress}}%</span></span></div>
+        </div>
+      
+
+      
+
+
+        <!-- agregando habilidad FALTA MANDAR ESTA DATA A LA BASE DE DATOS-->
+      <div class="agrega-habilidad"  *ngIf="agregaHabilidad">
+        <h4>Agregar habilidad</h4>
+        <label>Habilidad*</label>
+        <p>
+        <input type="text" [(ngModel)]="habilidad">
+        </p>
+        
+        <label>%*</label>
+        <p>
+        <input type="text" [(ngModel)]="porcentaje">
+        </p>
+
+
+        <div class="botones">
+        <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarHabilidad()" > 
+        <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarHabilidad()"> 
+        </div>
+
+        <div class="alert-container" *ngIf="mostrarAlert">
+          <p id="alert">Debe indicar habilidad y porcentaje de progreso</p>
+        </div>
+
+      </div>
+
+   
+
+
+      </div>
+    </div>
+</div> 
+

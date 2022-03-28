@@ -1,0 +1,47 @@
+nav{
+    display:flex;
+    justify-content: space-between;
+    background-color: rgb(2, 2, 54);
+    padding-left: 0.9%;
+    padding-right: 0.9%;
+}
+
+.elementos-nav{ 
+    display:flex;
+    align-items: center;
+    width:70%;  
+    gap:10px;    
+}    
+
+
+#logo-arg-prog{
+    width:120px;
+}
+
+.mat-card {    
+    border-radius: 32px;
+    margin: 10px 10px;
+    padding: 20px;
+}
+.mat-card#first-card {
+    padding: 0;
+    
+}
+
+.nav-link{
+    color: grey;
+}
+.nav-link:hover{
+    color: rgb(219, 218, 218);
+}
+
+.navbar-brand{
+    margin-right: -200px;
+}
+
+.fab:hover{
+    cursor:pointer;
+}
+
+
+
