@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Informacion } from 'src/app/modelos/headerData.model';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -100,6 +101,17 @@ export class HeaderComponent implements OnInit {
       }      
            
     }      
+
+  }
+
+  infoContacto(){
+
+    Swal.fire({
+      icon: 'info',
+      title: 'Nahuel Nakamura',
+      text: 'mail: nfn1991@hotmail.com',      
+      
+    })
 
   }
 

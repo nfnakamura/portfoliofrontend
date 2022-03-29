@@ -125,3 +125,7 @@ div h4{
 .fa:hover{
     cursor:pointer;
 }
+
+span a{
+    cursor:pointer;
+}
