@@ -25,24 +25,14 @@ export class HeaderComponent implements OnInit {
   lugar:string="";
 
   nombreApellido:any=[];
+  
+  imagenes:any=[];
+
+ 
 
 
   userLogged=this.authService.getUserLogged();
-
-  separaNombre(nombre:string){   
-    this.nombreApellido = this.miPorfolio.name[0].split(" ");
-    nombre = this.nombreApellido[0];
-    return nombre;     
-   }       
-
-
-  separaApellido(apellido:string){   
-    this.nombreApellido = this.miPorfolio.name[0].split(" ");
-    apellido = this.nombreApellido[1]; 
-    return apellido;    
-  }
-
- 
+  
 
 
   editarInfo(){
@@ -56,7 +46,7 @@ export class HeaderComponent implements OnInit {
   }
   aceptarEdicion(){    
 
-    if(this.nombre =="" && this.apellido=="" && this.trabajos=="" && this.lugar==""){
+    if(this.nombre =="" && this.apellido=="" && this.trabajos=="" && this.lugar=="" && this.imagenes==""){
           this.mostrarAlert=true;
     }else{
 
@@ -72,6 +62,8 @@ export class HeaderComponent implements OnInit {
 
        this.datosPorfolio.guardarNombre(nombreActualizado).subscribe((name) =>
             console.log(name)
+
+
       )
      
        
@@ -87,6 +79,8 @@ export class HeaderComponent implements OnInit {
         )
       
       }
+
+              
       if(this.lugar!=""){
         this.miPorfolio.ubication=this.lugar;
 
@@ -97,12 +91,61 @@ export class HeaderComponent implements OnInit {
         this.datosPorfolio.guardarUbicación(ubicacionActualizada).subscribe((ubication)=>
         console.log(ubication)
         )
+       
+      }   
       
-      }      
-           
     }      
-
   }
+
+
+
+ separaNombre(nombre:string){   
+      this.nombreApellido = this.miPorfolio.name[0].split(" ");
+      nombre = this.nombreApellido[0];
+      return nombre;
+   }        
+
+  separaApellido(apellido:string){    
+      this.nombreApellido = this.miPorfolio.name[0].split(" ");
+      apellido = this.nombreApellido[1];  
+      return apellido;     
+  } 
+
+
+
+  cargarImagen(event:any){    
+
+    let archivos = event.target.files    
+    let nombre = "Nahuel";
+
+    for(let i = 0; i<archivos.length; i++){
+
+      let reader = new FileReader();
+      reader.readAsDataURL(archivos[0]);
+      reader.onloadend= () => {
+        
+        this.imagenes.push(reader.result);
+        this.datosPorfolio.guardarImagenPerfil(nombre+"_"+Date.now(), reader.result).then(urlImagen=>{
+          let usuario={
+            name:'Nahuel',
+            imgProfile:urlImagen,
+          }
+          console.log(urlImagen);
+
+         /*subiendo imagen al json de firebase*/
+          let imagenActualizada:any=[];  
+          imagenActualizada.push(urlImagen);            
+          this.datosPorfolio.guardarImagenEnJson(imagenActualizada).subscribe((image)=>{
+          this.ngOnInit();
+          console.log(image)
+        });
+        
+        });
+
+      }
+    }
+  }
+
 
   infoContacto(){
 

@@ -5,7 +5,7 @@
       <figure>
         <div id="profile-background"><img id="info-back-img" [src]="miPorfolio.backImage"></div>
         <div class="capa">
-          <h2 *ngIf="load" > {{separaNombre(nombreApellido[0])}}<span> {{separaApellido(nombreApellido[1])}}</span></h2>
+          <h2 *ngIf="load"> {{separaNombre(nombreApellido[0])}}<span> {{separaApellido(nombreApellido[0])}}</span></h2>
           <p>Web Developer </p>         
         </div>
       </figure> 
@@ -67,9 +67,14 @@
           </div>  
             <input type="text" name="lugar" [(ngModel)]="lugar">
 
+            <div>
+              <label for="">Avatar de perfil</label>
+            </div>  
+              <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarImagen($event)">  
+
 
           <div class="botones">
-            <input (click)="aceptarEdicion()"  value="Aceptar" class="btn btn-success botones" type="submit">
+            <input (click)="aceptarEdicion()" value="Aceptar" class="btn btn-success botones" type="submit">
             <input (click)="cancelarEdicion()"  value="Cancelar" class="btn btn-danger botones" type="submit">
           </div>
 

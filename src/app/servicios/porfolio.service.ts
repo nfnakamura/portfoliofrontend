@@ -6,7 +6,11 @@ import { ExpEducationComponent } from '../components/exp-education/exp-education
 import { HeaderComponent } from '../components/header/header.component';
 import { ProyectsComponent } from '../components/proyects/proyects.component';
 import { SkillsComponent } from '../components/skills/skills.component';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/storage';
+import { environment } from 'src/environments/environment';
 
+firebase.initializeApp(environment.firebaseConfig);
 
 const httpOptions={
 
@@ -20,6 +24,8 @@ const httpOptions={
   providedIn: 'root'
 })
 export class PorfolioService {
+
+  storageRef = firebase.app().storage().ref();
    
    private apiUrl = 'https://portfolio-7c37f-default-rtdb.firebaseio.com/.json';
 
@@ -96,6 +102,24 @@ eliminarEducacion(indiceEducacion:number): Observable<ExpEducationComponent>{
     return this.http.put<HeaderComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/ubication.json', ubication, httpOptions);
   }
 
+/* Guardando en el storage*/
+  async guardarImagenPerfil(nombre:string, imgBase64:any){
+
+    try{
+
+      let respuesta = await this.storageRef.child("users/"+nombre).putString(imgBase64, 'data_url')     
+      return await respuesta.ref.getDownloadURL();
+      
+    }catch(err){
+      console.log(err);
+      return null;
+    }
+
+  }
+
+  guardarImagenEnJson(image:HeaderComponent[]): Observable<HeaderComponent>{
+    return this.http.put<HeaderComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/image.json', image, httpOptions);
+  }
 
 
 
