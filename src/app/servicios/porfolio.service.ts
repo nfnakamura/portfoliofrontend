@@ -28,6 +28,7 @@ export class PorfolioService {
   storageRef = firebase.app().storage().ref();
    
    private apiUrl = 'https://portfolio-7c37f-default-rtdb.firebaseio.com/.json';
+   private url='https://localhost:8080/ver/personas'
 
   constructor(private http:HttpClient) { }
 
@@ -39,7 +40,9 @@ export class PorfolioService {
 
   /*TRAER DESDE FIREBASE*/
   cargarDatos():Observable<any>{
-      return this.http.get('https://portfolio-7c37f-default-rtdb.firebaseio.com/.json');
+     console.log('http://localhost:8080/ver/personas');   
+     return this.http.get('http://localhost:8080/ver/personas/1');
+
  }
 
  /*ELIMINAR EN FIREBASE*/
@@ -51,19 +54,19 @@ export class PorfolioService {
 
 
  eliminarProyecto(indiceProyecto:number): Observable<ProyectsComponent>{
-    return this.http.delete<ProyectsComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/achivements/'+indiceProyecto+'.json');
+    return this.http.delete<ProyectsComponent>(`https://portfolio-7c37f-default-rtdb.firebaseio.com/achivements/${indiceProyecto}.json`);
  }
 
  eliminarHabilidad(indiceHabilidad:number): Observable<SkillsComponent>{
-   return this.http.delete<SkillsComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/aptitudes/'+indiceHabilidad+'.json');
+   return this.http.delete<SkillsComponent>(`https://portfolio-7c37f-default-rtdb.firebaseio.com/aptitudes/${indiceHabilidad}.json`);
  }
 
  eliminarExperiencia(indiceExperiencia:number): Observable<ExpEducationComponent>{
-  return this.http.delete<ExpEducationComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/experience/'+indiceExperiencia+'.json');
+  return this.http.delete<ExpEducationComponent>(`https://portfolio-7c37f-default-rtdb.firebaseio.com/experience/${indiceExperiencia}.json`);
 }
 
 eliminarEducacion(indiceEducacion:number): Observable<ExpEducationComponent>{
-  return this.http.delete<ExpEducationComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/education/'+indiceEducacion+'.json');
+  return this.http.delete<ExpEducationComponent>(`https://portfolio-7c37f-default-rtdb.firebaseio.com/education/${indiceEducacion}.json`);
 }
 
 

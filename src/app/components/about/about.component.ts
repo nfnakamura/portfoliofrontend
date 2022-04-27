@@ -57,6 +57,7 @@ export class AboutComponent implements OnInit {
 
     this.obtenerAbout().subscribe(about =>{
        this.miPorfolio=about;
+      
 
     });
 
