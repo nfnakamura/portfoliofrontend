@@ -75,8 +75,7 @@ export class ProyectsComponent implements OnInit {
   }
 
   validacionParaBorrar(indice:number){  
-    this.aceptaBorrarProyecto=true;
-    console.log(indice);
+    this.aceptaBorrarProyecto=true;   
     return indice;
   }
 
@@ -102,7 +101,8 @@ export class ProyectsComponent implements OnInit {
           'El proyecto ha sido borrado con éxito.',
           'success'
         )
-        this.datosPorfolio.eliminarProyecto(indice).subscribe(()=>{
+        this.datosPorfolio.eliminarProyecto(this.proyectosLista[indice].id).subscribe(()=>{
+          console.log(this.proyectosLista[indice].id);
           this.proyectosLista.splice(indice, 1);
      })
       }
@@ -114,7 +114,7 @@ export class ProyectsComponent implements OnInit {
 
  // TRAER DESDE FIREBASE
     this.obtenerProyectos().subscribe(proyectos=>{
-      this.proyectosLista=proyectos.achivements;
+      this.proyectosLista=proyectos.proyectos;
        
     });
 

@@ -55,19 +55,33 @@ export class HeaderComponent implements OnInit {
 
       if(this.nombre !="" && this.apellido!=""){
 
-        this.miPorfolio.name=this.nombre + " " +  this.apellido;
+        this.miPorfolio.nombre = this.nombre; 
+       
 
         let nombreActualizado:any=[];
-        nombreActualizado.push(this.miPorfolio.name);
+        nombreActualizado.push(this.miPorfolio.nombre);
 
-       this.datosPorfolio.guardarNombre(nombreActualizado).subscribe((name) =>
-            console.log(name)
+       this.datosPorfolio.guardarNombre(nombreActualizado).subscribe((nombre) =>
+            console.log(nombre)
 
 
       )
      
        
       }
+
+      if(this.apellido !=""){
+        
+        this.miPorfolio.apellido = this.apellido;
+        
+
+        let apellidoActualizado:any=[];
+        apellidoActualizado.push(this.miPorfolio.apellido);
+
+       /*this.datosPorfolio.guardarApellido(nombreActualizado).subscribe((apellido) =>
+        console.log(apellido)*/
+      }
+
       if(this.trabajos!=""){   
         this.miPorfolio.position=this.trabajos;
 
@@ -96,20 +110,6 @@ export class HeaderComponent implements OnInit {
       
     }      
   }
-
-
-
- separaNombre(nombre:string){   
-      this.nombreApellido = this.miPorfolio.name[0].split(" ");
-      nombre = this.nombreApellido[0];
-      return nombre;
-   }        
-
-  separaApellido(apellido:string){    
-      this.nombreApellido = this.miPorfolio.name[0].split(" ");
-      apellido = this.nombreApellido[1];  
-      return apellido;     
-  } 
 
 
 

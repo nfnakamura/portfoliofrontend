@@ -175,8 +175,8 @@ export class ExpEducationComponent implements OnInit {
     });  */
 
     this.obtenerEduExp().subscribe(educacion =>{
-      this.educacionList=educacion.education;
-      this.experienciaList=educacion.experience;      
+      this.educacionList=educacion.educaciones;
+      this.experienciaList=educacion.experiencias;      
     })
 
   }

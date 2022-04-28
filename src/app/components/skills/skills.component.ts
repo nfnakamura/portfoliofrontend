@@ -95,7 +95,7 @@ export class SkillsComponent implements OnInit{
 
     //FIREBASE
     this.obtenerHabilidad().subscribe(habilidades =>{
-      this.listaAptitudes=habilidades.aptitudes;
+      this.listaAptitudes=habilidades.habilidades;
     });
 
   }

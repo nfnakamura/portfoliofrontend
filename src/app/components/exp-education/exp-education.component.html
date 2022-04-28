@@ -19,7 +19,7 @@
                           <i *ngIf="userLogged|async" (click)="borrarExperiencia(i)" class="fas fa-trash-alt btn"></i>
                       </div>
                       <p>{{experiencia.company}} - {{experiencia.mode}}</p>
-                      <p><time>{{experiencia.start}}</time> - <time>{{experiencia.end}}</time> <time>{{experiencia.timeElapsed}}</time></p>
+                      <p><time>{{experiencia.started}}</time> - <time>{{experiencia.ended}}</time> <time>{{experiencia.timeElapsed}}</time></p>
                     </div>
                   </div>
                 </a>
@@ -79,7 +79,7 @@
                           <i *ngIf="userLogged|async" (click)="borrarEducacion(i)" class="fas fa-trash-alt btn"></i>
                         </div>
                         <p>{{educacion.title}} - {{educacion.career}}</p>
-                        <p><time>{{educacion.start}}</time> - <time>{{educacion.end}}</time></p>
+                        <p><time>{{educacion.started}}</time> - <time>{{educacion.ended}}</time></p>
                       </div>
                     </div>
                   </a>

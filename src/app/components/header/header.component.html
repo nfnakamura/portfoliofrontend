@@ -5,7 +5,7 @@
       <figure>
         <div id="profile-background"><img id="info-back-img" [src]="miPorfolio.backImage"></div>
         <div class="capa">
-          <h2 *ngIf="load"> {{separaNombre(nombreApellido[0])}}<span> {{separaApellido(nombreApellido[0])}}</span></h2>
+          <h2 *ngIf="load"> {{miPorfolio.nombre}}<span>  {{miPorfolio.apellido}}</span></h2>
           <p>Web Developer </p>         
         </div>
       </figure> 
@@ -18,7 +18,7 @@
         </div>
         <div id="info-data">
           <div>
-            <h1 id="info-name">{{miPorfolio.name}}</h1>
+            <h1 id="info-name">{{miPorfolio.nombre}} {{miPorfolio.apellido}}</h1>
             <div id="info-position">{{miPorfolio.position}}</div>
             <div id="info-contact">
               <span id="info-ubication">{{miPorfolio.ubication}} </span>
