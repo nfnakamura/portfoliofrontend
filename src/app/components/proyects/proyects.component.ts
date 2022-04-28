@@ -50,8 +50,13 @@ export class ProyectsComponent implements OnInit {
      
       this.proyectosLista.push(miProyecto);
 
-      this.datosPorfolio.guardarProyecto(this.proyectosLista).subscribe((miProyecto) =>
-        console.log(miProyecto)
+      let proyectoPost = this.proyectosLista.slice(-1)[0]; 
+
+      this.datosPorfolio.guardarProyecto(proyectoPost).subscribe(() =>{
+        console.log("Proyecto guardado")
+        this.ngOnInit();
+      }
+        
       )
     }
   }
@@ -102,8 +107,8 @@ export class ProyectsComponent implements OnInit {
           'success'
         )
         this.datosPorfolio.eliminarProyecto(this.proyectosLista[indice].id).subscribe(()=>{
-          console.log(this.proyectosLista[indice].id);
-          this.proyectosLista.splice(indice, 1);
+           this.proyectosLista.splice(indice, 1);
+           
      })
       }
     })

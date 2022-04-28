@@ -56,20 +56,16 @@ export class PorfolioService {
   return this.http.delete<ProyectsComponent>(`http://localhost:8080/delete/persona/1/proyecto/${idProyecto}`);
 }
 
-/* eliminarProyecto(indiceProyecto:number): Observable<ProyectsComponent>{
-    return this.http.delete<ProyectsComponent>(`https://portfolio-7c37f-default-rtdb.firebaseio.com/achivements/${indiceProyecto}.json`);
- }*/
-
- eliminarHabilidad(indiceHabilidad:number): Observable<SkillsComponent>{
-   return this.http.delete<SkillsComponent>(`https://portfolio-7c37f-default-rtdb.firebaseio.com/aptitudes/${indiceHabilidad}.json`);
+ eliminarHabilidad(idHabilidad:number): Observable<SkillsComponent>{
+   return this.http.delete<SkillsComponent>(`http://localhost:8080/delete/persona/1/habilidad/${idHabilidad}`);
  }
 
- eliminarExperiencia(indiceExperiencia:number): Observable<ExpEducationComponent>{
-  return this.http.delete<ExpEducationComponent>(`https://portfolio-7c37f-default-rtdb.firebaseio.com/experience/${indiceExperiencia}.json`);
+ eliminarExperiencia(idExperiencia:number): Observable<ExpEducationComponent>{
+  return this.http.delete<ExpEducationComponent>(`http://localhost:8080/delete/persona/1/experiencia/${idExperiencia}`);
 }
 
-eliminarEducacion(indiceEducacion:number): Observable<ExpEducationComponent>{
-  return this.http.delete<ExpEducationComponent>(`https://portfolio-7c37f-default-rtdb.firebaseio.com/education/${indiceEducacion}.json`);
+eliminarEducacion(idEducacion:number): Observable<ExpEducationComponent>{
+  return this.http.delete<ExpEducationComponent>(`http://localhost:8080/delete/persona/1/educacion/${idEducacion}`);
 }
 
 
@@ -80,23 +76,20 @@ eliminarEducacion(indiceEducacion:number): Observable<ExpEducationComponent>{
         return this.http.put<ProyectsComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/achivements.json', proyecto, httpOptions);
   }*/
 
-  guardarProyecto(proyecto:ProyectsComponent[]): Observable<ProyectsComponent>{
-    
-    let proyectoPost = proyecto.slice(-1)[0]; 
-          
-    return this.http.post<ProyectsComponent>('http://localhost:8080/new/persona/1/proyecto', proyectoPost, httpOptions);
+  guardarProyecto(proyecto:ProyectsComponent[]): Observable<ProyectsComponent>{                 
+    return this.http.post<ProyectsComponent>('http://localhost:8080/new/persona/1/proyecto', proyecto, httpOptions);
 }
 
-  guardarHabilidad(habilidad:SkillsComponent[]): Observable<SkillsComponent>{
-      return this.http.put<SkillsComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/aptitudes.json', habilidad, httpOptions);
+  guardarHabilidad(habilidad:SkillsComponent[]): Observable<SkillsComponent>{      
+      return this.http.post<SkillsComponent>('http://localhost:8080/new/persona/1/habilidad', habilidad, httpOptions);
   }
 
-  guardarEducacion(educacion:ExpEducationComponent[]): Observable<ExpEducationComponent>{
-    return this.http.put<ExpEducationComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/education.json', educacion, httpOptions);
+  guardarEducacion(educacion:ExpEducationComponent[]): Observable<ExpEducationComponent>{    
+    return this.http.post<ExpEducationComponent>('http://localhost:8080/new/persona/1/educacion', educacion, httpOptions);
   }
 
   guardarExperiencia(experiencia:ExpEducationComponent[]): Observable<ExpEducationComponent>{
-    return this.http.put<ExpEducationComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/experience.json', experiencia, httpOptions);
+    return this.http.post<ExpEducationComponent>('http://localhost:8080/new/persona/1/experiencia', experiencia, httpOptions);
   }
 
   guardarAbout(about:AboutComponent[]): Observable<AboutComponent>{

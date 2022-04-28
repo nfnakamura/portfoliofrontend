@@ -1,13 +1,14 @@
 export class Educacion{
 
-    constructor(school:string, title:string, img:string, career:string, start:string, end:string){
+    constructor(school:string, title:string, img:string, career:string, score:string,  started:string, ended:string){
 
         this.school=school;
         this.title=title;
         this.img=img;
         this.career=career;
-        this.start=start;
-        this.end=end
+        this.started=started;
+        this.ended=ended
+        this.score=score;
 
     }
 
@@ -15,7 +16,8 @@ export class Educacion{
     title="";
     img="";
     career="";
-    start="";
-    end="";
+    score="";
+    started="";
+    ended="";
 
 }

@@ -36,13 +36,19 @@ export class SkillsComponent implements OnInit{
     }else{
       this.mostrarAlert=false;
       this.aceptaHabilidad=true;
+      this.agregaHabilidad=false;
 
       let miHabilidad = new Habilidad(this.habilidad, parseInt(this.porcentaje), this.habilidad.toLowerCase());
       
       this.listaAptitudes.push(miHabilidad);
 
-      this.datosPorfolio.guardarHabilidad(this.listaAptitudes).subscribe((miHabilidad) =>
-        console.log(miHabilidad)
+      let habilidadPost = this.listaAptitudes.slice(-1)[0];
+
+      this.datosPorfolio.guardarHabilidad(habilidadPost).subscribe(() =>{
+        console.log("Habilidad guardada")
+        this.ngOnInit();
+      }
+        
       )
           
     }    
@@ -77,7 +83,7 @@ export class SkillsComponent implements OnInit{
           'Habilidad borrada con éxito.',
           'success'
         )
-        this.datosPorfolio.eliminarHabilidad(indice).subscribe(()=>{
+        this.datosPorfolio.eliminarHabilidad(this.listaAptitudes[indice].id).subscribe(()=>{
           this.listaAptitudes.splice(indice, 1);
      })
       }
@@ -100,10 +106,6 @@ export class SkillsComponent implements OnInit{
 
   }
 
-     /* this.datosPorfolio.obtenerDatos().subscribe(data =>{
-      this.aptitudesList=data.aptitudes;  
 
-
-    }); */
 
 }

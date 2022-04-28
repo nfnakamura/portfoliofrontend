@@ -1,13 +1,13 @@
 export class Experiencia{
 
-    constructor(position:string, company:string, img:string, mode:string, start:string, end:string, timeElapsed:string){
+    constructor(position:string, company:string, img:string, mode:string, started:string, ended:string, timeElapsed:string){
 
         this.position=position;
         this.company=company;
         this.img=img;
         this.mode=mode;
-        this.start=start;
-        this.end=end
+        this.started=started;
+        this.ended=ended
         this.timeElapsed=timeElapsed;
 
     }
@@ -16,8 +16,8 @@ export class Experiencia{
     company="";
     img="";
     mode="";
-    start="";
-    end="";
+    started="";
+    ended="";
     timeElapsed="";
 
 }

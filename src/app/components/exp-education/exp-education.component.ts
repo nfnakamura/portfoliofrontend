@@ -29,6 +29,7 @@ export class ExpEducationComponent implements OnInit {
   anioFin:string="";
   duracion:string="";
   modo:string="";
+  score:string="";
 
 
   escuela:string="";
@@ -59,8 +60,13 @@ export class ExpEducationComponent implements OnInit {
 
       this.experienciaList.push(miExperiencia);
 
-      this.datosPorfolio.guardarExperiencia(this.experienciaList).subscribe((miExperiencia) =>
-      console.log(miExperiencia)
+      let experienciaPost = this.experienciaList.slice(-1)[0];
+
+      this.datosPorfolio.guardarExperiencia(experienciaPost).subscribe(() =>{
+        console.log("Experiencia guardada")
+        this.ngOnInit();
+      }
+      
     )
       
     }
@@ -84,13 +90,18 @@ export class ExpEducationComponent implements OnInit {
       this.agregaEdu=false;
       
 
-      let miEducacion = new Educacion(this.escuela, this.titulo, this.img, this.career, this.anioInicioEdu, this.anioFinEdu);
+      let miEducacion = new Educacion(this.escuela, this.titulo, this.img, this.career, this.score, this.anioInicioEdu, this.anioFinEdu);
 
-     
       this.educacionList.push(miEducacion);
 
-      this.datosPorfolio.guardarEducacion(this.educacionList).subscribe((miEducacion) =>
-        console.log(miEducacion)
+      let educacionPost = this.educacionList.slice(-1)[0];
+
+      this.datosPorfolio.guardarEducacion(educacionPost).subscribe(() =>{
+        
+        console.log("Educacion guardada")
+        this.ngOnInit();
+      }
+       
       )
 
     }
@@ -125,7 +136,7 @@ export class ExpEducationComponent implements OnInit {
           'Experiencia borrada con éxito.',
           'success'
         )
-        this.datosPorfolio.eliminarExperiencia(indice).subscribe(()=>{
+        this.datosPorfolio.eliminarExperiencia(this.experienciaList[indice].id).subscribe(()=>{
           this.experienciaList.splice(indice, 1);
      })
       }
@@ -154,7 +165,7 @@ export class ExpEducationComponent implements OnInit {
           'Educación borrada con éxito.',
           'success'
         )
-        this.datosPorfolio.eliminarEducacion(indice).subscribe(()=>{
+        this.datosPorfolio.eliminarEducacion(this.educacionList[indice].id).subscribe(()=>{
           this.educacionList.splice(indice, 1);
      })
       }
@@ -174,9 +185,9 @@ export class ExpEducationComponent implements OnInit {
       
     });  */
 
-    this.obtenerEduExp().subscribe(educacion =>{
-      this.educacionList=educacion.educaciones;
-      this.experienciaList=educacion.experiencias;      
+    this.obtenerEduExp().subscribe(eduexp =>{
+      this.educacionList=eduexp.educaciones;
+      this.experienciaList=eduexp.experiencias;      
     })
 
   }
