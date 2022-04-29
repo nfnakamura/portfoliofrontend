@@ -12,8 +12,6 @@ import Swal from 'sweetalert2';
 export class SkillsComponent implements OnInit{
 
   
-  //aptitudesList:any=[];
-  
   listaAptitudes:any=[];
 
   aceptaHabilidad=false;

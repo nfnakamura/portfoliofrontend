@@ -31,9 +31,11 @@ export class AboutComponent implements OnInit {
       this.editarParrafo=false;      
       this.mostrarAlert=false;
 
-        
-      this.datosPorfolio.guardarAbout(this.miPorfolio).subscribe((miAbout) =>
-      console.log(miAbout)
+      this.datosPorfolio.guardarAbout(this.miPorfolio).subscribe(() =>{
+       
+        console.log("About editado")
+        this.ngOnInit();
+      }
     )
 
     }    
@@ -58,18 +60,9 @@ export class AboutComponent implements OnInit {
     this.obtenerAbout().subscribe(about =>{
        this.miPorfolio=about;
       
-
     });
 
 
-/*
-function myfunction2(valor){
-    document.getElementById("text-acercade").innerText=valor;
-}    
-*/
-
-        
-   
   }
 
 }

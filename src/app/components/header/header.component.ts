@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Informacion } from 'src/app/modelos/headerData.model';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 import Swal from 'sweetalert2';
@@ -29,11 +28,8 @@ export class HeaderComponent implements OnInit {
   imagenes:any=[];
 
  
-
-
   userLogged=this.authService.getUserLogged();
   
-
 
   editarInfo(){
     this.editaInfo=true;
@@ -49,68 +45,61 @@ export class HeaderComponent implements OnInit {
     if(this.nombre =="" && this.apellido=="" && this.trabajos=="" && this.lugar=="" && this.imagenes==""){
           this.mostrarAlert=true;
     }else{
-
       this.editaInfo=false;
       this.mostrarAlert=false;
 
-      if(this.nombre !="" && this.apellido!=""){
+          if(this.nombre !=""){
+              this.miPorfolio.nombre = this.nombre; 
+            
+              let nombreActualizado:any=[];
+              nombreActualizado.push(this.miPorfolio.nombre);
 
-        this.miPorfolio.nombre = this.nombre; 
-       
+              this.datosPorfolio.guardarNombre(this.miPorfolio).subscribe(() =>{
+              console.log("Nombre actualizado");
+              this.ngOnInit();  
+              }
+            )          
+          }
+          if(this.apellido !=""){
+            
+            this.miPorfolio.apellido = this.apellido;
+            
+            let apellidoActualizado:any=[];
+            apellidoActualizado.push(this.miPorfolio.apellido);
 
-        let nombreActualizado:any=[];
-        nombreActualizado.push(this.miPorfolio.nombre);
+            this.datosPorfolio.guardarApellido(this.miPorfolio).subscribe(() =>{
+            console.log("Apellido actualizado");
+            this.ngOnInit();  
+            }
+          )
+          }
+          if(this.trabajos!=""){   
 
-       this.datosPorfolio.guardarNombre(nombreActualizado).subscribe((nombre) =>
-            console.log(nombre)
+            this.miPorfolio.position=this.trabajos;
 
+            let trabajoActualizado:any=[];
+            trabajoActualizado.push(this.miPorfolio.position);
 
-      )
-     
-       
-      }
+            this.datosPorfolio.guardarTrabajo(this.miPorfolio).subscribe(() =>{
+              console.log("Trabajo actualizado");
+              this.ngOnInit();  
+              }
+            )     
+          }              
+          if(this.lugar!=""){
+            this.miPorfolio.ubication=this.lugar;
 
-      if(this.apellido !=""){
-        
-        this.miPorfolio.apellido = this.apellido;
-        
+            let ubicacionActualizada:any=[];
+            ubicacionActualizada.push(this.miPorfolio.ubication)
 
-        let apellidoActualizado:any=[];
-        apellidoActualizado.push(this.miPorfolio.apellido);
-
-       /*this.datosPorfolio.guardarApellido(nombreActualizado).subscribe((apellido) =>
-        console.log(apellido)*/
-      }
-
-      if(this.trabajos!=""){   
-        this.miPorfolio.position=this.trabajos;
-
-        let trabajoActualizado:any=[];
-        trabajoActualizado.push(this.miPorfolio.position);
-
-        this.datosPorfolio.guardarTrabajo(trabajoActualizado).subscribe((position) =>
-          console.log(position)
-        )
-      
-      }
-
-              
-      if(this.lugar!=""){
-        this.miPorfolio.ubication=this.lugar;
-
-        let ubicacionActualizada:any=[];
-
-        ubicacionActualizada.push(this.miPorfolio.ubication)
-
-        this.datosPorfolio.guardarUbicación(ubicacionActualizada).subscribe((ubication)=>
-        console.log(ubication)
-        )
-       
-      }   
-      
+            this.datosPorfolio.guardarUbicación(this.miPorfolio).subscribe(()=>{
+              console.log("Ubicacion actualizada");
+              this.ngOnInit();  
+              }
+            )       
+          }              
     }      
   }
-
 
 
   cargarImagen(event:any){    
@@ -136,12 +125,10 @@ export class HeaderComponent implements OnInit {
           let imagenActualizada:any=[];  
           imagenActualizada.push(urlImagen);            
           this.datosPorfolio.guardarImagenEnJson(imagenActualizada).subscribe((image)=>{
-          this.ngOnInit();
-          console.log(image)
+            this.ngOnInit();
+            console.log(image)
         });
-        
         });
-
       }
     }
   }
@@ -152,10 +139,8 @@ export class HeaderComponent implements OnInit {
     Swal.fire({
       icon: 'info',
       title: 'Nahuel Nakamura',
-      text: 'mail: nfn1991@hotmail.com',      
-      
+      text: 'mail: nfn1991@hotmail.com',            
     })
-
   }
 
 
@@ -167,9 +152,5 @@ export class HeaderComponent implements OnInit {
        this.miPorfolio=data;
        this.load=true;
     });
-
- 
   }
-
-
 }

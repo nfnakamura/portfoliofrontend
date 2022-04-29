@@ -26,10 +26,7 @@ const httpOptions={
 export class PorfolioService {
 
   storageRef = firebase.app().storage().ref();
-   
-   private apiUrl = 'https://portfolio-7c37f-default-rtdb.firebaseio.com/.json';
-   private url='https://localhost:8080/ver/personas'
-
+ 
   constructor(private http:HttpClient) { }
 
 /*Obtener datos desde data.json
@@ -38,14 +35,14 @@ export class PorfolioService {
   }
 */
 
-  /*TRAER DESDE FIREBASE*/
+  /*GET*/
   cargarDatos():Observable<any>{
       
      return this.http.get('http://localhost:8080/ver/personas/1');
 
  }
 
- /*ELIMINAR EN FIREBASE*/
+ /*DELETE*/
  
  eliminarDatos():Observable<any>{
    return this.http.delete('https://portfolio-7c37f-default-rtdb.firebaseio.com/.json')
@@ -68,13 +65,7 @@ eliminarEducacion(idEducacion:number): Observable<ExpEducationComponent>{
   return this.http.delete<ExpEducationComponent>(`http://localhost:8080/delete/persona/1/educacion/${idEducacion}`);
 }
 
-
-
-  /*LLEVAR A FIREBASE*/ 
-    
-  /*guardarProyecto(proyecto:ProyectsComponent[]): Observable<ProyectsComponent>{
-        return this.http.put<ProyectsComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/achivements.json', proyecto, httpOptions);
-  }*/
+  /*POST*/  
 
   guardarProyecto(proyecto:ProyectsComponent[]): Observable<ProyectsComponent>{                 
     return this.http.post<ProyectsComponent>('http://localhost:8080/new/persona/1/proyecto', proyecto, httpOptions);
@@ -92,20 +83,27 @@ eliminarEducacion(idEducacion:number): Observable<ExpEducationComponent>{
     return this.http.post<ExpEducationComponent>('http://localhost:8080/new/persona/1/experiencia', experiencia, httpOptions);
   }
 
+
+  /*PATCH - PUT*/
+
   guardarAbout(about:AboutComponent[]): Observable<AboutComponent>{
-    return this.http.put<AboutComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/.json', about, httpOptions);
+    return this.http.patch<AboutComponent>('http://localhost:8080/edit/persona/1/about', about, httpOptions);
   }
-/* INVESTIGAR POR QUE NO SE ESTÁ GUARDANDO ERROR 400*/
-  guardarNombre(name:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.put<HeaderComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/name.json', name, httpOptions);
+
+  guardarNombre(nombre:HeaderComponent[]): Observable<HeaderComponent>{
+    return this.http.patch<HeaderComponent>('http://localhost:8080/edit/persona/1/nombre', nombre, httpOptions);
+  }
+
+  guardarApellido(apellido:HeaderComponent[]): Observable<HeaderComponent>{
+    return this.http.patch<HeaderComponent>('http://localhost:8080/edit/persona/1/apellido', apellido, httpOptions);
   }
   
   guardarTrabajo(position:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.put<HeaderComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/position.json', position, httpOptions);
+    return this.http.patch<HeaderComponent>('http://localhost:8080/edit/persona/1/trabajo', position, httpOptions);
   }
   
   guardarUbicación(ubication:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.put<HeaderComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/ubication.json', ubication, httpOptions);
+    return this.http.patch<HeaderComponent>('http://localhost:8080/edit/persona/1/ubicacion', ubication, httpOptions);
   }
 
 /* Guardando en el storage*/
