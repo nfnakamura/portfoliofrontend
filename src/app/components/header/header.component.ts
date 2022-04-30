@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 import Swal from 'sweetalert2';
+import { callbackify } from 'util';
 
 @Component({
   selector: 'app-header',
@@ -17,11 +18,14 @@ export class HeaderComponent implements OnInit {
   mostrarAlert=false;
   load=false;
 
-  imagen:string="";
+  imagen:string="a";
   nombre:string="";
   apellido:string="";
   trabajos:string="";
   lugar:string="";
+
+
+  expAceptada=false;
 
   nombreApellido:any=[];
   
@@ -42,7 +46,7 @@ export class HeaderComponent implements OnInit {
   }
   aceptarEdicion(){    
 
-    if(this.nombre =="" && this.apellido=="" && this.trabajos=="" && this.lugar=="" && this.imagenes==""){
+    if(this.nombre =="" && this.apellido=="" && this.trabajos=="" && this.lugar=="" && this.imagen==""){
           this.mostrarAlert=true;
     }else{
       this.editaInfo=false;
@@ -50,9 +54,6 @@ export class HeaderComponent implements OnInit {
 
           if(this.nombre !=""){
               this.miPorfolio.nombre = this.nombre; 
-            
-              let nombreActualizado:any=[];
-              nombreActualizado.push(this.miPorfolio.nombre);
 
               this.datosPorfolio.guardarNombre(this.miPorfolio).subscribe(() =>{
               console.log("Nombre actualizado");
@@ -60,12 +61,8 @@ export class HeaderComponent implements OnInit {
               }
             )          
           }
-          if(this.apellido !=""){
-            
+          if(this.apellido !=""){            
             this.miPorfolio.apellido = this.apellido;
-            
-            let apellidoActualizado:any=[];
-            apellidoActualizado.push(this.miPorfolio.apellido);
 
             this.datosPorfolio.guardarApellido(this.miPorfolio).subscribe(() =>{
             console.log("Apellido actualizado");
@@ -74,11 +71,7 @@ export class HeaderComponent implements OnInit {
           )
           }
           if(this.trabajos!=""){   
-
             this.miPorfolio.position=this.trabajos;
-
-            let trabajoActualizado:any=[];
-            trabajoActualizado.push(this.miPorfolio.position);
 
             this.datosPorfolio.guardarTrabajo(this.miPorfolio).subscribe(() =>{
               console.log("Trabajo actualizado");
@@ -89,49 +82,68 @@ export class HeaderComponent implements OnInit {
           if(this.lugar!=""){
             this.miPorfolio.ubication=this.lugar;
 
-            let ubicacionActualizada:any=[];
-            ubicacionActualizada.push(this.miPorfolio.ubication)
-
             this.datosPorfolio.guardarUbicación(this.miPorfolio).subscribe(()=>{
               console.log("Ubicacion actualizada");
               this.ngOnInit();  
               }
+
             )       
-          }              
-    }      
+          }                         
+            this.datosPorfolio.guardarImagen(this.miPorfolio).subscribe(()=>{
+              console.log("Imagen Guardada")
+           })
+         
+          
+    }   
+     
   }
 
 
-  cargarImagen(event:any){    
-
-    let archivos = event.target.files    
+ cargarImagen(event:any){  
+    console.log(event.target.files);   
+    let archivo = event.target.files  
     let nombre = "Nahuel";
-
-    for(let i = 0; i<archivos.length; i++){
-
-      let reader = new FileReader();
-      reader.readAsDataURL(archivos[0]);
-      reader.onloadend= () => {
-        
-        this.imagenes.push(reader.result);
-        this.datosPorfolio.guardarImagenPerfil(nombre+"_"+Date.now(), reader.result).then(urlImagen=>{
-          let usuario={
-            name:'Nahuel',
-            imgProfile:urlImagen,
-          }
-          console.log(urlImagen);
-
-         /*subiendo imagen al json de firebase*/
-          let imagenActualizada:any=[];  
-          imagenActualizada.push(urlImagen);            
-          this.datosPorfolio.guardarImagenEnJson(imagenActualizada).subscribe((image)=>{
-            this.ngOnInit();
-            console.log(image)
-        });
-        });
-      }
-    }
+    let reader = new FileReader();
+    reader.readAsDataURL(archivo[0]);
+    reader.onloadend=() =>{
+      this.imagenes.push(reader.result);
+      this.datosPorfolio.guardarImagenPerfil(nombre+"_"+Date.now(), reader.result).then(urlImagen=>{
+        let usuario={
+          name:'Nahuel',
+          imgProfile: urlImagen,
+        }       
+        this.miPorfolio.image=urlImagen;
+      })     
+    }        
   }
+    
+
+
+    // for(let i = 0; i<archivos.length; i++){
+
+    //   let reader = new FileReader();
+    //   reader.readAsDataURL(archivos[0]);
+    //   reader.onloadend= () => {
+        
+    //     this.imagenes.push(reader.result);
+    //     this.datosPorfolio.guardarImagenPerfil(nombre+"_"+Date.now(), reader.result).then(urlImagen=>{
+    //       let usuario={
+    //         name:'Nahuel',
+    //         imgProfile:urlImagen,
+    //       }
+    //       console.log(urlImagen);
+
+    //      /*subiendo imagen al json de firebase*/
+    //       let imagenActualizada:any=[];  
+    //       imagenActualizada.push(urlImagen);            
+    //       this.datosPorfolio.guardarImagenEnJson(imagenActualizada).subscribe((image)=>{
+    //         this.ngOnInit();
+    //         console.log(image)
+    //     });
+    //     });
+    //   }
+    // }
+
 
 
   infoContacto(){

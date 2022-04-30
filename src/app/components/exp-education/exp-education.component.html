@@ -28,9 +28,7 @@
 
             <!-- Muestra los inputs para agregar experiencia -->
                <form class="agrega-exp" *ngIf="agregaexperiencia">
-                 <h4>Agregar experiencia</h4>
-                  <div>
-                    <div>
+                      <h4>Agregar experiencia</h4>
                       <label>Cargo*</label>
                       <div><input type="text" name="cargo" [(ngModel)]="cargo"></div>
                       <label>Lugar de Trabajo*</label>
@@ -43,15 +41,18 @@
                       <div><time><input type="text" name="anioFin" [(ngModel)]="anioFin"></time></div> 
                       <label>Duracion</label>
                       <div><time><input  id="duracion" type="text"  name="duracion" [(ngModel)]="duracion"></time></div>
+                      <div>
+                        <label for="">Imagen</label>                        
+                      </div>  
+                      <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarImagen($event)">  
+                        <br>   
+                    <div class="botones">
+                        <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarExp()">      
+                        <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarExp()">     
                     </div>
-                  </div> 
-                  <div class="botones">
-                      <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarExp()">      
-                      <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarExp()">     
-                  </div>
-                <div class="alert-container" *ngIf="mostrarAlert">
-                  <p id="alert">Complete los campos de experiencia obligatorios(*)</p>
-                </div>
+                    <div class="alert-container" *ngIf="mostrarAlert">
+                      <p id="alert">Complete los campos de experiencia obligatorios(*)</p>
+                    </div>
               </form>
             
           </ul>
@@ -89,9 +90,7 @@
 
               <!-- Muestra los inputs para Educacion  -->
             <form class="agrega-edu" *ngIf="agregaEdu">
-                <h4>Agregar educación</h4>             
-                 <div>
-                   <div>
+                      <h4>Agregar educación</h4>                                    
                      <label>Nombre de la institución*</label>
                      <div><input type="text" name="escuela" [(ngModel)]="escuela"></div>
                      <label>Titulo*</label>
@@ -102,18 +101,18 @@
                      <div><time><input type="text" name="anioInicioEdu" [(ngModel)]="anioInicioEdu"></time> </div>
                      <label>Finalización*</label>
                      <div> <time><input type="text" name="anioFinEdu" [(ngModel)]="anioFinEdu"></time></div>
-                   </div>
-                 </div> 
-
-               <div class="botones"> 
-                  <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarEdu()"> 
-                  <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarEdu()">
-                </div>  
-
-               <div class="alert-container" *ngIf="mostrarAlertEdu">
-                <p id="alert">Todos los campos de educación son obligatorios(*)</p>
-              </div>
-                          
+                     <div>
+                      <label for="">Imagen</label>                        
+                    </div>  
+                    <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarImagenEdu($event)">  
+                      <br> 
+                    <div class="botones"> 
+                        <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarEdu()"> 
+                        <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarEdu()">
+                      </div>  
+                      <div class="alert-container" *ngIf="mostrarAlertEdu">
+                        <p id="alert">Todos los campos de educación son obligatorios(*)</p>
+                      </div>                          
             </form>
 
           </ul>

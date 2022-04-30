@@ -106,11 +106,20 @@ eliminarEducacion(idEducacion:number): Observable<ExpEducationComponent>{
     return this.http.patch<HeaderComponent>('http://localhost:8080/edit/persona/1/ubicacion', ubication, httpOptions);
   }
 
-/* Guardando en el storage*/
+  guardarImagen(image:HeaderComponent[]): Observable<HeaderComponent>{
+    return this.http.patch<HeaderComponent>('http://localhost:8080/edit/persona/1/imagen', image, httpOptions);
+  }
+
+  guardarImagenExperiencia(image:ExpEducationComponent[], idexperiencia:number): Observable<ExpEducationComponent>{
+    return this.http.patch<ExpEducationComponent>(`http://localhost:8080/edit/persona/1/experiencia/${idexperiencia}/imagen`, image, httpOptions);
+  }
+
+
+
+/* Guardando en el storage de Firebase*/
   async guardarImagenPerfil(nombre:string, imgBase64:any){
 
     try{
-
       let respuesta = await this.storageRef.child("users/"+nombre).putString(imgBase64, 'data_url')     
       return await respuesta.ref.getDownloadURL();
       
@@ -121,9 +130,35 @@ eliminarEducacion(idEducacion:number): Observable<ExpEducationComponent>{
 
   }
 
-  guardarImagenEnJson(image:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.put<HeaderComponent>('https://portfolio-7c37f-default-rtdb.firebaseio.com/image.json', image, httpOptions);
+  async guardarImagenExp(nombre:string, imgBase64:any){
+
+    try{
+      let respuesta = await this.storageRef.child("experiencia/"+nombre).putString(imgBase64, 'data_url')     
+      return await respuesta.ref.getDownloadURL();
+      
+    }catch(err){
+      console.log(err);
+      return null;
+    }
+
   }
+
+
+  async guardarImagenEdu(nombre:string, imgBase64:any){
+
+    try{
+      let respuesta = await this.storageRef.child("educacion/"+nombre).putString(imgBase64, 'data_url')     
+      return await respuesta.ref.getDownloadURL();
+      
+    }catch(err){
+      console.log(err);
+      return null;
+    }
+
+  }
+
+
+
 
 
 

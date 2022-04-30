@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Educacion } from 'src/app/modelos/education.model';
 import { Experiencia } from 'src/app/modelos/experience.model';
 import { AuthService } from 'src/app/servicios/auth.service';
@@ -38,6 +39,9 @@ export class ExpEducationComponent implements OnInit {
   img:string="";
   anioInicioEdu:string="";
   anioFinEdu:string="";
+
+  imagenes:any=[];
+
   
 
   constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
@@ -55,9 +59,9 @@ export class ExpEducationComponent implements OnInit {
       this.mostrarAlert=false;
       this.aceptaExp=true;
       this.agregaexperiencia=false;
-      
-      let miExperiencia = new Experiencia(this.cargo, this.compania, this.img, this.modo, this.anioInicio, this.anioFin, this.duracion);
-
+                     
+      let miExperiencia = new Experiencia(this.cargo, this.compania, this.experienciaList.image, this.modo, this.anioInicio, this.anioFin, this.duracion);
+              
       this.experienciaList.push(miExperiencia);
 
       let experienciaPost = this.experienciaList.slice(-1)[0];
@@ -65,13 +69,31 @@ export class ExpEducationComponent implements OnInit {
       this.datosPorfolio.guardarExperiencia(experienciaPost).subscribe(() =>{
         console.log("Experiencia guardada")
         this.ngOnInit();
-      }
-      
-    )
-      
+        }      
+      )
     }
-   
   }
+
+  cargarImagen(event:any){    
+
+    console.log(event.target.files);   
+    let archivo = event.target.files  
+    let nombre = "Experiencia";
+    let reader = new FileReader();
+    reader.readAsDataURL(archivo[0]);
+    reader.onloadend=() =>{
+
+      this.imagenes.push(reader.result);
+      this.datosPorfolio.guardarImagenExp(nombre+"_"+Date.now(), reader.result).then(urlImagen=>{
+        let experiencia={
+          name:'Experiencia',
+          imgProfile: urlImagen,
+      }        
+        this.experienciaList.image=urlImagen;
+      })
+    }     
+  }
+
 
   cancelarExp(){
     this.agregaexperiencia=false;
@@ -90,7 +112,7 @@ export class ExpEducationComponent implements OnInit {
       this.agregaEdu=false;
       
 
-      let miEducacion = new Educacion(this.escuela, this.titulo, this.img, this.career, this.score, this.anioInicioEdu, this.anioFinEdu);
+      let miEducacion = new Educacion(this.escuela, this.titulo, this.educacionList.image, this.career, this.score, this.anioInicioEdu, this.anioFinEdu);
 
       this.educacionList.push(miEducacion);
 
@@ -100,13 +122,34 @@ export class ExpEducationComponent implements OnInit {
         
         console.log("Educacion guardada")
         this.ngOnInit();
-      }
-       
+      }       
       )
-
-    }
-    
+    }    
   }
+
+  
+  cargarImagenEdu(event:any){    
+
+    console.log(event.target.files);   
+    let archivo = event.target.files  
+    let nombre = "Educacion";
+    let reader = new FileReader();
+    reader.readAsDataURL(archivo[0]);
+    reader.onloadend=() =>{
+
+      this.imagenes.push(reader.result);
+      this.datosPorfolio.guardarImagenEdu(nombre+"_"+Date.now(), reader.result).then(urlImagen=>{
+        let educacion={
+          name:'Educacion',
+          imgProfile: urlImagen,
+      }        
+        this.educacionList.image=urlImagen;
+      })
+    }     
+  }
+  
+
+
 
   cancelarEdu(){
     this.agregaEdu=false;
