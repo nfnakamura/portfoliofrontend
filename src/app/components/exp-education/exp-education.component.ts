@@ -50,7 +50,7 @@ export class ExpEducationComponent implements OnInit {
 
   agregar_experiencia(){
     this.agregaexperiencia=true;
-    window.scrollBy(0,280)
+    window.scrollBy(0,550)
   }
 
   aceptarExp(){
@@ -98,12 +98,12 @@ export class ExpEducationComponent implements OnInit {
 
   cancelarExp(){
     this.agregaexperiencia=false;
-    window.scrollBy(0,-280)
+    window.scrollBy(0,-300)
   }
 
   agregarEdu(){
     this.agregaEdu=true;
-    window.scrollBy(0,320)
+    window.scrollBy(0,550)
   }
 
   aceptarEdu(){
@@ -159,8 +159,11 @@ export class ExpEducationComponent implements OnInit {
     window.scrollBy(0,-300)
   }
 
-  obtenerEduExp(){
-    return this.datosPorfolio.cargarDatos();
+  obtenerExperiencia(){
+    return this.datosPorfolio.cargarExperiencia();
+  }
+  obtenerEducacion(){
+    return this.datosPorfolio.cargarEducacion();
   }
 
 
@@ -232,9 +235,12 @@ export class ExpEducationComponent implements OnInit {
       
     });  */
 
-    this.obtenerEduExp().subscribe(eduexp =>{
-      this.educacionList=eduexp.educaciones;
-      this.experienciaList=eduexp.experiencias;      
+    this.obtenerEducacion().subscribe(educaciones=>{
+      this.educacionList=educaciones;
+    })
+
+    this.obtenerExperiencia().subscribe(experiencias =>{      
+      this.experienciaList=experiencias;      
     })
 
   }

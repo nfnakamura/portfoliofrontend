@@ -60,7 +60,7 @@ export class SkillsComponent implements OnInit{
 
   obtenerHabilidad(){
 
-    return this.datosPorfolio.cargarDatos();
+    return this.datosPorfolio.cargarHabilidades();
 
   }
 
@@ -101,7 +101,7 @@ export class SkillsComponent implements OnInit{
 
     //FIREBASE
     this.obtenerHabilidad().subscribe(habilidades =>{
-      this.listaAptitudes=habilidades.habilidades;
+      this.listaAptitudes=habilidades;
     });
 
   }

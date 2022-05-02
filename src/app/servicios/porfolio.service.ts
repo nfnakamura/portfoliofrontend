@@ -42,6 +42,22 @@ export class PorfolioService {
 
  }
 
+cargarExperiencia():Observable<any>{
+  return this.http.get('http://localhost:8080/ver/experiencias')
+}
+
+ cargarEducacion():Observable<any>{
+   return this.http.get('http://localhost:8080/ver/educaciones');
+ }
+
+ cargarHabilidades():Observable<any>{
+   return this.http.get('http://localhost:8080/ver/habilidades');
+ }
+
+ cargarProyectos():Observable<any>{
+    return this.http.get('http://localhost:8080/ver/proyectos')
+ }
+
  /*DELETE*/
  
  eliminarDatos():Observable<any>{

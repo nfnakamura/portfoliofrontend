@@ -83,7 +83,7 @@ export class ProyectsComponent implements OnInit {
 
  //DESDE EL Servicio
   obtenerProyectos(){
-    return this.datosPorfolio.cargarDatos();
+    return this.datosPorfolio.cargarProyectos();
   }
 
   validacionParaBorrar(indice:number){  
@@ -126,7 +126,7 @@ export class ProyectsComponent implements OnInit {
 
  // TRAER DESDE FIREBASE
     this.obtenerProyectos().subscribe(proyectos=>{
-      this.proyectosLista=proyectos.proyectos;
+      this.proyectosLista=proyectos;
        
     });
 
