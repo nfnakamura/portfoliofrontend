@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
+
+
+ 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService {  
 
-  
-
-  constructor(private afauth: AngularFireAuth) { }
+  constructor(private afauth: AngularFireAuth) {   
+   
+   }
 
 
   async register(email: string, password: string){
@@ -22,7 +25,8 @@ export class AuthService {
 
   async login(email:string, password:string){
     try{
-      return await this.afauth.signInWithEmailAndPassword(email, password);
+
+      return await firebase.auth().setPersistence('session').then(()=>this.afauth.signInWithEmailAndPassword(email, password));
     }catch (err){
       console.log("error en login", err);      
       return null;
@@ -32,7 +36,7 @@ export class AuthService {
 
   async loginWithGoogle(email:string, password:string){
     try{
-      return await this.afauth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+      return await firebase.auth().setPersistence('session').then(()=>this.afauth.signInWithPopup(new firebase.auth.GoogleAuthProvider()));
     }catch (err){
       console.log("error en login con google", err);
       return null;
