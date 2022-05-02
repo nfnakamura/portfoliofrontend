@@ -26,6 +26,7 @@ export class SkillsComponent implements OnInit{
 
   agregarHabilidad(){
     this.agregaHabilidad=true;
+    window.scrollBy(0,200)
   }
 
   aceptarHabilidad(){
@@ -54,6 +55,7 @@ export class SkillsComponent implements OnInit{
   
   cancelarHabilidad(){
     this.agregaHabilidad=false;
+    window.scrollBy(0,-200);
   }
 
   obtenerHabilidad(){

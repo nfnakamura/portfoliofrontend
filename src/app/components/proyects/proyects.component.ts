@@ -3,6 +3,7 @@ import { Proyecto } from 'src/app/modelos/proyect.model';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 import { AuthService } from 'src/app/servicios/auth.service';
 import Swal from 'sweetalert2';
+import { animate } from '@angular/animations';
 
 
 @Component({
@@ -35,8 +36,13 @@ export class ProyectsComponent implements OnInit {
   userLogged=this.authService.getUserLogged();
 
   agregarProy(){
+    
     this.agregaProyecto=true;
+   
+    window.scrollBy(0,300)
+    
   }
+
 
   aceptarProy(){
     if(this.formatoProyecto=="" || this.nombreProyecto==""){
@@ -63,6 +69,7 @@ export class ProyectsComponent implements OnInit {
 
   cancelarProy(){
     this.agregaProyecto=false;
+    window.scrollBy(0,-300)
   }
 
   mostrarDescripcion(){     

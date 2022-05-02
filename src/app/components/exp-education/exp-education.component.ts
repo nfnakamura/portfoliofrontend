@@ -50,6 +50,7 @@ export class ExpEducationComponent implements OnInit {
 
   agregar_experiencia(){
     this.agregaexperiencia=true;
+    window.scrollBy(0,280)
   }
 
   aceptarExp(){
@@ -97,10 +98,12 @@ export class ExpEducationComponent implements OnInit {
 
   cancelarExp(){
     this.agregaexperiencia=false;
+    window.scrollBy(0,-280)
   }
 
   agregarEdu(){
     this.agregaEdu=true;
+    window.scrollBy(0,320)
   }
 
   aceptarEdu(){
@@ -153,6 +156,7 @@ export class ExpEducationComponent implements OnInit {
 
   cancelarEdu(){
     this.agregaEdu=false;
+    window.scrollBy(0,-300)
   }
 
   obtenerEduExp(){

@@ -2,9 +2,12 @@
 <div class="card mat-card">
   <div class="card-titles">
     <h2>Logros</h2>
-    <div *ngIf="userLogged|async" class="btn-edit"(click)="agregarProy()"> <i class="fa fa-plus btn-right"></i>  </div>
-    
+  <div *ngIf="userLogged|async" class="btn-edit"(click)="agregarProy()"> <i class="fa fa-plus btn-right"></i></div>    
   </div>
+
+
+
+
   <div class="achivements">
     <div class="titulo">  
 
@@ -14,6 +17,8 @@
           <h3 class="data-proyectos">Proyectos</h3>
       </div>
     </div> 
+
+    
   
     <div class="project-container">
       <ul class="project-list">
@@ -28,11 +33,6 @@
 
     </div>
   </div>
-
-
-
-<!-- edita proyecto -->
-
 
 <!-- agrega proyecto -->
   <form class="agregar-proyecto" *ngIf="agregaProyecto">
@@ -81,6 +81,6 @@
     </div>
   </form>
   
-
+</div>
   
- </div>
+

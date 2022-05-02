@@ -37,11 +37,13 @@ export class HeaderComponent implements OnInit {
 
   editarInfo(){
     this.editaInfo=true;
+    window.scrollBy(0,350);
   }
 
 
   cancelarEdicion(){
     this.editaInfo=false;
+    window.scrollBy(0,-350);
 
   }
   aceptarEdicion(){    
