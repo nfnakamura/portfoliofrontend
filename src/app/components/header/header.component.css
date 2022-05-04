@@ -12,8 +12,7 @@
 
 .profile-image {
     border-radius: 50%;
-    width:12%;
-    
+    width:12%;    
     margin-top: -10%;
     z-index: 1;
 }
@@ -129,4 +128,35 @@ div h4{
 
 span a{
     cursor:pointer;
+}
+
+@media screen and (max-width: 768px){
+    .profile-image {
+        border-radius: 50%;
+        width:20%;
+        height:100%;    
+        margin-top: -15%;
+        z-index: 1;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .profile-image {
+        border-radius: 50%;
+        width:100px;    
+        margin-top: -30%;
+        z-index: 1;
+    }
+
+    .capa h2{
+        margin-top: 15%;
+        color: rgb(230, 227, 227);
+        font-size: 1.8rem;
+        font-family: 'Poppins', sans-serif;   
+    }
+
+    .capa p{
+        font-size: 1.2rem;
+    }
+    
 }

@@ -52,3 +52,16 @@ div h4{
 .fa:hover{
     cursor:pointer;
 }
+
+@media screen and (max-width: 600px){
+    .edit-about{
+        display:flex;
+        flex-direction: column;      
+        justify-content: center;
+        border: solid rgb(187, 187, 187) 1px;
+        width: 250px;
+        padding: 1.5%;  
+      
+    }
+
+}

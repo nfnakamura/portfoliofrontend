@@ -175,3 +175,20 @@
     align-items: center;
     gap:10px;
 }
+
+
+@media screen and (max-width: 600px){
+    .agrega-habilidad{
+        display:flex;
+        flex-direction: column;      
+        justify-content: center;
+        border: solid rgb(187, 187, 187) 1px;
+        width: 210px;   
+        padding: 3%;
+        padding-left: 3%;
+            
+       
+    }
+
+
+}

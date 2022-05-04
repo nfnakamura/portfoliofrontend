@@ -25,7 +25,7 @@ const httpOptions={
 })
 export class PorfolioService {
 
-  urlBack = 'http://portfolionakamura.herokuapp.com/'
+  urlBack = 'https://portfolionakamura.herokuapp.com/'
 
   storageRef = firebase.app().storage().ref();
  

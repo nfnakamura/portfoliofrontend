@@ -135,3 +135,22 @@ ul li a{
 }
 
 
+@media screen and (max-width: 600px){
+  
+    .agregar-proyecto{  
+
+        display:flex;
+        flex-direction: column;    
+        justify-content: center;
+        border: solid rgb(187, 187, 187) 1px;
+        width: 250px;
+        padding: 1%;
+        margin-left: 3%; 
+    }
+
+    #text-area {
+        width:100%;
+    }
+   
+
+}

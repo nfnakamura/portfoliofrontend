@@ -44,4 +44,31 @@ nav{
 }
 
 
+@media screen and (max-width: 768px){
+    .elementos-nav ul{
+        display:flex;
+        flex-direction: row;       
+    }
+    .elementos-nav li{
+        padding:3%;
+    }
+    
+  
 
+}
+
+@media screen and (max-width: 400px){
+    .elementos-nav ul{
+        display:none;
+    }
+
+    .form-inline{
+        margin-left: 8%;
+    }
+    #logo-arg-prog{
+        width:100px;
+        
+    }
+
+
+}
