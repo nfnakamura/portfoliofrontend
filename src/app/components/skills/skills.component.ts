@@ -44,7 +44,7 @@ export class SkillsComponent implements OnInit{
       let habilidadPost = this.listaAptitudes.slice(-1)[0];
 
       this.datosPorfolio.guardarHabilidad(habilidadPost).subscribe(() =>{
-        console.log("Habilidad guardada")
+        
         this.ngOnInit();
       }
         

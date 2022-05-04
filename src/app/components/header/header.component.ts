@@ -58,7 +58,7 @@ export class HeaderComponent implements OnInit {
               this.miPorfolio.nombre = this.nombre; 
 
               this.datosPorfolio.guardarNombre(this.miPorfolio).subscribe(() =>{
-              console.log("Nombre actualizado");
+              
               this.ngOnInit();  
               }
             )          
@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
             this.miPorfolio.apellido = this.apellido;
 
             this.datosPorfolio.guardarApellido(this.miPorfolio).subscribe(() =>{
-            console.log("Apellido actualizado");
+            
             this.ngOnInit();  
             }
           )
@@ -76,7 +76,7 @@ export class HeaderComponent implements OnInit {
             this.miPorfolio.position=this.trabajos;
 
             this.datosPorfolio.guardarTrabajo(this.miPorfolio).subscribe(() =>{
-              console.log("Trabajo actualizado");
+             
               this.ngOnInit();  
               }
             )     
@@ -85,14 +85,14 @@ export class HeaderComponent implements OnInit {
             this.miPorfolio.ubication=this.lugar;
 
             this.datosPorfolio.guardarUbicación(this.miPorfolio).subscribe(()=>{
-              console.log("Ubicacion actualizada");
+              
               this.ngOnInit();  
               }
 
             )       
           }                         
             this.datosPorfolio.guardarImagen(this.miPorfolio).subscribe(()=>{
-              console.log("Imagen Guardada")
+           
            })
          
           

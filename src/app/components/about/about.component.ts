@@ -34,7 +34,7 @@ export class AboutComponent implements OnInit {
 
       this.datosPorfolio.guardarAbout(this.miPorfolio).subscribe(() =>{
        
-        console.log("About editado")
+      
         this.ngOnInit();
       }
     )

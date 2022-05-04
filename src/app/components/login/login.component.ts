@@ -32,7 +32,7 @@ ingresar(){
   else{
     this.errorVacio=false;
     this.authService.login(email, password).then (res => {
-      console.log("ingresó:", res)
+   
       this.redirigir(); 
       if(res == null){
         this.errorIngresoMail=true}
@@ -47,7 +47,7 @@ ingresarConGoogle(){
   
   const {email, password} = this.usuario;
   this.authService.loginWithGoogle(email, password).then (res => {
-    console.log("ingresó con Google:", res)
+  
     this.redirigir();
   })
 }

@@ -59,7 +59,7 @@ export class ProyectsComponent implements OnInit {
       let proyectoPost = this.proyectosLista.slice(-1)[0]; 
 
       this.datosPorfolio.guardarProyecto(proyectoPost).subscribe(() =>{
-        console.log("Proyecto guardado")
+     
         this.ngOnInit();
       }
         
