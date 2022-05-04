@@ -26,7 +26,7 @@ export class SkillsComponent implements OnInit{
 
   agregarHabilidad(){
     this.agregaHabilidad=true;
-    window.scrollBy(0,200)
+    window.scrollBy(0,500)
   }
 
   aceptarHabilidad(){

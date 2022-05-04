@@ -25,6 +25,8 @@ const httpOptions={
 })
 export class PorfolioService {
 
+  urlBack = 'http://portfolionakamura.herokuapp.com/'
+
   storageRef = firebase.app().storage().ref();
  
   constructor(private http:HttpClient) { }
@@ -38,24 +40,24 @@ export class PorfolioService {
   /*GET*/
   cargarDatos():Observable<any>{
       
-     return this.http.get('http://localhost:8080/ver/personas/1');
+     return this.http.get(this.urlBack+'ver/personas/1');
 
  }
 
 cargarExperiencia():Observable<any>{
-  return this.http.get('http://localhost:8080/ver/experiencias')
+  return this.http.get(this.urlBack+'ver/experiencias');
 }
 
  cargarEducacion():Observable<any>{
-   return this.http.get('http://localhost:8080/ver/educaciones');
+   return this.http.get(this.urlBack+'ver/educaciones');
  }
 
  cargarHabilidades():Observable<any>{
-   return this.http.get('http://localhost:8080/ver/habilidades');
+   return this.http.get(this.urlBack+'ver/habilidades');
  }
 
  cargarProyectos():Observable<any>{
-    return this.http.get('http://localhost:8080/ver/proyectos')
+    return this.http.get(this.urlBack+'ver/proyectos')
  }
 
  /*DELETE*/
@@ -66,68 +68,68 @@ cargarExperiencia():Observable<any>{
 
 
  eliminarProyecto(idProyecto:number): Observable<ProyectsComponent>{
-  return this.http.delete<ProyectsComponent>(`http://localhost:8080/delete/persona/1/proyecto/${idProyecto}`);
+  return this.http.delete<ProyectsComponent>(this.urlBack+`delete/persona/1/proyecto/${idProyecto}`);
 }
 
  eliminarHabilidad(idHabilidad:number): Observable<SkillsComponent>{
-   return this.http.delete<SkillsComponent>(`http://localhost:8080/delete/persona/1/habilidad/${idHabilidad}`);
+   return this.http.delete<SkillsComponent>(this.urlBack+`delete/persona/1/habilidad/${idHabilidad}`);
  }
 
  eliminarExperiencia(idExperiencia:number): Observable<ExpEducationComponent>{
-  return this.http.delete<ExpEducationComponent>(`http://localhost:8080/delete/persona/1/experiencia/${idExperiencia}`);
+  return this.http.delete<ExpEducationComponent>(this.urlBack+`delete/persona/1/experiencia/${idExperiencia}`);
 }
 
 eliminarEducacion(idEducacion:number): Observable<ExpEducationComponent>{
-  return this.http.delete<ExpEducationComponent>(`http://localhost:8080/delete/persona/1/educacion/${idEducacion}`);
+  return this.http.delete<ExpEducationComponent>(this.urlBack+`delete/persona/1/educacion/${idEducacion}`);
 }
 
   /*POST*/  
 
   guardarProyecto(proyecto:ProyectsComponent[]): Observable<ProyectsComponent>{                 
-    return this.http.post<ProyectsComponent>('http://localhost:8080/new/persona/1/proyecto', proyecto, httpOptions);
+    return this.http.post<ProyectsComponent>(this.urlBack+'new/persona/1/proyecto', proyecto, httpOptions);
 }
 
   guardarHabilidad(habilidad:SkillsComponent[]): Observable<SkillsComponent>{      
-      return this.http.post<SkillsComponent>('http://localhost:8080/new/persona/1/habilidad', habilidad, httpOptions);
+      return this.http.post<SkillsComponent>(this.urlBack+'new/persona/1/habilidad', habilidad, httpOptions);
   }
 
   guardarEducacion(educacion:ExpEducationComponent[]): Observable<ExpEducationComponent>{    
-    return this.http.post<ExpEducationComponent>('http://localhost:8080/new/persona/1/educacion', educacion, httpOptions);
+    return this.http.post<ExpEducationComponent>(this.urlBack+'new/persona/1/educacion', educacion, httpOptions);
   }
 
   guardarExperiencia(experiencia:ExpEducationComponent[]): Observable<ExpEducationComponent>{
-    return this.http.post<ExpEducationComponent>('http://localhost:8080/new/persona/1/experiencia', experiencia, httpOptions);
+    return this.http.post<ExpEducationComponent>(this.urlBack+'new/persona/1/experiencia', experiencia, httpOptions);
   }
 
 
   /*PATCH - PUT*/
 
   guardarAbout(about:AboutComponent[]): Observable<AboutComponent>{
-    return this.http.patch<AboutComponent>('http://localhost:8080/edit/persona/1/about', about, httpOptions);
+    return this.http.patch<AboutComponent>(this.urlBack+'edit/persona/1/about', about, httpOptions);
   }
 
   guardarNombre(nombre:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.patch<HeaderComponent>('http://localhost:8080/edit/persona/1/nombre', nombre, httpOptions);
+    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/nombre', nombre, httpOptions);
   }
 
   guardarApellido(apellido:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.patch<HeaderComponent>('http://localhost:8080/edit/persona/1/apellido', apellido, httpOptions);
+    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/apellido', apellido, httpOptions);
   }
   
   guardarTrabajo(position:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.patch<HeaderComponent>('http://localhost:8080/edit/persona/1/trabajo', position, httpOptions);
+    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/trabajo', position, httpOptions);
   }
   
   guardarUbicación(ubication:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.patch<HeaderComponent>('http://localhost:8080/edit/persona/1/ubicacion', ubication, httpOptions);
+    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/ubicacion', ubication, httpOptions);
   }
 
   guardarImagen(image:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.patch<HeaderComponent>('http://localhost:8080/edit/persona/1/imagen', image, httpOptions);
+    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/imagen', image, httpOptions);
   }
 
   guardarImagenExperiencia(image:ExpEducationComponent[], idexperiencia:number): Observable<ExpEducationComponent>{
-    return this.http.patch<ExpEducationComponent>(`http://localhost:8080/edit/persona/1/experiencia/${idexperiencia}/imagen`, image, httpOptions);
+    return this.http.patch<ExpEducationComponent>(this.urlBack+`edit/persona/1/experiencia/${idexperiencia}/imagen`, image, httpOptions);
   }
 
 

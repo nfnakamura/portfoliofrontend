@@ -66,7 +66,7 @@ export class ExpEducationComponent implements OnInit {
       this.experienciaList.push(miExperiencia);
 
       let experienciaPost = this.experienciaList.slice(-1)[0];
-
+      console.log(this.experienciaList.image);
       this.datosPorfolio.guardarExperiencia(experienciaPost).subscribe(() =>{
         console.log("Experiencia guardada")
         this.ngOnInit();
@@ -120,7 +120,7 @@ export class ExpEducationComponent implements OnInit {
       this.educacionList.push(miEducacion);
 
       let educacionPost = this.educacionList.slice(-1)[0];
-
+      console.log(this.educacionList.image);
       this.datosPorfolio.guardarEducacion(educacionPost).subscribe(() =>{
         
         console.log("Educacion guardada")
