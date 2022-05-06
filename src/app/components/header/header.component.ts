@@ -2,8 +2,7 @@ import { Component, OnInit,Output, EventEmitter, Input } from '@angular/core';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 import Swal from 'sweetalert2';
-import { callbackify } from 'util';
-import { ExpEducationComponent } from '../exp-education/exp-education.component';
+
 
 @Component({
   selector: 'app-header',
