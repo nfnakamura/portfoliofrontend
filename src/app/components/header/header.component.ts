@@ -43,25 +43,25 @@ export class HeaderComponent implements OnInit {
  
   agregarExperiencia(){ 
     this.datosPorfolio.DisparadorDeAgregaExp.emit();  
-    window.scrollBy(0,500);
+    window.scrollBy(0,800);
     this.agregaSeccion=false;
   }
 
   agregaHabilidad(){
     this.datosPorfolio.DisparadorDeAgregaHab.emit();  
-    window.scrollBy(0,1500);
+    window.scrollBy(0,1800);
     this.agregaSeccion=false;
   }
 
   agregaEducacion(){
     this.datosPorfolio.DisparadorDeAgregaEdu.emit();  
-    window.scrollBy(0,800);
+    window.scrollBy(0,1300);
     this.agregaSeccion=false;
   }
 
   agregaProyecto(){
     this.datosPorfolio.DisparadorDeAgregaProy.emit();  
-    window.scrollBy(0,1800);
+    window.scrollBy(0,2500);
     this.agregaSeccion=false;
   }
 
