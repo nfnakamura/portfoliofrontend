@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output, EventEmitter, Input } from '@angular/core';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 import Swal from 'sweetalert2';
 import { callbackify } from 'util';
+import { ExpEducationComponent } from '../exp-education/exp-education.component';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit {
   aceptaEdicion=false;
   mostrarAlert=false;
   load=false;
+  agregaSeccion=false;
 
   imagen:string="a";
   nombre:string="";
@@ -31,9 +33,40 @@ export class HeaderComponent implements OnInit {
   
   imagenes:any=[];
 
- 
-  userLogged=this.authService.getUserLogged();
   
+  userLogged=this.authService.getUserLogged();
+
+  
+  agregarSeccion(){
+    this.agregaSeccion=true;    
+  }
+
+ 
+  agregarExperiencia(){ 
+    this.datosPorfolio.DisparadorDeAgregaExp.emit();  
+    window.scrollBy(0,500);
+    this.agregaSeccion=false;
+  }
+
+  agregaHabilidad(){
+    this.datosPorfolio.DisparadorDeAgregaHab.emit();  
+    window.scrollBy(0,1500);
+    this.agregaSeccion=false;
+  }
+
+  agregaEducacion(){
+    this.datosPorfolio.DisparadorDeAgregaEdu.emit();  
+    window.scrollBy(0,800);
+    this.agregaSeccion=false;
+  }
+
+  agregaProyecto(){
+    this.datosPorfolio.DisparadorDeAgregaProy.emit();  
+    window.scrollBy(0,1800);
+    this.agregaSeccion=false;
+  }
+
+
 
   editarInfo(){
     this.editaInfo=true;

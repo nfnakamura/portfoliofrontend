@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Educacion } from 'src/app/modelos/education.model';
 import { Experiencia } from 'src/app/modelos/experience.model';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-exp-education',
@@ -43,12 +43,13 @@ export class ExpEducationComponent implements OnInit {
   imagenes:any=[];
 
   
-
+  
   constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
 
   userLogged=this.authService.getUserLogged();
-
-  agregar_experiencia(){
+ 
+ 
+  agregar_experiencia(){      
     this.agregaexperiencia=true;
     window.scrollBy(0,550)
   }
@@ -243,6 +244,15 @@ export class ExpEducationComponent implements OnInit {
       this.experienciaList=experiencias;      
     })
 
+    this.datosPorfolio.DisparadorDeAgregaExp.subscribe(()=>{
+      this.agregar_experiencia();
+    }) 
+
+    this.datosPorfolio.DisparadorDeAgregaEdu.subscribe(()=>{
+      this.agregarEdu();
+    })
   }
+
+ 
 
 }

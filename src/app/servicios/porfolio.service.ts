@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders, HttpHandler } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AboutComponent } from '../components/about/about.component';
 import { ExpEducationComponent } from '../components/exp-education/exp-education.component';
@@ -9,6 +9,7 @@ import { SkillsComponent } from '../components/skills/skills.component';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import { environment } from 'src/environments/environment';
+
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -28,7 +29,13 @@ export class PorfolioService {
   urlBack = 'https://portfolionakamura.herokuapp.com/'
 
   storageRef = firebase.app().storage().ref();
- 
+
+  @Output() DisparadorDeAgregaExp: EventEmitter<any> = new EventEmitter();
+  @Output() DisparadorDeAgregaEdu: EventEmitter<any> = new EventEmitter();
+  @Output() DisparadorDeAgregaHab: EventEmitter<any> = new EventEmitter();
+  @Output() DisparadorDeAgregaProy: EventEmitter<any> = new EventEmitter();
+
+  
   constructor(private http:HttpClient) { }
 
 /*Obtener datos desde data.json

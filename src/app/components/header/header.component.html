@@ -38,11 +38,21 @@
           </ul> -->
         </div>
 
-        <div id="info-actions">
-          <button type="button" class="btn btn-primary">Tengo interés en</button>
-          <button type="button" class="btn btn-light">Añadir Sección</button>
-          <button type="button" class="btn btn-light">Más</button>
-        </div>
+        <div  *ngIf="userLogged|async" id="info-actions">
+          <!-- <button type="button" class="btn btn-primary">Tengo interés en</button> -->
+          <button type="button" class="btn btn-light" (click)="agregarSeccion()">Añadir Sección</button>
+        </div>         
+          <div *ngIf="agregaSeccion" class="card agregar-seccion">
+             <ul class="list-group list-group-flush">
+              <li (click)="agregarExperiencia()" class="list-group-item">Experiencia</li>
+              <li (click)="agregaEducacion()" class="list-group-item">Educación</li>
+              <li (click)="agregaHabilidad()" class="list-group-item">Habilidad</li>
+              <li  (click)="agregaProyecto()"class="list-group-item">Proyecto</li>              
+            </ul>
+          </div>
+
+          <!-- <button type="button" class="btn btn-light">Más</button> -->
+       
 
         <form *ngIf="editaInfo" class="editForm">
 

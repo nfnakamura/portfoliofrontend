@@ -1,16 +1,17 @@
 {
-    "name": "Nahuel Nakamura",
-    "backImage": "../../../assets/imagenes/banner3.jpg",
-    "image": "../../../assets/imagenes/avatar.png",
+    "nombre": "Nahuel",
+    "apellido": "Nakamura",
+    "backImage": "https://firebasestorage.googleapis.com/v0/b/portfolio-7c37f.appspot.com/o/users%2Fbanner3.jpg?alt=media&token=84e54cf4-45f7-4717-97bb-1a8fe9b0b254",
+    "image": "https://firebasestorage.googleapis.com/v0/b/portfolio-7c37f.appspot.com/o/users%2FNahuel_1651614863520?alt=media&token=8143d030-3ac6-4403-b477-65ff9cae8278",
     "position": "Web Developer Jr. - Freelancer - Músico - Docente",
     "company":{
         "name": "Argentina Programa",
-        "img": "../../../assets/imagenes/argProgLogo.png",
+        "img": "https://firebasestorage.googleapis.com/v0/b/portfolio-7c37f.appspot.com/o/educacion%2FEducacion_1651686030907?alt=media&token=945e6b3f-e71f-4b91-9728-9bbf67617673",
         "url": "#"
     },
     "school":{
         "name": "Colegio Nacional de Buenos Aires",
-        "img": "../../../assets/imagenes/Uba.png"
+        "img": "https://firebasestorage.googleapis.com/v0/b/portfolio-7c37f.appspot.com/o/educacion%2FEducacion_1651613897272?alt=media&token=1483e8f5-c4e2-440d-b2d5-e227688a1924"
     },
 
     "ubication": "Buenos Aires (Argentina)",
@@ -19,37 +20,37 @@
     "experience": [{
         "position": "Profesor de Percusión ",
         "company": "Escuela Nº6 D.E. Nº5",
-        "img": "../../../assets/imagenes/OrquestaVioletaLogo.jpg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/portfolio-7c37f.appspot.com/o/experiencia%2FExperiencia_1651758291455?alt=media&token=207c2b0d-25d8-49f2-9527-add79c999de4",
         "mode": "Orquesta Popular Violeta Parra",
-        "start": "2019",
-        "end": "actualidad",
+        "started": "2019",
+        "ended": "actualidad",
         "timeElapsed": ""
     },
     {
         "position": "Profesor de Percusión",
         "company": "UTEP",
-        "img": "../../../assets/imagenes/logo-utep.png",
+        "img": "https://firebasestorage.googleapis.com/v0/b/portfolio-7c37f.appspot.com/o/experiencia%2Flogo-utep.png?alt=media&token=bf30d2d8-dd57-4085-9397-da63564aaf4a",
         "mode": "Orquesta Infanto-Juvenil Trascartón",
-        "start": "2019",
-        "end": "actualidad",
+        "started": "2019",
+        "ended": "actualidad",
         "timeElapsed": ""
     },
     {
         "position": "Profesor del Taller de Percusión Colectiva",
         "company": "La Quince Espacio Cultural",
-        "img": "../../../assets/imagenes/logo-laquince.jpg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/portfolio-7c37f.appspot.com/o/experiencia%2FExperiencia_1651614056231?alt=media&token=3c84f2e0-63e1-47a3-b4c5-81cd6ca70b81",
         "mode": "Taller Grupal",
-        "start": "2017",
-        "end": "actualidad",
+        "started": "2017",
+        "ended": "actualidad",
         "timeElapsed": ""
     },
     {
         "position": "Profesor de Percusión",
         "company": "Clases Particulares",
-        "img": "../../../assets/imagenes/Percu-logo.png",
+        "img": "https://console.firebase.google.com/project/portfolio-7c37f/storage/portfolio-7c37f.appspot.com/files/~2Fexperiencia?hl=es",
         "mode": "Individuales y Grupales",
-        "start": "2012",
-        "end": "actualidad",
+        "started": "2012",
+        "ended": "actualidad",
         "timeElapsed": ""
     }
 
@@ -60,47 +61,47 @@
         {
             "school": "Argentina Programa",
             "title": "#YoProgramo",
-            "img": "../../../assets/imagenes/logoArgProg2.jpg",
+            "img": "https://firebasestorage.googleapis.com/v0/b/portfolio-7c37f.appspot.com/o/educacion%2FEducacion_1651686030907?alt=media&token=945e6b3f-e71f-4b91-9728-9bbf67617673",
             "career": "Web Full Stack Jr. (Java, Html, CSS, Javascript, Typescript, Angular, MySQL, Sringboot)",
             "score": "",
-            "start": "jun 2021",
-            "end": "actualidad"
+            "started": "jun 2021",
+            "ended": "actualidad"
         },
         {
             "school": "CFP31",
             "title": "Trayecto Programador",
-            "img": "../../../assets/imagenes/cfp31logo.png",
+            "img": "https://firebasestorage.googleapis.com/v0/b/portfolio-7c37f.appspot.com/o/educacion%2FEducacion_1651686160171?alt=media&token=4685502a-99f4-4f8a-bc60-1e5f440097cd",
             "career": "Orientado a objetos (Java, MySQL)",
             "score": "",
-            "start": "mar 2021",
-            "end": "agosto 2021"
+            "started": "mar 2021",
+            "ended": "agosto 2021"
         },
         {
             "school": "Codo a Codo 4.0",
             "title": "Programador",
-            "img": "../../../assets/imagenes/codo-a-codo.jpg",
+            "img": "https://firebasestorage.googleapis.com/v0/b/portfolio-7c37f.appspot.com/o/educacion%2FEducacion_1651686246640?alt=media&token=8ee3da0c-9230-4b7a-a14c-87eaaefcbe36",
             "career": "Web Full Stack Jr. (Python, Html, CSS, JavaScript, VUE, Django, MySQL, MongoDB)",
             "score": "",
-            "start": "ago 2021",
-            "end": "dic 2021"
+            "started": "ago 2021",
+            "ended": "dic 2021"
         },        
         {
         "school": "Escuela de Música Popular de Avellaneda",
         "title": "Técnico Percusionista Folklore",
-        "img": "../../../assets/imagenes/Empa-logo.jpg",
+        "img": "https://firebasestorage.googleapis.com/v0/b/portfolio-7c37f.appspot.com/o/educacion%2FEmpa-logo.jpg?alt=media&token=9010543b-f3d3-4107-a488-e34395badfc9",
         "career": "Orientación en Música Popular Argentina",
         "score": "",
-        "start": "2013",
-        "end": "actualidad"
+        "started": "2013",
+        "ended": "actualidad"
     },
     {
         "school": "Colegio Nacional de Buenos Aires",
         "title": "Bachiller",
-        "img": "../../../assets/imagenes/Uba.png",
+        "img": "https://firebasestorage.googleapis.com/v0/b/portfolio-7c37f.appspot.com/o/educacion%2FEducacion_1651613897272?alt=media&token=1483e8f5-c4e2-440d-b2d5-e227688a1924",
         "career":"Universitario",
         "score": "",
-        "start": "2005",
-        "end": "2009"
+        "started": "2005",
+        "ended": "2009"
 
     }    
 

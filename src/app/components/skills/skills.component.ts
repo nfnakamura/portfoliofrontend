@@ -104,6 +104,10 @@ export class SkillsComponent implements OnInit{
       this.listaAptitudes=habilidades;
     });
 
+    this.datosPorfolio.DisparadorDeAgregaHab.subscribe(()=>{
+      this.agregarHabilidad();
+    })
+
   }
 
 

@@ -130,6 +130,11 @@ export class ProyectsComponent implements OnInit {
        
     });
 
+
+    this.datosPorfolio.DisparadorDeAgregaProy.subscribe(()=>{
+      this.agregarProy();
+    })
+
     /*  this.datosPorfolio.obtenerDatos().subscribe(data =>{
       this.proyectList=data.achivements;
 

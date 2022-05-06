@@ -25,10 +25,9 @@ export class AuthService {
 
   async login(email:string, password:string){
     try{
-
       return await firebase.auth().setPersistence('session').then(()=>this.afauth.signInWithEmailAndPassword(email, password));
     }catch (err){
-      console.log("error en login", err);      
+      console.log("error en login");      
       return null;
     }
   }

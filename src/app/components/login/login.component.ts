@@ -24,20 +24,20 @@ redirigir(){
 }
 
 ingresar(){
-  console.log(this.usuario)
+
   const {email, password} = this.usuario;
   if (email=="" || password==""){
       this.errorVacio=true;
       this.errorIngresoMail=false;}
   else{
     this.errorVacio=false;
-    this.authService.login(email, password).then (res => {
-   
-      this.redirigir(); 
+    this.authService.login(email, password).then (res =>{   
+     
       if(res == null){
         this.errorIngresoMail=true}
       else{
         this.errorIngresoMail=false;
+        this.redirigir(); 
       }    
       })
       }

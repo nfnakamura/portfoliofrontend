@@ -160,3 +160,12 @@ span a{
     }
     
 }
+
+.agregar-seccion{
+    margin-top: 0.5%;
+    width:130px;
+}
+
+.agregar-seccion li:hover{
+    cursor:pointer;
+}
