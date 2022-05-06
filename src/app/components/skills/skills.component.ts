@@ -18,6 +18,7 @@ export class SkillsComponent implements OnInit{
   agregaHabilidad=false;
 
   mostrarAlert=false;
+  alertPorcentaje=false;
 
   habilidad:string="";
   porcentaje:string="";
@@ -32,7 +33,12 @@ export class SkillsComponent implements OnInit{
   aceptarHabilidad(){
     if(this.habilidad=="" || this.porcentaje==""){
       this.mostrarAlert=true;
-    }else{
+      this.alertPorcentaje=false;
+    }else if (parseInt(this.porcentaje)>100 || parseInt(this.porcentaje)<0){
+      this.alertPorcentaje=true;
+      this.mostrarAlert=false;
+    }
+    else{
       this.mostrarAlert=false;
       this.aceptaHabilidad=true;
       this.agregaHabilidad=false;
@@ -55,6 +61,8 @@ export class SkillsComponent implements OnInit{
   
   cancelarHabilidad(){
     this.agregaHabilidad=false;
+    this.alertPorcentaje=false;
+    this.mostrarAlert=false;
     window.scrollBy(0,-200);
   }
 

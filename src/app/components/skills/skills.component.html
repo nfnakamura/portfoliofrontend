@@ -30,16 +30,22 @@
         <input type="text" [(ngModel)]="porcentaje">
         </p>
 
+        <div class="alert-container" *ngIf="mostrarAlert">
+          <p id="alert">Debe indicar habilidad y porcentaje de progreso(*)</p>
+        </div>
+
+        <div class="alert-container" *ngIf="alertPorcentaje">
+          <p id="alert">El valor del porcentaje debe ser entre 0 y 100</p>
+        </div>
+
+
 
         <div class="botones">
         <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarHabilidad()" > 
         <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarHabilidad()"> 
         </div>
 
-        <div class="alert-container" *ngIf="mostrarAlert">
-          <p id="alert">Debe indicar habilidad y porcentaje de progreso</p>
-        </div>
-
+      
       </div>
 
    

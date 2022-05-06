@@ -45,14 +45,16 @@
                         <label for="">Imagen</label>                        
                       </div>  
                       <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarImagen($event)">  
-                        <br>   
+                        <br>  
+                        
+                        <div class="alert-container" *ngIf="mostrarAlert">
+                          <p id="alert">Complete los campos de experiencia obligatorios(*)</p>
+                        </div>   
                     <div class="botones">
                         <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarExp()">      
                         <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarExp()">     
                     </div>
-                    <div class="alert-container" *ngIf="mostrarAlert">
-                      <p id="alert">Complete los campos de experiencia obligatorios(*)</p>
-                    </div>
+                  
               </form>
             
           </ul>
@@ -105,14 +107,16 @@
                       <label for="">Imagen</label>                        
                     </div>  
                     <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarImagenEdu($event)">  
-                      <br> 
+                      <br>
+                      
+                      <div class="alert-container" *ngIf="mostrarAlertEdu">
+                        <p id="alert">Todos los campos de educación son obligatorios(*)</p>
+                      </div>  
                     <div class="botones"> 
                         <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarEdu()"> 
                         <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarEdu()">
                       </div>  
-                      <div class="alert-container" *ngIf="mostrarAlertEdu">
-                        <p id="alert">Todos los campos de educación son obligatorios(*)</p>
-                      </div>                          
+                                        
             </form>
 
           </ul>
