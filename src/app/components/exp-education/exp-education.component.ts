@@ -99,6 +99,7 @@ export class ExpEducationComponent implements OnInit {
 
   cancelarExp(){
     this.agregaexperiencia=false;
+    this.mostrarAlert=false;
     window.scrollBy(0,-300)
   }
 
@@ -157,6 +158,7 @@ export class ExpEducationComponent implements OnInit {
 
   cancelarEdu(){
     this.agregaEdu=false;
+    this.mostrarAlertEdu=false;
     window.scrollBy(0,-300)
   }
 

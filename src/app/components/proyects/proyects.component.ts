@@ -69,6 +69,7 @@ export class ProyectsComponent implements OnInit {
 
   cancelarProy(){
     this.agregaProyecto=false;
+    this.mostrarAlert=false;
     window.scrollBy(0,-300)
   }
 

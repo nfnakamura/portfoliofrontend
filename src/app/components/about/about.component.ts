@@ -44,6 +44,7 @@ export class AboutComponent implements OnInit {
 
   cancelar_edicion(){
     this.editarParrafo=false;
+    this.mostrarAlert=false;
     window.scrollBy(0,-300)
  
   }
