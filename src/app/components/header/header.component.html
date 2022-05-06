@@ -40,7 +40,8 @@
 
         <div  *ngIf="userLogged|async" id="info-actions">
           <!-- <button type="button" class="btn btn-primary">Tengo interés en</button> -->
-          <button type="button" class="btn btn-light" (click)="agregarSeccion()">Añadir Sección</button>
+          <button *ngIf="muestraAgregaSeccion; else cerrarAgregarSeccion" type="button" class="btn btn-outline-primary botonAgrega" (click)="agregarSeccion()">Añadir Sección</button>
+          <ng-template #cerrarAgregarSeccion><button type="button"  class="btn btn-outline-danger botonAgrega"(click)="cancelaAgregar()">Cancelar Añadir</button></ng-template>
         </div>         
           <div *ngIf="agregaSeccion" class="card agregar-seccion">
              <ul class="list-group list-group-flush">

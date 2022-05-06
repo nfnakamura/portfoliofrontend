@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   mostrarAlert=false;
   load=false;
   agregaSeccion=false;
+  muestraAgregaSeccion=true;
 
   imagen:string="a";
   nombre:string="";
@@ -37,32 +38,41 @@ export class HeaderComponent implements OnInit {
 
   
   agregarSeccion(){
-    this.agregaSeccion=true;    
+    this.agregaSeccion=true;
+    this.muestraAgregaSeccion=false;    
   }
 
+  cancelaAgregar(){
+    this.agregaSeccion=false;
+    this.muestraAgregaSeccion=true;  
+  }
  
   agregarExperiencia(){ 
     this.datosPorfolio.DisparadorDeAgregaExp.emit();  
-    window.scrollBy(0,800);
+    window.scrollBy(0,1000);
     this.agregaSeccion=false;
+    this.muestraAgregaSeccion=true;  
   }
 
   agregaHabilidad(){
     this.datosPorfolio.DisparadorDeAgregaHab.emit();  
-    window.scrollBy(0,1800);
+    window.scrollBy(0,2300);
     this.agregaSeccion=false;
+    this.muestraAgregaSeccion=true;  
   }
 
   agregaEducacion(){
     this.datosPorfolio.DisparadorDeAgregaEdu.emit();  
-    window.scrollBy(0,1300);
+    window.scrollBy(0,1600);
     this.agregaSeccion=false;
+    this.muestraAgregaSeccion=true;  
   }
 
   agregaProyecto(){
     this.datosPorfolio.DisparadorDeAgregaProy.emit();  
-    window.scrollBy(0,2500);
+    window.scrollBy(0,3500);
     this.agregaSeccion=false;
+    this.muestraAgregaSeccion=true;  
   }
 
 
@@ -76,8 +86,8 @@ export class HeaderComponent implements OnInit {
   cancelarEdicion(){
     this.editaInfo=false;
     window.scrollBy(0,-350);
-
   }
+
   aceptarEdicion(){    
 
     if(this.nombre =="" && this.apellido=="" && this.trabajos=="" && this.lugar=="" && this.imagen==""){
@@ -151,32 +161,6 @@ export class HeaderComponent implements OnInit {
     }        
   }
     
-
-
-    // for(let i = 0; i<archivos.length; i++){
-
-    //   let reader = new FileReader();
-    //   reader.readAsDataURL(archivos[0]);
-    //   reader.onloadend= () => {
-        
-    //     this.imagenes.push(reader.result);
-    //     this.datosPorfolio.guardarImagenPerfil(nombre+"_"+Date.now(), reader.result).then(urlImagen=>{
-    //       let usuario={
-    //         name:'Nahuel',
-    //         imgProfile:urlImagen,
-    //       }
-    //       console.log(urlImagen);
-
-    //      /*subiendo imagen al json de firebase*/
-    //       let imagenActualizada:any=[];  
-    //       imagenActualizada.push(urlImagen);            
-    //       this.datosPorfolio.guardarImagenEnJson(imagenActualizada).subscribe((image)=>{
-    //         this.ngOnInit();
-    //         console.log(image)
-    //     });
-    //     });
-    //   }
-    // }
 
 
 

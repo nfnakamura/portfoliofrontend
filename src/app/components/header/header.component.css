@@ -162,6 +162,7 @@ span a{
 }
 
 .agregar-seccion{
+   
     margin-top: 0.5%;
     width:130px;
 }
@@ -169,3 +170,9 @@ span a{
 .agregar-seccion li:hover{
     cursor:pointer;
 }
+
+.botonAgrega{
+    border: solid, 1px, rgba(0, 0, 0, 0.534);
+   
+}
+
