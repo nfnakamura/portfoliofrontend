@@ -26,20 +26,11 @@
             </div>
           </div>
      
-          <!-- <ul id="info-details">
-            <li><a href="#">
-              <img id="info-company-img" [src]="miPorfolio.company.img">
-              <h2 id="info-company-name">{{miPorfolio.company.name}}</h2>
-            </a></li>
-            <li><a href="#">
-              <img id="info-school-img" [src]="miPorfolio.school.img" >
-              <h2 id="info-school-name">{{miPorfolio.school.name}}</h2>
-            </a></li>
-          </ul> -->
+        
         </div>
 
         <div  *ngIf="userLogged|async" id="info-actions">
-          <!-- <button type="button" class="btn btn-primary">Tengo interés en</button> -->
+      
           <button *ngIf="muestraAgregaSeccion; else cerrarAgregarSeccion" type="button" class="btn btn-outline-primary botonAgrega" (click)="agregarSeccion()">Añadir Sección</button>
           <ng-template #cerrarAgregarSeccion><button type="button"  class="btn btn-outline-danger botonAgrega"(click)="cancelaAgregar()">Cancelar Añadir</button></ng-template>
         </div>         
@@ -52,7 +43,7 @@
             </ul>
           </div>
 
-          <!-- <button type="button" class="btn btn-light">Más</button> -->
+        
        
 
         <form *ngIf="editaInfo" class="editForm">

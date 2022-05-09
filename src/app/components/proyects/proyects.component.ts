@@ -80,7 +80,7 @@ export class ProyectsComponent implements OnInit {
   }
 
 
- //DESDE EL Servicio
+ 
   obtenerProyectos(){
     return this.datosPorfolio.cargarProyectos();
   }
@@ -123,10 +123,9 @@ export class ProyectsComponent implements OnInit {
 
   ngOnInit(): void {
 
- // TRAER DESDE FIREBASE
+ 
     this.obtenerProyectos().subscribe(proyectos=>{
-      this.proyectosLista=proyectos;
-       
+      this.proyectosLista=proyectos;       
     });
 
 

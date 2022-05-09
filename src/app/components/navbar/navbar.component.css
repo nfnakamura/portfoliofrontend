@@ -45,8 +45,9 @@ nav{
 }
 
 
+
 @media screen and (max-width: 768px){
-    .elementos-nav ul{
+    .iconos{
         display:flex;
         flex-direction: row;       
     }
@@ -59,7 +60,7 @@ nav{
 }
 
 @media screen and (max-width: 400px){
-    .elementos-nav ul{
+    .iconos{
         display:none;
     }
 
@@ -69,6 +70,10 @@ nav{
     #logo-arg-prog{
         width:100px;
         
+    }
+
+    .login button{
+        margin-left: 130%;
     }
 
 

@@ -231,12 +231,6 @@ export class ExpEducationComponent implements OnInit {
 
   ngOnInit(): void {
 
-   /* 
-    this.datosPorfolio.obtenerDatos().subscribe(data =>{
-      this.educacionList=data.education;
-      this.experienciaList=data.experience;
-      
-    });  */
 
     this.obtenerEducacion().subscribe(educaciones=>{
       this.educacionList=educaciones;

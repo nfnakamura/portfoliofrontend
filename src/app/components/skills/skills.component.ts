@@ -102,12 +102,10 @@ export class SkillsComponent implements OnInit{
   constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
   
   
-
-
   ngOnInit(): void {
 
 
-    //FIREBASE
+ 
     this.obtenerHabilidad().subscribe(habilidades =>{
       this.listaAptitudes=habilidades;
     });

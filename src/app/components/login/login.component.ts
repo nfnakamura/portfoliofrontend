@@ -43,6 +43,7 @@ ingresar(){
       }
     }
 
+/*
 ingresarConGoogle(){
   
   const {email, password} = this.usuario;
@@ -51,6 +52,7 @@ ingresarConGoogle(){
     this.redirigir();
   })
 }
+*/
 
   constructor(private authService: AuthService, private router:Router) { }
 
