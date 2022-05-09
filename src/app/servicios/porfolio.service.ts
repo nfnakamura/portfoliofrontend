@@ -38,11 +38,6 @@ export class PorfolioService {
   
   constructor(private http:HttpClient) { }
 
-/*Obtener datos desde data.json
-  obtenerDatos():Observable<any>{
-    return this.http.get('./assets/data/data.json');    
-  }
-*/
 
   /*GET*/
   cargarDatos():Observable<any>{
@@ -133,6 +128,10 @@ eliminarEducacion(idEducacion:number): Observable<ExpEducationComponent>{
 
   guardarImagen(image:HeaderComponent[]): Observable<HeaderComponent>{
     return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/imagen', image, httpOptions);
+  }
+
+  guardarBanner(banner:HeaderComponent[]): Observable<HeaderComponent>{
+    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/banner', banner, httpOptions);
   }
 
   guardarImagenExperiencia(image:ExpEducationComponent[], idexperiencia:number): Observable<ExpEducationComponent>{

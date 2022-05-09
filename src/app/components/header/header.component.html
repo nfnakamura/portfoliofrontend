@@ -77,13 +77,18 @@
             <label>Lugar de residencia</label>
           </div>  
             <input type="text" name="lugar" [(ngModel)]="lugar">
-            <br>
+            
 
-            <div>
+            <div class="editarImg">
               <label for="">Imagen de perfil</label>
             </div>  
               <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarImagen($event)">  
-              <br>
+             
+              <div class="editarImg">
+                <label for="">Banner</label>
+              </div>  
+                <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarBanner($event)">  
+                
 
 
           <div class="botones">

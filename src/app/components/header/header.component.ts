@@ -136,6 +136,10 @@ export class HeaderComponent implements OnInit {
             this.datosPorfolio.guardarImagen(this.miPorfolio).subscribe(()=>{
            
            })
+           this.datosPorfolio.guardarBanner(this.miPorfolio).subscribe(()=>{
+           
+          })
+           
          
           
     }   
@@ -157,6 +161,24 @@ export class HeaderComponent implements OnInit {
           imgProfile: urlImagen,
         }       
         this.miPorfolio.image=urlImagen;
+      })     
+    }        
+  }
+
+  cargarBanner(event:any){  
+    console.log(event.target.files);   
+    let archivo = event.target.files  
+    let nombre = "Banner";
+    let reader = new FileReader();
+    reader.readAsDataURL(archivo[0]);
+    reader.onloadend=() =>{
+      this.imagenes.push(reader.result);
+      this.datosPorfolio.guardarImagenPerfil(nombre+"_"+Date.now(), reader.result).then(urlImagen=>{
+        let usuario={
+          name:'Banner',
+          imgProfile: urlImagen,
+        }       
+        this.miPorfolio.backImage=urlImagen;
       })     
     }        
   }

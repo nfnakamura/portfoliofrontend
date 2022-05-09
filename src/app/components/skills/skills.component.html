@@ -19,17 +19,15 @@
 
         <!-- agregando habilidad FALTA MANDAR ESTA DATA A LA BASE DE DATOS-->
       <div class="agrega-habilidad" *ngIf="agregaHabilidad">
-        <h4>Agregar habilidad</h4>
-        <label>Habilidad*</label>
-        <p>
-        <input type="text" [(ngModel)]="habilidad">
-        </p>
         
-        <label>%*</label>
-        <p>
+        <h4>Agregar habilidad</h4>
+        <label>Habilidad*</label>        
+        <input type="text" [(ngModel)]="habilidad">
+        
+        
+        <label>%*</label>        
         <input type="text" [(ngModel)]="porcentaje">
-        </p>
-
+        
         <div class="alert-container" *ngIf="mostrarAlert">
           <p id="alert">Debe indicar habilidad y porcentaje de progreso(*)</p>
         </div>
@@ -37,8 +35,6 @@
         <div class="alert-container" *ngIf="alertPorcentaje">
           <p id="alert">El valor del porcentaje debe ser entre 0 y 100</p>
         </div>
-
-
 
         <div class="botones">
         <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarHabilidad()" > 

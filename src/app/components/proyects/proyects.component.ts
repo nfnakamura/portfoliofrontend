@@ -1,9 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Proyecto } from 'src/app/modelos/proyect.model';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 import { AuthService } from 'src/app/servicios/auth.service';
 import Swal from 'sweetalert2';
-import { animate } from '@angular/animations';
+
 
 
 @Component({
@@ -16,9 +16,7 @@ export class ProyectsComponent implements OnInit {
 
  constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
 
-  //proyectList:any=[];
-
-  //PARA FIREBASE
+  
   proyectosLista:any=[];
 
   agregaProyecto=false;
@@ -136,11 +134,7 @@ export class ProyectsComponent implements OnInit {
       this.agregarProy();
     })
 
-    /*  this.datosPorfolio.obtenerDatos().subscribe(data =>{
-      this.proyectList=data.achivements;
-
-    }); */
-  
+     
   }
 
 }
