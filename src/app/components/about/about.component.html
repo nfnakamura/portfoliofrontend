@@ -15,20 +15,23 @@
 
          
     </div>
-    <div class="edit-about" *ngIf="editarParrafo">
-            <h4>Editar acerca de</h4>
-            <textarea textarea class="about-edit" cols="35" rows="5"  name="texto" id="edit-acercade" style="display:block" [(ngModel)]="texto"></textarea>
-           
-        <div class="alert-container" *ngIf="mostrarAlert">
-             <p id="alert">Debe introducir texto para aceptar la edición</p>
-        </div>
 
-    
-        <div class="botones">  
-            <input *ngIf="editarParrafo" (click)="aceptar_edicion()"  value="Aceptar" class="btn btn-success botones" type="submit">
-            <input *ngIf="editarParrafo" (click)="cancelar_edicion()"  value="Cancelar" class="btn btn-danger botones" type="submit">
-        </div>
-    </div> 
+    <div class="overlay" *ngIf="editarParrafo">
+        <div class="edit-about">
+                <h4>Editar acerca de</h4>
+                <textarea textarea class="about-edit form-control" cols="35" rows="5"  name="texto" id="edit-acercade" style="display:block" [(ngModel)]="texto"></textarea>
+            
+            <div class="alert-container" *ngIf="mostrarAlert">
+                <p id="alert">Debe introducir texto para aceptar la edición</p>
+            </div>
+
+        
+            <div class="botones">  
+                <input *ngIf="editarParrafo" (click)="aceptar_edicion()"  value="Aceptar" class="btn btn-success botones" type="submit">
+                <input *ngIf="editarParrafo" (click)="cancelar_edicion()"  value="Cancelar" class="btn btn-danger botones" type="submit">
+            </div>
+        </div> 
+    </div>
 </div>
 
 

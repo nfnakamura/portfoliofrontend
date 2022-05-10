@@ -45,54 +45,54 @@
 
         
        
+      <div class="overlay" *ngIf="editaInfo">
+          <form class="editForm">
 
-        <form *ngIf="editaInfo" class="editForm">
-
-          <h4>Editar información</h4>
-          <div>
-            <label>Nombre</label>
-          </div>  
-            <input type="text" name="nombre" [(ngModel)]="nombre">
-         
-          <div>
-            <label>Apellido</label>
-          </div>  
-            <input type="text" name="apellido" [(ngModel)]="apellido">
-          
-          <div>
-            <label>Trabajos</label>
-          </div>
-            <input type="text" name="trabajos" [(ngModel)]="trabajos">
-          
-          <div>
-            <label>Lugar de residencia</label>
-          </div>  
-            <input type="text" name="lugar" [(ngModel)]="lugar">
-            
-
-            <div class="editarImg">
-              <label for="">Imagen de perfil</label>
-            </div>  
-              <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarImagen($event)">  
-             
-              <div class="editarImg">
-                <label for="">Banner</label>
+              <h4>Editar información</h4>
+              <div>
+                <label>Nombre</label>
               </div>  
-                <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarBanner($event)">  
+                <input class="form-control" type="text" name="nombre" [(ngModel)]="nombre">
+            
+              <div>
+                <label>Apellido</label>
+              </div>  
+                <input class="form-control"  type="text" name="apellido" [(ngModel)]="apellido">
+              
+              <div>
+                <label>Trabajos</label>
+              </div>
+                <input class="form-control"  type="text" name="trabajos" [(ngModel)]="trabajos">
+              
+              <div>
+                <label>Lugar de residencia</label>
+              </div>  
+                <input class="form-control"  type="text" name="lugar" [(ngModel)]="lugar">
                 
 
+                <div class="editarImg">
+                  <label for="">Imagen de perfil</label>
+                </div>  
+                  <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarImagen($event)">  
+                
+                  <div class="editarImg">
+                    <label for="">Banner</label>
+                  </div>  
+                    <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarBanner($event)">  
+                    
 
-          <div class="botones">
-            <input (click)="aceptarEdicion()" value="Aceptar" class="btn btn-success botones" type="submit">
-            <input (click)="cancelarEdicion()"  value="Cancelar" class="btn btn-danger botones" type="submit">
-          </div>
 
-          <div class="alert-container" *ngIf="mostrarAlert">
-            <p id="alert">Debe completar al menos un campo para aceptar la edición</p>
-          </div>
+              <div class="botones">
+                <input (click)="aceptarEdicion()" value="Aceptar" class="btn btn-success botones" type="submit">
+                <input (click)="cancelarEdicion()"  value="Cancelar" class="btn btn-danger botones" type="submit">
+              </div>
 
-        </form>
+              <div class="alert-container" *ngIf="mostrarAlert">
+                <p id="alert">Debe completar al menos un campo para aceptar la edición</p>
+              </div>
 
+          </form>
+      </div>
      
 
       </div>
