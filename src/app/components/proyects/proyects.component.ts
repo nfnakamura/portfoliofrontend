@@ -120,22 +120,22 @@ export class ProyectsComponent implements OnInit {
     Swal.fire({
       title: 'Editar Proyecto',
       html: `
-      <label>Formato del proyecto</label>
+      <label style="padding-bottom:2%;">Formato del proyecto</label>
       
-      <input type="text" id="formatoProy" class="swal2-input">
+      <input style="padding-bottom:2%;" type="text" id="formatoProy" class="form-control">
       
-      <label>Nombre del proyecto</label>
+      <label style="padding-bottom:2%;">Nombre del proyecto</label>
       
-      <input type="text" id="nombreProy" class="swal2-input">
+      <input style="padding-bottom:2%;" type="text" id="nombreProy" class="form-control">
       
-      <label>Link del proyecto</label>
+      <label style="padding-bottom:2%;">Link del proyecto</label>
       
-      <input type="text" id="linkProy" class="swal2-input">
+      <input style="padding-bottom:2%;" type="text" id="linkProy" class="form-control">
       
-      <label>Breve descripción del proyecto</label>
+      <label style="padding-bottom:2%;">Breve descripción del proyecto</label>
       <textarea 
       id="text-area" 
-      class="swal2-textarea"></textarea>
+      class="form-control"></textarea>
       `,    
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

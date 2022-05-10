@@ -122,6 +122,10 @@ eliminarEducacion(idEducacion:number): Observable<ExpEducationComponent>{
     return this.http.patch<ProyectsComponent>(this.urlBack+`edit/persona/1/proyecto/${idProyecto}`, proyecto, httpOptions);
   }
 
+  editarHabilidad(habilidad:SkillsComponent[], idHabilidad:number): Observable<SkillsComponent>{
+    return this.http.patch<SkillsComponent>(this.urlBack+`edit/persona/1/habilidad/${idHabilidad}`, habilidad, httpOptions);
+  }
+
 
 /* Guardando en el storage de Firebase*/
   async guardarImagenPerfil(nombre:string, imgBase64:any){

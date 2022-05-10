@@ -72,9 +72,61 @@ export class SkillsComponent implements OnInit{
 
   }
 
-  borrarHabilidad(indice:number){
 
-    
+  editarHabilidad(indice:number){
+    Swal.fire({
+      title: 'Editar Habilidad',
+      html: `
+      <label style="padding-bottom:2%;">Habilidad</label>
+      
+      <input style="padding-bottom:2%;" type="text" id="habilidad" class="form-control">
+      
+      <label style="padding-bottom:2%;">%</label>
+      
+      <input style="padding-bottom:2%;" type="text" id="porcentaje" class="form-control">
+
+      `,    
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Aceptar',
+      focusConfirm: false,
+      preConfirm: () => {
+        const habilidad = (<HTMLInputElement>document.querySelector('#habilidad')).value 
+        const porcentaje = (<HTMLInputElement>document.querySelector('#porcentaje')).value     
+     
+        if(habilidad!=""){
+          this.listaAptitudes[indice].name=habilidad;
+        }
+        if(porcentaje!=""){
+          this.listaAptitudes[indice].progress=parseInt(porcentaje);
+        }
+
+        if (!habilidad && !porcentaje) {
+          Swal.showValidationMessage(`Debe editar al menos un campo para aceptar!`)
+        }   
+                                
+        this.datosPorfolio.editarHabilidad(this.listaAptitudes[indice], this.listaAptitudes[indice].id).subscribe(()=>{  
+          
+      })
+           
+      }  
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Editada!',
+          'Habilidad editada.',
+          'success'
+        )              
+      }
+    })
+
+
+
+  }  
+
+  borrarHabilidad(indice:number){    
     Swal.fire({
       title: 'Borrar habilidad',
       text: "¿Desea borrar definitivamente la habilidad seleccionada?",
@@ -107,6 +159,15 @@ export class SkillsComponent implements OnInit{
 
  
     this.obtenerHabilidad().subscribe(habilidades =>{
+      
+      
+      habilidades.sort((hab1:any, hab2:any)=> {
+        if (hab1.id < hab2.id){
+          return -1;
+        }else {
+          return 1;
+        }
+      })
       this.listaAptitudes=habilidades;
     });
 

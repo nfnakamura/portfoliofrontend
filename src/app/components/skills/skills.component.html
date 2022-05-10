@@ -11,7 +11,7 @@
         <div *ngFor="let aptitud of listaAptitudes; let i=index" class="bar">
           <div class="info">
             <span class="habilidad-nombre">{{aptitud.name}}
-              <i *ngIf="userLogged|async" class="fa fa-pen btn-right btn-edit" ></i> 
+              <i *ngIf="userLogged|async" (click)="editarHabilidad(i)" class="fa fa-pen btn-right btn-edit" ></i> 
               <div class="icono-trash"><i *ngIf="userLogged|async"  (click)="borrarHabilidad(i)" class="fas fa-trash-alt btn"></i></div>                 
             </span>             
           </div>
