@@ -10,7 +10,10 @@
        
         <div *ngFor="let aptitud of listaAptitudes; let i=index" class="bar">
           <div class="info">
-            <span class="habilidad-nombre">{{aptitud.name}}<div class="icono-trash"><i *ngIf="userLogged|async"  (click)="borrarHabilidad(i)" class="fas fa-trash-alt btn"></i></div></span>             
+            <span class="habilidad-nombre">{{aptitud.name}}
+              <i *ngIf="userLogged|async" class="fa fa-pen btn-right btn-edit" ></i> 
+              <div class="icono-trash"><i *ngIf="userLogged|async"  (click)="borrarHabilidad(i)" class="fas fa-trash-alt btn"></i></div>                 
+            </span>             
           </div>
           <div class="progress-line {{aptitud.value}}"><span [ngStyle]="{'width': aptitud.progress + '%'}"><span id="porcentajeSpan">{{aptitud.progress}}%</span></span></div>
         </div>

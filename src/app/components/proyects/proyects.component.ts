@@ -24,6 +24,10 @@ export class ProyectsComponent implements OnInit {
   mostrarAlert=false;
   muestraDescripcion=false;
   aceptaBorrarProyecto=false;
+
+  editaProyecto=false;
+  aceptaEdit=false;
+
     
   formatoProyecto:string="";
   nombreProyecto:string="";
@@ -37,7 +41,7 @@ export class ProyectsComponent implements OnInit {
     
     this.agregaProyecto=true;
    
-    window.scrollBy(0,300)
+
     
   }
 
@@ -68,7 +72,7 @@ export class ProyectsComponent implements OnInit {
   cancelarProy(){
     this.agregaProyecto=false;
     this.mostrarAlert=false;
-    window.scrollBy(0,-300)
+    
   }
 
   mostrarDescripcion(){     
@@ -79,20 +83,11 @@ export class ProyectsComponent implements OnInit {
     this.muestraDescripcion=false;
   }
 
-
  
   obtenerProyectos(){
     return this.datosPorfolio.cargarProyectos();
   }
 
-  validacionParaBorrar(indice:number){  
-    this.aceptaBorrarProyecto=true;   
-    return indice;
-  }
-
-  cancelarBorrarProy(){
-    this.aceptaBorrarProyecto=false;
-  }
 
   borrarProyecto(indice:number){
 
@@ -119,13 +114,96 @@ export class ProyectsComponent implements OnInit {
       }
     })
   }
+
+
+  editarProyecto(indice:number){
+    Swal.fire({
+      title: 'Editar Proyecto',
+      html: `
+      <label>Formato del proyecto</label>
+      
+      <input type="text" id="formatoProy" class="swal2-input">
+      
+      <label>Nombre del proyecto</label>
+      
+      <input type="text" id="nombreProy" class="swal2-input">
+      
+      <label>Link del proyecto</label>
+      
+      <input type="text" id="linkProy" class="swal2-input">
+      
+      <label>Breve descripción del proyecto</label>
+      <textarea 
+      id="text-area" 
+      class="swal2-textarea"></textarea>
+      `,    
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Aceptar',
+      focusConfirm: false,
+      preConfirm: () => {
+        const formatoProy = (<HTMLInputElement>document.querySelector('#formatoProy')).value 
+        const nombreProy = (<HTMLInputElement>document.querySelector('#nombreProy')).value      
+        const linkProy =(<HTMLInputElement>document.querySelector('#linkProy')).value
+        const descrip =(<HTMLInputElement>document.querySelector('#text-area')).value       
+       
+
+        if(formatoProy!=""){
+          this.proyectosLista[indice].format=formatoProy;
+        }
+        if(nombreProy!=""){
+          this.proyectosLista[indice].name=nombreProy;
+        }
+        if(linkProy!=""){
+          this.proyectosLista[indice].link=linkProy;
+        }
+        if(descrip!=""){
+          this.proyectosLista[indice].description=descrip;
+        }
+              
+        if (!formatoProy && !nombreProy && !linkProy && !descrip) {
+          Swal.showValidationMessage(`Debe editar al menos un campo para aceptar!`)
+        }   
+                                
+        this.datosPorfolio.editarProyecto(this.proyectosLista[indice], this.proyectosLista[indice].id).subscribe(()=>{         
+      })
+           
+      }  
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Editado!',
+          'Proyecto editado.',
+          'success'
+        )              
+      }
+    })
+
+
+  }
+
+  cancelarEdit(){
+    this.editaProyecto=false;
+  }
  
 
   ngOnInit(): void {
 
  
     this.obtenerProyectos().subscribe(proyectos=>{
-      this.proyectosLista=proyectos;       
+      
+      proyectos.sort((proy1:any, proy2:any)=> {
+        if (proy1.id < proy2.id){
+          return -1;
+        }else {
+          return 1;
+        }
+      })       
+      this.proyectosLista=proyectos;
+     
+         
     });
 
 

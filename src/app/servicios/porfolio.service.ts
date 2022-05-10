@@ -107,37 +107,20 @@ eliminarEducacion(idEducacion:number): Observable<ExpEducationComponent>{
   /*PATCH - PUT*/
 
   guardarAbout(about:AboutComponent[]): Observable<AboutComponent>{
-    return this.http.patch<AboutComponent>(this.urlBack+'edit/persona/1/about', about, httpOptions);
+    return this.http.patch<AboutComponent>(this.urlBack+'edit/persona/1', about, httpOptions);
   }
 
-  guardarNombre(nombre:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/nombre', nombre, httpOptions);
-  }
-
-  guardarApellido(apellido:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/apellido', apellido, httpOptions);
-  }
-  
-  guardarTrabajo(position:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/trabajo', position, httpOptions);
-  }
-  
-  guardarUbicación(ubication:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/ubicacion', ubication, httpOptions);
-  }
-
-  guardarImagen(image:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/imagen', image, httpOptions);
-  }
-
-  guardarBanner(banner:HeaderComponent[]): Observable<HeaderComponent>{
-    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1/banner', banner, httpOptions);
+  guardarPersona(persona:HeaderComponent[]): Observable<HeaderComponent>{
+    return this.http.patch<HeaderComponent>(this.urlBack+'edit/persona/1', persona, httpOptions);
   }
 
   guardarImagenExperiencia(image:ExpEducationComponent[], idexperiencia:number): Observable<ExpEducationComponent>{
     return this.http.patch<ExpEducationComponent>(this.urlBack+`edit/persona/1/experiencia/${idexperiencia}/imagen`, image, httpOptions);
   }
 
+  editarProyecto(proyecto:ProyectsComponent[], idProyecto:number): Observable<ProyectsComponent>{
+    return this.http.patch<ProyectsComponent>(this.urlBack+`edit/persona/1/proyecto/${idProyecto}`, proyecto, httpOptions);
+  }
 
 
 /* Guardando en el storage de Firebase*/

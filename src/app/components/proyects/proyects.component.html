@@ -25,9 +25,16 @@
         <li *ngFor="let proyect of proyectosLista; let i = index" >
           <div class="proyecto-titulo-icono">
             <a target="_blank" href="{{proyect.link}}"><h2 class="titulo-proyecto">{{proyect.format}} - {{proyect.name}}</h2></a> 
-            <i *ngIf="userLogged|async" (click)="borrarProyecto(i)" class="fas fa-trash-alt btn"></i>   
+            
+            <i *ngIf="userLogged|async" (click)="editarProyecto(i)" class="fa fa-pen btn-right btn-edit" ></i>            
+        
+            <i *ngIf="userLogged|async" (click)="borrarProyecto(i)" class="fas fa-trash-alt btn"></i>
+
            </div>                            
-          <p>{{proyect.description}}</p>   
+          <p>{{proyect.description}}</p>     
+        
+          
+
         </li>
       </ul>            
 
@@ -35,12 +42,15 @@
   </div>
 
 <!-- agrega proyecto -->
-  <form class="agregar-proyecto" *ngIf="agregaProyecto">
+<div class="overlay" *ngIf="agregaProyecto">
+ 
+  <form class="agregar-proyecto popup" >
     <h4>Agregar Proyecto</h4>
     <div>
       <label>Formato del proyecto*</label>
     </div>  
       <input 
+      class="form-control"
       type="text" 
       name="formatoProyecto" 
       [(ngModel)]="formatoProyecto">
@@ -48,7 +58,8 @@
     <div>
       <label>Nombre del proyecto*</label>
     </div> 
-      <input type="text" 
+      <input type="text"
+      class="form-control" 
       name="nombreProyecto" 
       [(ngModel)]="nombreProyecto">  
 
@@ -56,6 +67,7 @@
         <label>Link del proyecto</label>
       </div> 
         <input type="text"
+        class="form-control"
          name="linkProyecto" 
          [(ngModel)]="linkProyecto">    
     
@@ -64,6 +76,7 @@
         <label>Breve descripción del proyecto:</label>
       </div>
       <textarea 
+      class="form-control"
       id="text-area" 
       cols="35" 
       rows="5" 
@@ -80,9 +93,12 @@
       <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarProy()"> 
     </div>
 
-
   </form>
-  
+
+</div>
+
+ 
+ 
 </div>
   
 

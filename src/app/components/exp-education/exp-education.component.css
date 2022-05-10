@@ -59,12 +59,18 @@
 
 .icono-titulo{
     display: flex;
+    align-items: center;
+    gap:5px;
 }
 
-.icono-titulo i{
+.fa-trash-alt{
     color: rgb(224, 6, 6);
     align-self: center;
     border-radius: 100%;
+}
+
+.btn-edit{
+      align-self: center;
 }
 
 

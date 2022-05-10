@@ -99,7 +99,7 @@ export class HeaderComponent implements OnInit {
           if(this.nombre !=""){
               this.miPorfolio.nombre = this.nombre; 
 
-              this.datosPorfolio.guardarNombre(this.miPorfolio).subscribe(() =>{
+              this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(() =>{
               
               this.ngOnInit();  
               }
@@ -108,7 +108,7 @@ export class HeaderComponent implements OnInit {
           if(this.apellido !=""){            
             this.miPorfolio.apellido = this.apellido;
 
-            this.datosPorfolio.guardarApellido(this.miPorfolio).subscribe(() =>{
+            this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(() =>{
             
             this.ngOnInit();  
             }
@@ -117,7 +117,7 @@ export class HeaderComponent implements OnInit {
           if(this.trabajos!=""){   
             this.miPorfolio.position=this.trabajos;
 
-            this.datosPorfolio.guardarTrabajo(this.miPorfolio).subscribe(() =>{
+            this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(() =>{
              
               this.ngOnInit();  
               }
@@ -126,17 +126,17 @@ export class HeaderComponent implements OnInit {
           if(this.lugar!=""){
             this.miPorfolio.ubication=this.lugar;
 
-            this.datosPorfolio.guardarUbicación(this.miPorfolio).subscribe(()=>{
+            this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(()=>{
               
               this.ngOnInit();  
               }
 
             )       
           }                         
-            this.datosPorfolio.guardarImagen(this.miPorfolio).subscribe(()=>{
+            this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(()=>{
            
            })
-           this.datosPorfolio.guardarBanner(this.miPorfolio).subscribe(()=>{
+           this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(()=>{
            
           })
            

@@ -34,25 +34,36 @@ form h4{
  text-align: center;
 }
 
+.overlay{
+    background: rgba(0,0,0,.3);
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right: 0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .agregar-proyecto{  
 
     display:flex;
     flex-direction: column;    
-    justify-content: center;
-    border: solid rgb(187, 187, 187) 1px;
-    width: 320px;
-    padding: 1%;
-    margin-left: 3%; 
+    justify-content: center;  
+    width: 500px;
+    padding: 3%;   
+    border-radius: 2%;
+    background: white;  
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.3);
 }
+
 
 .agregar-proyecto div{
    padding: 2%;
 }
 
 
-.agregar-proyecto input{
-    margin-left: 2%;
-}
 
 #titulo-textarea{
     padding: 0%;
@@ -60,9 +71,11 @@ form h4{
     margin-left: 0%;
 }
 
+
 #alert{
     color: red;
     font-weight: bold;
+    text-align: center;
 }
 
 #mostrarMas{
@@ -107,10 +120,15 @@ ul li a{
 
 .proyecto-titulo-icono{
     display:flex;
-    gap: 30px;    
+    align-items: center;
+    gap:5px;  
 }
 
-.proyecto-titulo-icono i{
+.btn-edit{
+    align-self: center;
+}
+
+.fa-trash-alt{
     color: rgb(224, 6, 6);
     align-self: center;
     border-radius: 100%;
@@ -125,7 +143,10 @@ ul li a{
 
 .proyecto-titulo-icono i:hover{
     color: white;
+    cursor:pointer;
 }
+
+
 
 .validacion-borrar{
     display:flex;
@@ -135,17 +156,21 @@ ul li a{
 }
 
 
+
+
+
 @media screen and (max-width: 600px){
   
     .agregar-proyecto{  
 
         display:flex;
         flex-direction: column;    
-        justify-content: center;
-        border: solid rgb(187, 187, 187) 1px;
+        justify-content: center;  
         width: 250px;
-        padding: 1%;
-        margin-left: 3%; 
+        padding: 3%; 
+        border-radius: 2%;   
+        background: white;      
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,.3);
     }
 
     #text-area {

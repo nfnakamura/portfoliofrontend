@@ -164,6 +164,14 @@
     color: white;
 }
 
+.btn-edit:hover{
+    color:white;
+}
+
+.info{
+    margin-bottom: 0.5%;
+}
+
 .validacion-borrar{
     display:flex;
     flex-direction: column;
