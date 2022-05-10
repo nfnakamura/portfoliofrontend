@@ -28,20 +28,21 @@
             </li>
 
             <!-- Muestra los inputs para agregar experiencia -->
-               <form class="agrega-exp" *ngIf="agregaexperiencia">
+            <div class="overlay" *ngIf="agregaexperiencia">
+               <form class="agrega-exp" >
                       <h4>Agregar experiencia</h4>
                       <label>Cargo*</label>
-                      <div><input type="text" name="cargo" [(ngModel)]="cargo"></div>
+                      <div><input class="form-control" type="text" name="cargo" [(ngModel)]="cargo"></div>
                       <label>Lugar de Trabajo*</label>
-                      <div><input type="text" name="compania" [(ngModel)]="compania"></div>
+                      <div><input class="form-control" type="text" name="compania" [(ngModel)]="compania"></div>
                       <label>Formato*</label>
-                      <div><input type="text" name="modo" [(ngModel)]="modo"></div>
+                      <div><input class="form-control" type="text" name="modo" [(ngModel)]="modo"></div>
                       <label>Inicio*</label>
-                      <div><time><input type="text" name="anioInicio" [(ngModel)]="anioInicio"></time></div>
+                      <div><time><input class="form-control" type="text" name="anioInicio" [(ngModel)]="anioInicio"></time></div>
                       <label>Finalización*</label>
-                      <div><time><input type="text" name="anioFin" [(ngModel)]="anioFin"></time></div> 
+                      <div><time><input class="form-control"  type="text" name="anioFin" [(ngModel)]="anioFin"></time></div> 
                       <label>Duracion</label>
-                      <div><time><input  id="duracion" type="text"  name="duracion" [(ngModel)]="duracion"></time></div>
+                      <div><time><input class="form-control" id="duracion" type="text"  name="duracion" [(ngModel)]="duracion"></time></div>
                       <div>
                         <label for="">Imagen</label>                        
                       </div>  
@@ -57,7 +58,7 @@
                     </div>
                   
               </form>
-            
+            </div>
           </ul>
         </div>
       </div>
@@ -93,34 +94,34 @@
 
 
               <!-- Muestra los inputs para Educacion  -->
-            <form class="agrega-edu" *ngIf="agregaEdu">
-                      <h4>Agregar educación</h4>                                    
-                     <label>Nombre de la institución*</label>
-                     <div><input type="text" name="escuela" [(ngModel)]="escuela"></div>
-                     <label>Titulo*</label>
-                     <div><input type="text" name="titulo" [(ngModel)]="titulo"></div>
-                     <label>Tipo*</label>
-                      <div><input type="text" name="career" [(ngModel)]="career"></div>
-                     <label>Inicio*</label>
-                     <div><time><input type="text" name="anioInicioEdu" [(ngModel)]="anioInicioEdu"></time> </div>
-                     <label>Finalización*</label>
-                     <div> <time><input type="text" name="anioFinEdu" [(ngModel)]="anioFinEdu"></time></div>
-                     <div>
-                      <label for="">Imagen</label>                        
-                    </div>  
-                    <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarImagenEdu($event)">  
-                      <br>
-                      
-                      <div class="alert-container" *ngIf="mostrarAlertEdu">
-                        <p id="alert">Todos los campos de educación son obligatorios(*)</p>
+            <div class="overlay" *ngIf="agregaEdu">   
+              <form class="agrega-edu" >
+                        <h4>Agregar educación</h4>                                    
+                      <label>Nombre de la institución*</label>
+                      <div><input class="form-control" type="text" name="escuela" [(ngModel)]="escuela"></div>
+                      <label>Titulo*</label>
+                      <div><input class="form-control" type="text" name="titulo" [(ngModel)]="titulo"></div>
+                      <label>Tipo*</label>
+                        <div><input class="form-control" type="text" name="career" [(ngModel)]="career"></div>
+                      <label>Inicio*</label>
+                      <div><time><input class="form-control" type="text" name="anioInicioEdu" [(ngModel)]="anioInicioEdu"></time> </div>
+                      <label>Finalización*</label>
+                      <div> <time><input class="form-control" type="text" name="anioFinEdu" [(ngModel)]="anioFinEdu"></time></div>
+                      <div>
+                        <label for="">Imagen</label>                        
                       </div>  
-                    <div class="botones"> 
-                        <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarEdu()"> 
-                        <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarEdu()">
-                      </div>  
-                                        
-            </form>
-
+                      <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarImagenEdu($event)">  
+                        <br>
+                        
+                        <div class="alert-container" *ngIf="mostrarAlertEdu">
+                          <p id="alert">Complete los campos obligatorios(*)</p>
+                        </div>  
+                      <div class="botones"> 
+                          <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarEdu()"> 
+                          <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarEdu()">
+                        </div>                                          
+              </form>
+            </div>
           </ul>
         </div>
       </div>

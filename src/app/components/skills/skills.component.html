@@ -18,32 +18,35 @@
           <div class="progress-line {{aptitud.value}}"><span [ngStyle]="{'width': aptitud.progress + '%'}"><span id="porcentajeSpan">{{aptitud.progress}}%</span></span></div>
         </div>
       
-       
-      <div class="agrega-habilidad" *ngIf="agregaHabilidad">
-        
-        <h4>Agregar habilidad</h4>
-        <label>Habilidad*</label>        
-        <input type="text" [(ngModel)]="habilidad">
-        
-        
-        <label>%*</label>        
-        <input type="text" [(ngModel)]="porcentaje">
-        
-        <div class="alert-container" *ngIf="mostrarAlert">
-          <p id="alert">Debe indicar habilidad y porcentaje de progreso(*)</p>
-        </div>
 
-        <div class="alert-container" *ngIf="alertPorcentaje">
-          <p id="alert">El valor del porcentaje debe ser entre 0 y 100</p>
-        </div>
 
-        <div class="botones">
-        <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarHabilidad()" > 
-        <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarHabilidad()"> 
-        </div>
+          <div class="overlay" *ngIf="agregaHabilidad"> 
+              <div class="agrega-habilidad">
+                
+                <h4>Agregar habilidad</h4>
+                <label>Habilidad*</label>        
+                <input class="form-control" type="text" [(ngModel)]="habilidad">
+                
+                
+                <label>%*</label>        
+                <input class="form-control"  type="text" [(ngModel)]="porcentaje">
+                
+                <div class="alert-container" *ngIf="mostrarAlert">
+                  <p id="alert">Debe indicar habilidad y porcentaje de progreso(*)</p>
+                </div>
 
-      
-      </div>
+                <div class="alert-container" *ngIf="alertPorcentaje">
+                  <p id="alert">El valor del porcentaje debe ser entre 0 y 100</p>
+                </div>
+
+                <div class="botones">
+                <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarHabilidad()" > 
+                <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarHabilidad()"> 
+                </div>
+
+              
+              </div>
+           </div>
 
 
       </div>

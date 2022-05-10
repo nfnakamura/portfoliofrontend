@@ -30,8 +30,9 @@
     
 }
 
-form h4{
+.agregar-proyectob h4{
  text-align: center;
+ margin-bottom: 2%;
 }
 
 .overlay{
@@ -60,15 +61,14 @@ form h4{
 
 
 .agregar-proyecto div{
-   padding: 2%;
+    padding-bottom:2%;
+    padding-top: 2%;
 }
 
 
 
-#titulo-textarea{
-    padding: 0%;
-    padding-bottom: 1%;
-    margin-left: 0%;
+#titulo-textarea{  
+    padding-bottom: 1%;    
 }
 
 
