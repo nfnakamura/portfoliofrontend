@@ -30,7 +30,8 @@
         
             <i *ngIf="userLogged|async" (click)="borrarProyecto(i)" class="fas fa-trash-alt btn"></i>
 
-           </div>                            
+           </div>
+          <a target="_blank" href="{{proyect.link}}"><p>-<span style="font-style: oblique;">{{proyect.link}}</span>-</p></a>                             
           <p>{{proyect.description}}</p>     
         
           
