@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit {
 
   editarInfo(){
     this.editaInfo=true;
-    window.scrollBy(0,-400);
+   
     
   }
 
@@ -87,7 +87,7 @@ export class HeaderComponent implements OnInit {
 
   cancelarEdicion(){
     this.editaInfo=false;   
-    window.scrollBy(0,400);
+    
   }
 
   aceptarEdicion(){    
@@ -97,7 +97,7 @@ export class HeaderComponent implements OnInit {
     }else{
       this.editaInfo=false;
       this.mostrarAlert=false;
-      window.scrollBy(0,400);
+      
           if(this.nombre !=""){
               this.miPorfolio.nombre = this.nombre; 
 

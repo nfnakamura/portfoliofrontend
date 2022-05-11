@@ -23,6 +23,8 @@
     display:flex;
     align-items: center;
     justify-content: center;
+    z-index: 2000;
+
 }
 
 .agrega-edu{    
@@ -34,6 +36,7 @@
     border-radius: 2%;
     background: white;  
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,.3);
+    z-index: 2000;
 }
 
 .agrega-exp{
@@ -44,7 +47,8 @@
     padding: 3%;   
     border-radius: 2%;
     background: white;  
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.3);    
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.3); 
+    z-index: 2000;   
 }
 
 .agrega-exp h4{
@@ -134,24 +138,29 @@ label {
         display:flex;
         flex-direction: column;        
         justify-content: center;        
-        width: 230px;
-        padding: 2%;                      
+        width: 300px;        
+        padding: 30px;                      
     }
 
     .agrega-edu input{
         width:100%;
+        
+    }
+    .input-agregar{
+        height: 30px;
     }
 
     .agrega-exp{
         display:flex;
         flex-direction: column;        
         justify-content: center;        
-        width: 230px;
-        padding: 2%;        
+        width: 300px;        
+        padding: 30px;        
     }
 
     .agrega-exp input{
         width: 100%;
+      
     }
 
 

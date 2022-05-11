@@ -172,7 +172,7 @@ export class ExpEducationComponent implements OnInit {
 
   editarExperiencia(indice:number){
     Swal.fire({
-      title: 'Editar Experiencia',
+      title: `Editar Experiencia #${indice + 1}`,
       html: `
       <label class="label-edit">Cargo</label>
       
@@ -206,10 +206,15 @@ export class ExpEducationComponent implements OnInit {
       confirmButtonText: 'Aceptar',
       focusConfirm: false,
       customClass:{
+        
         popup:'popup-edit',
-        title:'title-edit'
-
+        title:'title-edit',
       },
+      showClass:{        
+        popup: 'swal2-noanimation',
+      },
+
+
       
 
 
@@ -265,9 +270,9 @@ export class ExpEducationComponent implements OnInit {
 
   editarEducacion(indice:number){
     Swal.fire({
-      title: 'Editar Educacion',
+      title: `Editar Educación #${indice + 1}`,
       html: `
-      <label class="label-edit">Nombre de la Institución</label>
+      <label class="label-edit">Nombre de la Institución:</label>
       
       <input type="text" id="institucion" class="form-control">
       
@@ -283,10 +288,11 @@ export class ExpEducationComponent implements OnInit {
       
       <input type="text" id="inicio" class="form-control">
 
-      <label class="label-edit">Finalizacion</label>
+      <label class="label-edit">Finalización</label>
       
       <input type="text" id="finalizacion" class="form-control">
       `,
+      
       allowOutsideClick:false,    
       showCancelButton: true,
       confirmButtonColor: '#007E33',
@@ -296,8 +302,12 @@ export class ExpEducationComponent implements OnInit {
       focusConfirm: false,
       customClass:{
         popup:'popup-edit',
-        title:'title-edit'     
+        title:'title-edit', 
+        input:'input-edit'    
         
+      },
+      showClass:{        
+        popup: 'swal2-noanimation',
       },
       preConfirm: () => {
         const institucion = (<HTMLInputElement>document.querySelector('#institucion')).value 
@@ -305,7 +315,7 @@ export class ExpEducationComponent implements OnInit {
         const tipo =(<HTMLInputElement>document.querySelector('#tipo')).value
         const inicio=(<HTMLInputElement>document.querySelector('#inicio')).value 
         const finalizacion =(<HTMLInputElement>document.querySelector('#finalizacion')).value  
-   
+        
 
         if(institucion!=""){
           this.educacionList[indice].school=institucion;
@@ -338,7 +348,7 @@ export class ExpEducationComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Editado!',
+          'Editada!',
           'Educación editada.',
           'success'
         )              
@@ -352,7 +362,7 @@ export class ExpEducationComponent implements OnInit {
 
     
     Swal.fire({
-      title: 'Borrar experiencia',
+      title: `Borrar Experiencia #${indice + 1}`,
       text: "¿Desea borrar definitivamente la experiencia seleccionada?",
       icon: 'warning',
       showCancelButton: true,
@@ -360,7 +370,10 @@ export class ExpEducationComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Borrar'
+      confirmButtonText: 'Borrar',
+      showClass:{        
+        popup: 'swal2-noanimation',
+      },
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
@@ -383,7 +396,7 @@ export class ExpEducationComponent implements OnInit {
 
     
     Swal.fire({
-      title: 'Borrar educación',
+      title: `Borrar Educación #${indice + 1}`,
       text: "¿Desea borrar definitivamente la educación seleccionada?",
       icon: 'warning',
       showCancelButton: true,
@@ -391,7 +404,10 @@ export class ExpEducationComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Borrar'
+      confirmButtonText: 'Borrar',
+      showClass:{        
+        popup: 'swal2-noanimation',
+      },
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(

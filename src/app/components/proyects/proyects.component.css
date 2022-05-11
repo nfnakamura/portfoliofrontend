@@ -49,6 +49,7 @@
     display:flex;
     align-items: center;
     justify-content: center;
+    z-index: 2000;
 }
 
 .agregar-proyecto{  
@@ -61,6 +62,7 @@
     border-radius: 2%;
     background: white;  
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,.3);
+    z-index: 2000;
 }
 
 
@@ -170,11 +172,14 @@ ul li a{
         display:flex;
         flex-direction: column;    
         justify-content: center;  
-        width: 250px;
-        padding: 3%; 
+        width: 300px;
+        padding: 30px; 
         border-radius: 2%;   
         background: white;      
         box-shadow: 0px 0px 5px 0px rgba(0,0,0,.3);
+    }
+    .input-agregar{
+        height: 30px;
     }
 
     #text-area {

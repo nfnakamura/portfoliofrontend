@@ -75,7 +75,7 @@ export class SkillsComponent implements OnInit{
 
   editarHabilidad(indice:number){
     Swal.fire({
-      title: 'Editar Habilidad',
+      title: `Editar Habilidad #${indice + 1}`,
       html: `
       <label class="label-edit"">Habilidad</label>
       
@@ -97,6 +97,9 @@ export class SkillsComponent implements OnInit{
         popup:'popup-edit',
         title:'title-edit'
         
+      },
+      showClass:{        
+        popup: 'swal2-noanimation',
       },
       preConfirm: () => {
         const habilidad = (<HTMLInputElement>document.querySelector('#habilidad')).value 
@@ -134,7 +137,7 @@ export class SkillsComponent implements OnInit{
 
   borrarHabilidad(indice:number){    
     Swal.fire({
-      title: 'Borrar habilidad',
+      title: `Borrar Habilidad #${indice + 1}`,
       text: "¿Desea borrar definitivamente la habilidad seleccionada?",
       icon: 'warning',
       showCancelButton: true,
@@ -142,7 +145,10 @@ export class SkillsComponent implements OnInit{
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Borrar'
+      confirmButtonText: 'Borrar',
+      showClass:{        
+        popup: 'swal2-noanimation',
+      },
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(

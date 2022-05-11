@@ -92,14 +92,17 @@ export class ProyectsComponent implements OnInit {
   borrarProyecto(indice:number){
 
     Swal.fire({
-      title: 'Borrar proyecto',
+      title: `Borrar Proyecto #${indice + 1}`,
       text: "¿Desea borrar definitivamente el proyecto seleccionado?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Borrar'
+      confirmButtonText: 'Borrar',
+      showClass:{        
+        popup: 'swal2-noanimation',
+      },
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
@@ -118,7 +121,7 @@ export class ProyectsComponent implements OnInit {
 
   editarProyecto(indice:number){
     Swal.fire({
-      title: 'Editar Proyecto',
+      title: `Editar Proyecto #${indice + 1}`,
       html: `
       <label class="label-edit">Formato del proyecto</label>
       
@@ -148,6 +151,9 @@ export class ProyectsComponent implements OnInit {
         popup:'popup-edit',
         title:'title-edit',  
         
+      },
+      showClass:{        
+        popup: 'swal2-noanimation',
       },
       preConfirm: () => {
         const formatoProy = (<HTMLInputElement>document.querySelector('#formatoProy')).value 

@@ -32,17 +32,17 @@
                <form class="agrega-exp" >
                       <h4>Agregar experiencia</h4>
                       <label>Cargo*</label>
-                      <div><input class="form-control" type="text" name="cargo" [(ngModel)]="cargo"></div>
+                      <div><input class="form-control input-agregar" type="text" name="cargo" [(ngModel)]="cargo" autofocus></div>
                       <label>Lugar de Trabajo*</label>
-                      <div><input class="form-control" type="text" name="compania" [(ngModel)]="compania"></div>
+                      <div><input class="form-control input-agregar" type="text" name="compania" [(ngModel)]="compania"></div>
                       <label>Formato*</label>
-                      <div><input class="form-control" type="text" name="modo" [(ngModel)]="modo"></div>
+                      <div><input class="form-control input-agregar" type="text" name="modo" [(ngModel)]="modo"></div>
                       <label>Inicio*</label>
-                      <div><time><input class="form-control" type="text" name="anioInicio" [(ngModel)]="anioInicio"></time></div>
+                      <div><time><input class="form-control input-agregar" type="text" name="anioInicio" [(ngModel)]="anioInicio"></time></div>
                       <label>Finalización*</label>
-                      <div><time><input class="form-control"  type="text" name="anioFin" [(ngModel)]="anioFin"></time></div> 
+                      <div><time><input class="form-control input-agregar"  type="text" name="anioFin" [(ngModel)]="anioFin"></time></div> 
                       <label>Duracion</label>
-                      <div><time><input class="form-control" id="duracion" type="text"  name="duracion" [(ngModel)]="duracion"></time></div>
+                      <div><time><input class="form-control input-agregar" id="duracion" type="text"  name="duracion" [(ngModel)]="duracion"></time></div>
                       <div>
                         <label for="">Imagen</label>                        
                       </div>  
@@ -95,18 +95,18 @@
 
               <!-- Muestra los inputs para Educacion  -->
             <div class="overlay" *ngIf="agregaEdu">   
-              <form class="agrega-edu" >
+              <form class="agrega-edu">
                         <h4>Agregar educación</h4>                                    
                       <label>Nombre de la institución*</label>
-                      <div><input class="form-control" type="text" name="escuela" [(ngModel)]="escuela"></div>
+                      <div><input class="form-control input-agregar" type="text" name="escuela" [(ngModel)]="escuela" autofocus></div>
                       <label>Titulo*</label>
-                      <div><input class="form-control" type="text" name="titulo" [(ngModel)]="titulo"></div>
+                      <div><input class="form-control input-agregar" type="text" name="titulo" [(ngModel)]="titulo"></div>
                       <label>Tipo*</label>
-                        <div><input class="form-control" type="text" name="career" [(ngModel)]="career"></div>
+                        <div><input class="form-control input-agregar" type="text" name="career" [(ngModel)]="career"></div>
                       <label>Inicio*</label>
-                      <div><time><input class="form-control" type="text" name="anioInicioEdu" [(ngModel)]="anioInicioEdu"></time> </div>
+                      <div><time><input class="form-control input-agregar" type="text" name="anioInicioEdu" [(ngModel)]="anioInicioEdu"></time> </div>
                       <label>Finalización*</label>
-                      <div> <time><input class="form-control" type="text" name="anioFinEdu" [(ngModel)]="anioFinEdu"></time></div>
+                      <div> <time><input class="form-control input-agregar" type="text" name="anioFinEdu" [(ngModel)]="anioFinEdu"></time></div>
                       <div>
                         <label for="">Imagen</label>                        
                       </div>  
