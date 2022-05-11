@@ -16,7 +16,7 @@
                     <div>
                       <div class="icono-titulo">
                           <h3>{{experiencia.position}}</h3> 
-                          <i *ngIf="userLogged|async" class="btn-edit" class="fa fa-pen" ></i> 
+                          <i *ngIf="userLogged|async" (click)="editarExperiencia(i)" class="btn-edit" class="fa fa-pen" ></i> 
                           <i *ngIf="userLogged|async" (click)="borrarExperiencia(i)" class="fas fa-trash-alt btn"></i>
                       </div>
                       <p>{{experiencia.company}} - {{experiencia.mode}}</p>
@@ -81,7 +81,7 @@
                       <div>
                         <div class="icono-titulo">
                           <h3>{{educacion.school}}</h3> 
-                          <i *ngIf="userLogged|async" class="btn-edit" class="fa fa-pen" ></i> 
+                          <i *ngIf="userLogged|async" (click)="editarEducacion(i)" class="btn-edit" class="fa fa-pen" ></i> 
                           <i *ngIf="userLogged|async" (click)="borrarEducacion(i)" class="fas fa-trash-alt btn"></i>
                         </div>
                         <p>{{educacion.title}} - {{educacion.career}}</p>

@@ -77,21 +77,27 @@ export class SkillsComponent implements OnInit{
     Swal.fire({
       title: 'Editar Habilidad',
       html: `
-      <label style="padding-bottom:2%;">Habilidad</label>
+      <label class="label-edit"">Habilidad</label>
       
-      <input style="padding-bottom:2%;" type="text" id="habilidad" class="form-control">
+      <input type="text" id="habilidad" class="form-control">
       
-      <label style="padding-bottom:2%;">%</label>
+      <label class="label-edit"">%</label>
       
-      <input style="padding-bottom:2%;" type="text" id="porcentaje" class="form-control">
+      <input type="text" id="porcentaje" class="form-control">
 
       `,    
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      allowOutsideClick:false,  
+      confirmButtonColor: '#007E33',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
       confirmButtonText: 'Aceptar',
       focusConfirm: false,
+      customClass:{
+        popup:'popup-edit',
+        title:'title-edit'
+        
+      },
       preConfirm: () => {
         const habilidad = (<HTMLInputElement>document.querySelector('#habilidad')).value 
         const porcentaje = (<HTMLInputElement>document.querySelector('#porcentaje')).value     
@@ -132,6 +138,7 @@ export class SkillsComponent implements OnInit{
       text: "¿Desea borrar definitivamente la habilidad seleccionada?",
       icon: 'warning',
       showCancelButton: true,
+      allowOutsideClick:false,  
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',

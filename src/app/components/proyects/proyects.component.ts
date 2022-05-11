@@ -120,29 +120,35 @@ export class ProyectsComponent implements OnInit {
     Swal.fire({
       title: 'Editar Proyecto',
       html: `
-      <label style="padding-bottom:2%;">Formato del proyecto</label>
+      <label class="label-edit">Formato del proyecto</label>
       
-      <input style="padding-bottom:2%;" type="text" id="formatoProy" class="form-control">
+      <input type="text" id="formatoProy" class="form-control">
       
-      <label style="padding-bottom:2%;">Nombre del proyecto</label>
+      <label class="label-edit">Nombre del proyecto</label>
       
-      <input style="padding-bottom:2%;" type="text" id="nombreProy" class="form-control">
+      <input type="text" id="nombreProy" class="form-control">
       
-      <label style="padding-bottom:2%;">Link del proyecto</label>
+      <label class="label-edit">Link del proyecto</label>
       
-      <input style="padding-bottom:2%;" type="text" id="linkProy" class="form-control">
+      <input type="text" id="linkProy" class="form-control">
       
-      <label style="padding-bottom:2%;">Breve descripción del proyecto</label>
+      <label class="label-edit">Breve descripción del proyecto</label>
       <textarea 
       id="text-area" 
       class="form-control"></textarea>
       `,    
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      allowOutsideClick:false,  
+      confirmButtonColor: '#007E33',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
       confirmButtonText: 'Aceptar',
       focusConfirm: false,
+      customClass:{
+        popup:'popup-edit',
+        title:'title-edit',  
+        
+      },
       preConfirm: () => {
         const formatoProy = (<HTMLInputElement>document.querySelector('#formatoProy')).value 
         const nombreProy = (<HTMLInputElement>document.querySelector('#nombreProy')).value      

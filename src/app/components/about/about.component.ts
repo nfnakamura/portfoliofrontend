@@ -21,6 +21,7 @@ export class AboutComponent implements OnInit {
 
   habilitar_edicion(){
     this.editarParrafo=true;
+    window.scrollBy(0,-500)
  
   };
 
@@ -33,7 +34,7 @@ export class AboutComponent implements OnInit {
       this.mostrarAlert=false;
 
       this.datosPorfolio.guardarAbout(this.miPorfolio).subscribe(() =>{
-       
+      window.scrollBy(0,500)
       
         this.ngOnInit();
       }
@@ -45,7 +46,7 @@ export class AboutComponent implements OnInit {
   cancelar_edicion(){
     this.editarParrafo=false;
     this.mostrarAlert=false;
-  
+    window.scrollBy(0,500)
  
   }
 

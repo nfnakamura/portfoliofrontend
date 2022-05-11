@@ -19,7 +19,8 @@
     <div class="overlay" *ngIf="editarParrafo">
         <div class="edit-about">
                 <h4>Editar acerca de</h4>
-                <textarea textarea class="about-edit form-control" cols="35" rows="5"  name="texto" id="edit-acercade" style="display:block" [(ngModel)]="texto"></textarea>
+              
+                <textarea class="about-edit form-control" cols="35" rows="5" name="texto" id="edit-acercade" [placeholder]="miPorfolio.about" style="display:block"[(ngModel)]="texto"></textarea>
             
             <div class="alert-container" *ngIf="mostrarAlert">
                 <p id="alert">Debe introducir texto para aceptar la edición</p>

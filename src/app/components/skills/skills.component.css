@@ -108,8 +108,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 80px;
-    
+    gap:10px;
+    font-weight:500;
+    margin-top: 10px;
 }
 
 
@@ -140,7 +141,7 @@
 
 .agrega-habilidad h4{
     text-align: center;
-    margin-bottom: 2%;
+    margin-bottom: 20px;
 }
 
 .agrega-habilidad input{   
@@ -220,10 +221,6 @@ label{
         box-shadow: 0px 0px 5px 0px rgba(0,0,0,.3);
             
        
-    }
-
-    .botones{
-        gap:20px;
     }
 
 

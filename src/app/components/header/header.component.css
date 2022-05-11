@@ -29,6 +29,15 @@ div#profile-background img {
        
 }
 
+#info-position{
+    margin-top: 3%;
+    margin-bottom: 1.5%;
+}
+
+#info-contact{
+    margin-bottom: 6%;
+}
+
 
 .contenedor{
     width:100%;
@@ -89,6 +98,8 @@ div#profile-background img {
     
 }
 
+
+
 .overlay{
     background: rgba(0,0,0,.3);
     position: fixed;
@@ -127,8 +138,11 @@ div#profile-background img {
 
 .botones{
     display: flex;
-    justify-content: space-around;
-    margin-top: 3%;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    font-weight:500;
+    margin-top: 10px;
 }
 
 div h4{
@@ -187,11 +201,9 @@ span a{
     
 }
 
-.agregar-seccion{
-   
-    margin-top: 0.5%;
+.agregar-seccion{    
+    margin-top: .5%;
     width:138px;
-    
 }
 
 .agregar-seccion li:hover{

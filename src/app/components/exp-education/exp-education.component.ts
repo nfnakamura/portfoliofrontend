@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class ExpEducationComponent implements OnInit {
 
+  
   educacionList:any=[];
   experienciaList:any=[];
 
@@ -169,6 +170,183 @@ export class ExpEducationComponent implements OnInit {
     return this.datosPorfolio.cargarEducacion();
   }
 
+  editarExperiencia(indice:number){
+    Swal.fire({
+      title: 'Editar Experiencia',
+      html: `
+      <label class="label-edit">Cargo</label>
+      
+      <input  type="text" id="cargo" class="form-control">
+      
+      <label class="label-edit">Lugar de Trabajo</label>
+      
+      <input  type="text" id="lugar" class="form-control">
+      
+      <label class="label-edit">Formato</label>
+      
+      <input type="text" id="formato" class="form-control">
+
+      <label class="label-edit">Inicio</label>
+      
+      <input type="text" id="inicio" class="form-control">
+
+      <label class="label-edit">Finalizacion</label>
+      
+      <input  type="text" id="finalizacion" class="form-control">
+
+      <label class="label-edit">Duración</label>
+      
+      <input type="text" id="duracion" class="form-control">
+      `,    
+      showCancelButton: true,
+      allowOutsideClick:false,  
+      confirmButtonColor: '#007E33',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Aceptar',
+      focusConfirm: false,
+      customClass:{
+        popup:'popup-edit',
+        title:'title-edit'
+
+      },
+      
+
+
+      preConfirm: () => {
+        const cargo = (<HTMLInputElement>document.querySelector('#cargo')).value 
+        const lugar = (<HTMLInputElement>document.querySelector('#lugar')).value      
+        const formato =(<HTMLInputElement>document.querySelector('#formato')).value
+        const inicio =(<HTMLInputElement>document.querySelector('#inicio')).value 
+        const finalizacion =(<HTMLInputElement>document.querySelector('#finalizacion')).value  
+        const duracion =(<HTMLInputElement>document.querySelector('#duracion')).value    
+
+        if(cargo!=""){
+          this.experienciaList[indice].position=cargo;
+        }
+        if(lugar!=""){
+          this.experienciaList[indice].company=lugar;
+        }
+        if(formato!=""){
+          this.experienciaList[indice].mode=formato;
+        }
+        if(inicio!=""){
+          this.experienciaList[indice].started=inicio;
+        }
+        if(finalizacion!=""){
+          this.experienciaList[indice].ended=finalizacion;
+        }
+        if(duracion!=""){
+          this.experienciaList[indice].timeElapsed=duracion;
+        }
+              
+        if (!cargo && !lugar && !formato && !inicio && !finalizacion && !duracion) {
+          Swal.showValidationMessage(`Debe editar al menos un campo para aceptar!`)
+        }          
+        
+        
+        this.datosPorfolio.editarExperiencia(this.experienciaList[indice], this.experienciaList[indice].id).subscribe(()=>{         
+      })
+           
+      }  
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Editado!',
+          'Experiencia editado.',
+          'success'
+        )              
+      }
+    })
+
+
+  }
+
+
+  editarEducacion(indice:number){
+    Swal.fire({
+      title: 'Editar Educacion',
+      html: `
+      <label class="label-edit">Nombre de la Institución</label>
+      
+      <input type="text" id="institucion" class="form-control">
+      
+      <label class="label-edit">Título</label>
+      
+      <input type="text" id="titulo" class="form-control">
+      
+      <label class="label-edit">Tipo</label>
+      
+      <input type="text" id="tipo" class="form-control">
+
+      <label class="label-edit">Inicio</label>
+      
+      <input type="text" id="inicio" class="form-control">
+
+      <label class="label-edit">Finalizacion</label>
+      
+      <input type="text" id="finalizacion" class="form-control">
+      `,
+      allowOutsideClick:false,    
+      showCancelButton: true,
+      confirmButtonColor: '#007E33',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Aceptar',
+      focusConfirm: false,
+      customClass:{
+        popup:'popup-edit',
+        title:'title-edit'     
+        
+      },
+      preConfirm: () => {
+        const institucion = (<HTMLInputElement>document.querySelector('#institucion')).value 
+        const titulo = (<HTMLInputElement>document.querySelector('#titulo')).value      
+        const tipo =(<HTMLInputElement>document.querySelector('#tipo')).value
+        const inicio=(<HTMLInputElement>document.querySelector('#inicio')).value 
+        const finalizacion =(<HTMLInputElement>document.querySelector('#finalizacion')).value  
+   
+
+        if(institucion!=""){
+          this.educacionList[indice].school=institucion;
+        }
+        if(titulo!=""){
+          this.educacionList[indice].title=titulo;
+        }
+        if(tipo!=""){
+          this.educacionList[indice].career=tipo;
+        }
+        if(inicio!=""){
+          this.educacionList[indice].started=inicio;
+        }
+        if(finalizacion!=""){
+          this.educacionList[indice].ended=finalizacion;
+        }
+      
+      
+              
+        if (!institucion && !titulo && !tipo && !inicio && !finalizacion) {
+          Swal.showValidationMessage(`Debe editar al menos un campo para aceptar!`)
+        }          
+        
+        
+        this.datosPorfolio.editarEducacion(this.educacionList[indice], this.educacionList[indice].id).subscribe(()=>{  
+              
+      })
+           
+      }  
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Editado!',
+          'Educación editada.',
+          'success'
+        )              
+      }
+    })
+
+
+  }
 
   borrarExperiencia(indice:number){
 
@@ -178,6 +356,7 @@ export class ExpEducationComponent implements OnInit {
       text: "¿Desea borrar definitivamente la experiencia seleccionada?",
       icon: 'warning',
       showCancelButton: true,
+      allowOutsideClick:false,  
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
@@ -199,6 +378,7 @@ export class ExpEducationComponent implements OnInit {
 
   }
 
+
   borrarEducacion(indice:number){
 
     
@@ -207,6 +387,7 @@ export class ExpEducationComponent implements OnInit {
       text: "¿Desea borrar definitivamente la educación seleccionada?",
       icon: 'warning',
       showCancelButton: true,
+      allowOutsideClick:false,  
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
@@ -233,10 +414,24 @@ export class ExpEducationComponent implements OnInit {
 
 
     this.obtenerEducacion().subscribe(educaciones=>{
+      educaciones.sort((edu1:any, edu2:any)=> {
+        if (edu1.id < edu2.id){
+          return -1;
+        }else {
+          return 1;
+        }
+      })       
       this.educacionList=educaciones;
     })
 
-    this.obtenerExperiencia().subscribe(experiencias =>{      
+    this.obtenerExperiencia().subscribe(experiencias =>{
+      experiencias.sort((exp1:any, exp2:any)=> {
+        if (exp1.id < exp2.id){
+          return -1;
+        }else {
+          return 1;
+        }
+      })        
       this.experienciaList=experiencias;      
     })
 

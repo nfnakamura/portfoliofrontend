@@ -49,11 +49,11 @@
 
 .agrega-exp h4{
     text-align: center;
-    margin-bottom: 2%;
+    margin-bottom: 20px;
 }
 .agrega-edu h4{
     text-align: center;
-    margin-bottom: 2%;
+    margin-bottom: 20px;
 }
 
 label {
@@ -65,7 +65,9 @@ label {
     display:flex;
     justify-content: center;
     align-items: center;
-    gap:80px;
+    gap:10px;
+    font-weight:500;
+    margin-top: 10px;
 }
 
 
@@ -99,6 +101,7 @@ label {
 .btn-edit{
       align-self: center;
 }
+
 
 
 .fas:hover{
@@ -150,8 +153,6 @@ label {
     .agrega-exp input{
         width: 100%;
     }
-    .botones{
-        gap:20px;
-    }
+
 
 }
