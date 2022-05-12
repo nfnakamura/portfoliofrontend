@@ -26,13 +26,12 @@
               <span id="info-ubication">{{miPorfolio.ubication}} </span>
               <span><a (click)="infoContacto()">Información de contacto</a></span>
             </div>
-          </div>
-     
-        
+          </div>    
         </div>
 
+        <!--------------------------------------- AGREGAR SECCION ------------------------------------>
+
         <div  *ngIf="userLogged|async" id="info-actions">
-      
           <button *ngIf="muestraAgregaSeccion; else cerrarAgregarSeccion" type="button" class="btn btn-outline-primary botonAgrega" (click)="agregarSeccion()">Añadir Sección</button>
           <ng-template #cerrarAgregarSeccion><button type="button"  class="btn btn-outline-danger botonAgrega"(click)="cancelaAgregar()">Cancelar Añadir</button></ng-template>
         </div>         
@@ -44,33 +43,27 @@
               <li  (click)="agregaProyecto()"class="list-group-item">Proyecto</li>              
             </ul>
           </div>
-
         
-       
+       <!-------------------------------------EDIT INFO----------------------------------->
       <div class="overlay" *ngIf="editaInfo">
           <form class="editForm">
-
               <h4>Editar información</h4>
               <div>
                 <label>Nombre</label>
               </div>  
-                <input class="form-control" type="text" name="nombre" [(ngModel)]="nombre" autofocus>
-            
+                <input class="form-control" type="text" name="nombre" [(ngModel)]="nombre" autofocus>            
               <div>
                 <label>Apellido</label>
               </div>  
-                <input class="form-control"  type="text" name="apellido" [(ngModel)]="apellido">
-              
+                <input class="form-control"  type="text" name="apellido" [(ngModel)]="apellido">              
               <div>
                 <label>Trabajos</label>
               </div>
-                <input class="form-control"  type="text" name="trabajos" [(ngModel)]="trabajos">
-              
+                <input class="form-control"  type="text" name="trabajos" [(ngModel)]="trabajos">              
               <div>
                 <label>Lugar de residencia</label>
               </div>  
-                <input class="form-control"  type="text" name="lugar" [(ngModel)]="lugar">
-                
+                <input class="form-control"  type="text" name="lugar" [(ngModel)]="lugar">              
 
                 <div class="editarImg">
                   <label for="">Imagen de perfil</label>
@@ -81,8 +74,6 @@
                     <label for="">Banner</label>
                   </div>  
                     <input type="file" accept=".png, .jpg, .jpeg" name="imagen" (change)="cargarBanner($event)">  
-                    
-
 
               <div class="botones">
                 <input (click)="aceptarEdicion()" value="Aceptar" class="btn btn-success botones" type="submit">

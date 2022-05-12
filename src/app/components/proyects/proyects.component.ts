@@ -13,38 +13,47 @@ import Swal from 'sweetalert2';
 })
 export class ProyectsComponent implements OnInit {
 
-
- constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
-
-  
   proyectosLista:any=[];
-
   agregaProyecto=false;
   aceptaProyecto=false;
   mostrarAlert=false;
   muestraDescripcion=false;
   aceptaBorrarProyecto=false;
-
   editaProyecto=false;
   aceptaEdit=false;
-
     
   formatoProyecto:string="";
   nombreProyecto:string="";
   linkProyecto:string="";
   descripcionProyecto:string="";
 
+ constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
+ 
+ ngOnInit(): void {
+ 
+  this.obtenerProyectos().subscribe(proyectos=>{      
+    proyectos.sort((proy1:any, proy2:any)=> {
+      if (proy1.id < proy2.id){
+        return -1;
+      }else {
+        return 1;
+      }
+    })       
+    this.proyectosLista=proyectos;
+  });
+
+  this.datosPorfolio.DisparadorDeAgregaProy.subscribe(()=>{
+    this.agregarProy();
+  })
+}
     
   userLogged=this.authService.getUserLogged();
 
+/*********************************AGREGAR PROYECTO********************************************/
+
   agregarProy(){
-    
-    this.agregaProyecto=true;
-   
-
-    
+    this.agregaProyecto=true;    
   }
-
 
   aceptarProy(){
     if(this.formatoProyecto=="" || this.nombreProyecto==""){
@@ -52,42 +61,32 @@ export class ProyectsComponent implements OnInit {
     }else{
       this.aceptaProyecto=true;
       this.agregaProyecto=false; 
-      this.mostrarAlert=false;
-      
-      const miProyecto= new Proyecto(this.formatoProyecto, this.nombreProyecto, this.linkProyecto, this.descripcionProyecto);    
-     
+      this.mostrarAlert=false;   
+
+      const miProyecto= new Proyecto(this.formatoProyecto, this.nombreProyecto, this.linkProyecto, this.descripcionProyecto);   
+
       this.proyectosLista.push(miProyecto);
-
       let proyectoPost = this.proyectosLista.slice(-1)[0]; 
-
-      this.datosPorfolio.guardarProyecto(proyectoPost).subscribe(() =>{
-     
+      this.datosPorfolio.guardarProyecto(proyectoPost).subscribe(() =>{     
         this.ngOnInit();
-      }
-        
+      }        
       )
     }
   }
 
   cancelarProy(){
     this.agregaProyecto=false;
-    this.mostrarAlert=false;
-    
+    this.mostrarAlert=false;    
   }
 
-  mostrarDescripcion(){     
-    this.muestraDescripcion=true;         
-  }
-
-  ocultarDescripcion(){
-    this.muestraDescripcion=false;
-  }
-
+/*********************************GET PROYECTOS**************************************/
  
   obtenerProyectos(){
     return this.datosPorfolio.cargarProyectos();
   }
 
+
+/*********************************DELETE PROYECTO***********************************/
 
   borrarProyecto(indice:number){
 
@@ -111,34 +110,26 @@ export class ProyectsComponent implements OnInit {
           'success'
         )
         this.datosPorfolio.eliminarProyecto(this.proyectosLista[indice].id).subscribe(()=>{
-           this.proyectosLista.splice(indice, 1);
-           
+           this.proyectosLista.splice(indice, 1);           
      })
       }
     })
   }
 
+/****************************************EDIT PROYECTO***************************************/
 
   editarProyecto(indice:number){
     Swal.fire({
       title: `Editar Proyecto #${indice + 1}`,
       html: `
-      <label class="label-edit">Formato del proyecto</label>
-      
-      <input type="text" id="formatoProy" class="form-control">
-      
-      <label class="label-edit">Nombre del proyecto</label>
-      
-      <input type="text" id="nombreProy" class="form-control">
-      
-      <label class="label-edit">Link del proyecto</label>
-      
-      <input type="text" id="linkProy" class="form-control">
-      
+      <label class="label-edit">Formato del proyecto</label>      
+      <input type="text" id="formatoProy" class="form-control">      
+      <label class="label-edit">Nombre del proyecto</label>      
+      <input type="text" id="nombreProy" class="form-control">      
+      <label class="label-edit">Link del proyecto</label>      
+      <input type="text" id="linkProy" class="form-control">      
       <label class="label-edit">Breve descripción del proyecto</label>
-      <textarea 
-      id="text-area" 
-      class="form-control"></textarea>
+      <textarea id="text-area" class="form-control"></textarea>
       `,    
       showCancelButton: true,
       allowOutsideClick:false,  
@@ -149,8 +140,7 @@ export class ProyectsComponent implements OnInit {
       focusConfirm: false,
       customClass:{
         popup:'popup-edit',
-        title:'title-edit',  
-        
+        title:'title-edit',          
       },
       showClass:{        
         popup: 'swal2-noanimation',
@@ -159,8 +149,7 @@ export class ProyectsComponent implements OnInit {
         const formatoProy = (<HTMLInputElement>document.querySelector('#formatoProy')).value 
         const nombreProy = (<HTMLInputElement>document.querySelector('#nombreProy')).value      
         const linkProy =(<HTMLInputElement>document.querySelector('#linkProy')).value
-        const descrip =(<HTMLInputElement>document.querySelector('#text-area')).value       
-       
+        const descrip =(<HTMLInputElement>document.querySelector('#text-area')).value           
 
         if(formatoProy!=""){
           this.proyectosLista[indice].format=formatoProy;
@@ -178,10 +167,9 @@ export class ProyectsComponent implements OnInit {
         if (!formatoProy && !nombreProy && !linkProy && !descrip) {
           Swal.showValidationMessage(`Debe editar al menos un campo para aceptar!`)
         }   
-                                
+
         this.datosPorfolio.editarProyecto(this.proyectosLista[indice], this.proyectosLista[indice].id).subscribe(()=>{         
-      })
-           
+        })           
       }  
     }).then((result) => {
       if (result.isConfirmed) {
@@ -189,41 +177,11 @@ export class ProyectsComponent implements OnInit {
           'Editado!',
           'Proyecto editado.',
           'success'
-        )              
+           )              
       }
     })
-
-
   }
 
-  cancelarEdit(){
-    this.editaProyecto=false;
-  }
- 
 
-  ngOnInit(): void {
-
- 
-    this.obtenerProyectos().subscribe(proyectos=>{
-      
-      proyectos.sort((proy1:any, proy2:any)=> {
-        if (proy1.id < proy2.id){
-          return -1;
-        }else {
-          return 1;
-        }
-      })       
-      this.proyectosLista=proyectos;
-     
-         
-    });
-
-
-    this.datosPorfolio.DisparadorDeAgregaProy.subscribe(()=>{
-      this.agregarProy();
-    })
-
-     
-  }
 
 }

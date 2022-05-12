@@ -23,11 +23,34 @@ export class SkillsComponent implements OnInit{
   habilidad:string="";
   porcentaje:string="";
 
+
+  constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }  
+  
+  ngOnInit(): void { 
+    this.obtenerHabilidad().subscribe(habilidades =>{   
+      
+      habilidades.sort((hab1:any, hab2:any)=> {
+        if (hab1.id < hab2.id){
+          return -1;
+        }else {
+          return 1;
+        }
+      })
+      this.listaAptitudes=habilidades;
+    });
+
+    this.datosPorfolio.DisparadorDeAgregaHab.subscribe(()=>{
+      this.agregarHabilidad();
+    })
+  }
+
+
   userLogged=this.authService.getUserLogged();
 
+  /*******************AGREGAR HABILIDAD*************************/
+
   agregarHabilidad(){
-    this.agregaHabilidad=true;
-    
+    this.agregaHabilidad=true;    
   }
 
   aceptarHabilidad(){
@@ -52,10 +75,8 @@ export class SkillsComponent implements OnInit{
       this.datosPorfolio.guardarHabilidad(habilidadPost).subscribe(() =>{
         
         this.ngOnInit();
-      }
-        
-      )
-          
+      }        
+      )          
     }    
   }
   
@@ -63,28 +84,24 @@ export class SkillsComponent implements OnInit{
     this.agregaHabilidad=false;
     this.alertPorcentaje=false;
     this.mostrarAlert=false;
-
   }
+
+  /*********************GET HABILIDAD***************************/
 
   obtenerHabilidad(){
-
     return this.datosPorfolio.cargarHabilidades();
-
   }
 
+  /*******************EDIT HABILIDAD***************************/
 
   editarHabilidad(indice:number){
     Swal.fire({
       title: `Editar Habilidad #${indice + 1}`,
       html: `
-      <label class="label-edit"">Habilidad</label>
-      
-      <input type="text" id="habilidad" class="form-control">
-      
-      <label class="label-edit"">%</label>
-      
+      <label class="label-edit"">Habilidad</label>      
+      <input type="text" id="habilidad" class="form-control">      
+      <label class="label-edit"">%</label>      
       <input type="text" id="porcentaje" class="form-control">
-
       `,    
       showCancelButton: true,
       allowOutsideClick:false,  
@@ -116,10 +133,8 @@ export class SkillsComponent implements OnInit{
           Swal.showValidationMessage(`Debe editar al menos un campo para aceptar!`)
         }   
                                 
-        this.datosPorfolio.editarHabilidad(this.listaAptitudes[indice], this.listaAptitudes[indice].id).subscribe(()=>{  
-          
+        this.datosPorfolio.editarHabilidad(this.listaAptitudes[indice], this.listaAptitudes[indice].id).subscribe(()=>{ 
       })
-           
       }  
     }).then((result) => {
       if (result.isConfirmed) {
@@ -132,7 +147,7 @@ export class SkillsComponent implements OnInit{
     })
 
 
-
+/********************DELETE HABILIDAD*********************/
   }  
 
   borrarHabilidad(indice:number){    
@@ -163,33 +178,4 @@ export class SkillsComponent implements OnInit{
     })
 
   }
-
-  constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
-  
-  
-  ngOnInit(): void {
-
-
- 
-    this.obtenerHabilidad().subscribe(habilidades =>{
-      
-      
-      habilidades.sort((hab1:any, hab2:any)=> {
-        if (hab1.id < hab2.id){
-          return -1;
-        }else {
-          return 1;
-        }
-      })
-      this.listaAptitudes=habilidades;
-    });
-
-    this.datosPorfolio.DisparadorDeAgregaHab.subscribe(()=>{
-      this.agregarHabilidad();
-    })
-
-  }
-
-
-
 }

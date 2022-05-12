@@ -16,7 +16,6 @@ export class ExpEducationComponent implements OnInit {
   
   educacionList:any=[];
   experienciaList:any=[];
-
   
   agregaexperiencia=false;
   aceptaExp=false;
@@ -33,7 +32,6 @@ export class ExpEducationComponent implements OnInit {
   modo:string="";
   score:string="";
 
-
   escuela:string="";
   titulo:string="";
   career:string="";
@@ -47,12 +45,47 @@ export class ExpEducationComponent implements OnInit {
   
   constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
 
-  userLogged=this.authService.getUserLogged();
- 
+  
+  ngOnInit(): void {
+
+    this.obtenerEducacion().subscribe(educaciones=>{
+      educaciones.sort((edu1:any, edu2:any)=> {
+        if (edu1.id < edu2.id){
+          return -1;
+        }else {
+          return 1;
+        }
+      })       
+      this.educacionList=educaciones;
+    })
+
+    this.obtenerExperiencia().subscribe(experiencias =>{
+      experiencias.sort((exp1:any, exp2:any)=> {
+        if (exp1.id < exp2.id){
+          return -1;
+        }else {
+          return 1;
+        }
+      })        
+      this.experienciaList=experiencias;      
+    })
+
+    this.datosPorfolio.DisparadorDeAgregaExp.subscribe(()=>{
+      this.agregar_experiencia();
+    }) 
+
+    this.datosPorfolio.DisparadorDeAgregaEdu.subscribe(()=>{
+      this.agregarEdu();
+    })
+  }
+
+
+  userLogged=this.authService.getUserLogged(); 
+
+  /****************************AGREGAR EXPERIENCIA*************************/
  
   agregar_experiencia(){      
-    this.agregaexperiencia=true;
-    
+    this.agregaexperiencia=true;    
   }
 
   aceptarExp(){
@@ -104,6 +137,8 @@ export class ExpEducationComponent implements OnInit {
    
   }
 
+  /*******************************AGREGAR EDUCACION******************************/
+
   agregarEdu(){
     this.agregaEdu=true;
    
@@ -115,8 +150,7 @@ export class ExpEducationComponent implements OnInit {
     }else{
       this.mostrarAlertEdu=false;
       this.aceptaEdu=true;
-      this.agregaEdu=false;
-      
+      this.agregaEdu=false;     
 
       let miEducacion = new Educacion(this.escuela, this.titulo, this.educacionList.image, this.career, this.score, this.anioInicioEdu, this.anioFinEdu);
 
@@ -124,9 +158,7 @@ export class ExpEducationComponent implements OnInit {
 
       let educacionPost = this.educacionList.slice(-1)[0];
       
-      this.datosPorfolio.guardarEducacion(educacionPost).subscribe(() =>{
-        
-   
+      this.datosPorfolio.guardarEducacion(educacionPost).subscribe(() =>{  
         this.ngOnInit();
       }       
       )
@@ -153,15 +185,12 @@ export class ExpEducationComponent implements OnInit {
       })
     }     
   }
-  
-
-
-
   cancelarEdu(){
     this.agregaEdu=false;
     this.mostrarAlertEdu=false;
-    
   }
+
+  /***************************************GET EXPERIENCIA Y EDUCACION*********************************/
 
   obtenerExperiencia(){
     return this.datosPorfolio.cargarExperiencia();
@@ -170,32 +199,23 @@ export class ExpEducationComponent implements OnInit {
     return this.datosPorfolio.cargarEducacion();
   }
 
+  /*******************************EDIT EXPERIENCIA*******************************************/
+
   editarExperiencia(indice:number){
     Swal.fire({
       title: `Editar Experiencia #${indice + 1}`,
       html: `
-      <label class="label-edit">Cargo</label>
-      
-      <input  type="text" id="cargo" class="form-control">
-      
-      <label class="label-edit">Lugar de Trabajo</label>
-      
-      <input  type="text" id="lugar" class="form-control">
-      
-      <label class="label-edit">Formato</label>
-      
+      <label class="label-edit">Cargo</label>      
+      <input  type="text" id="cargo" class="form-control">      
+      <label class="label-edit">Lugar de Trabajo</label>      
+      <input  type="text" id="lugar" class="form-control">      
+      <label class="label-edit">Formato</label>      
       <input type="text" id="formato" class="form-control">
-
-      <label class="label-edit">Inicio</label>
-      
+      <label class="label-edit">Inicio</label>      
       <input type="text" id="inicio" class="form-control">
-
-      <label class="label-edit">Finalizacion</label>
-      
+      <label class="label-edit">Finalizacion</label>      
       <input  type="text" id="finalizacion" class="form-control">
-
-      <label class="label-edit">Duración</label>
-      
+      <label class="label-edit">Duración</label>      
       <input type="text" id="duracion" class="form-control">
       `,    
       showCancelButton: true,
@@ -213,11 +233,6 @@ export class ExpEducationComponent implements OnInit {
       showClass:{        
         popup: 'swal2-noanimation',
       },
-
-
-      
-
-
       preConfirm: () => {
         const cargo = (<HTMLInputElement>document.querySelector('#cargo')).value 
         const lugar = (<HTMLInputElement>document.querySelector('#lugar')).value      
@@ -248,8 +263,6 @@ export class ExpEducationComponent implements OnInit {
         if (!cargo && !lugar && !formato && !inicio && !finalizacion && !duracion) {
           Swal.showValidationMessage(`Debe editar al menos un campo para aceptar!`)
         }          
-        
-        
         this.datosPorfolio.editarExperiencia(this.experienciaList[indice], this.experienciaList[indice].id).subscribe(()=>{         
       })
            
@@ -263,33 +276,23 @@ export class ExpEducationComponent implements OnInit {
         )              
       }
     })
-
-
   }
 
+  /***********************************EDIT EDUCACION**********************************************/
 
   editarEducacion(indice:number){
     Swal.fire({
       title: `Editar Educación #${indice + 1}`,
       html: `
-      <label class="label-edit">Nombre de la Institución:</label>
-      
-      <input type="text" id="institucion" class="form-control">
-      
-      <label class="label-edit">Título</label>
-      
-      <input type="text" id="titulo" class="form-control">
-      
-      <label class="label-edit">Tipo</label>
-      
+      <label class="label-edit">Nombre de la Institución:</label>      
+      <input type="text" id="institucion" class="form-control">      
+      <label class="label-edit">Título</label>      
+      <input type="text" id="titulo" class="form-control">      
+      <label class="label-edit">Tipo</label>      
       <input type="text" id="tipo" class="form-control">
-
-      <label class="label-edit">Inicio</label>
-      
+      <label class="label-edit">Inicio</label>      
       <input type="text" id="inicio" class="form-control">
-
-      <label class="label-edit">Finalización</label>
-      
+      <label class="label-edit">Finalización</label>      
       <input type="text" id="finalizacion" class="form-control">
       `,
       
@@ -314,8 +317,7 @@ export class ExpEducationComponent implements OnInit {
         const titulo = (<HTMLInputElement>document.querySelector('#titulo')).value      
         const tipo =(<HTMLInputElement>document.querySelector('#tipo')).value
         const inicio=(<HTMLInputElement>document.querySelector('#inicio')).value 
-        const finalizacion =(<HTMLInputElement>document.querySelector('#finalizacion')).value  
-        
+        const finalizacion =(<HTMLInputElement>document.querySelector('#finalizacion')).value 
 
         if(institucion!=""){
           this.educacionList[indice].school=institucion;
@@ -333,17 +335,13 @@ export class ExpEducationComponent implements OnInit {
           this.educacionList[indice].ended=finalizacion;
         }
       
-      
-              
         if (!institucion && !titulo && !tipo && !inicio && !finalizacion) {
           Swal.showValidationMessage(`Debe editar al menos un campo para aceptar!`)
         }          
         
-        
         this.datosPorfolio.editarEducacion(this.educacionList[indice], this.educacionList[indice].id).subscribe(()=>{  
               
       })
-           
       }  
     }).then((result) => {
       if (result.isConfirmed) {
@@ -354,13 +352,11 @@ export class ExpEducationComponent implements OnInit {
         )              
       }
     })
-
-
   }
 
-  borrarExperiencia(indice:number){
+  /*********************************DELETE EXPERIENCIA****************************/
 
-    
+  borrarExperiencia(indice:number){
     Swal.fire({
       title: `Borrar Experiencia #${indice + 1}`,
       text: "¿Desea borrar definitivamente la experiencia seleccionada?",
@@ -387,14 +383,12 @@ export class ExpEducationComponent implements OnInit {
       }
     })
     
-
-
   }
 
+  /*************************DELETE EDUCACION*******************************/
 
   borrarEducacion(indice:number){
 
-    
     Swal.fire({
       title: `Borrar Educación #${indice + 1}`,
       text: "¿Desea borrar definitivamente la educación seleccionada?",
@@ -420,46 +414,6 @@ export class ExpEducationComponent implements OnInit {
      })
       }
     })
-
   }
-
   
-
-
-  ngOnInit(): void {
-
-
-    this.obtenerEducacion().subscribe(educaciones=>{
-      educaciones.sort((edu1:any, edu2:any)=> {
-        if (edu1.id < edu2.id){
-          return -1;
-        }else {
-          return 1;
-        }
-      })       
-      this.educacionList=educaciones;
-    })
-
-    this.obtenerExperiencia().subscribe(experiencias =>{
-      experiencias.sort((exp1:any, exp2:any)=> {
-        if (exp1.id < exp2.id){
-          return -1;
-        }else {
-          return 1;
-        }
-      })        
-      this.experienciaList=experiencias;      
-    })
-
-    this.datosPorfolio.DisparadorDeAgregaExp.subscribe(()=>{
-      this.agregar_experiencia();
-    }) 
-
-    this.datosPorfolio.DisparadorDeAgregaEdu.subscribe(()=>{
-      this.agregarEdu();
-    })
-  }
-
- 
-
 }

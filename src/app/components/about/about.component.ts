@@ -14,15 +14,22 @@ export class AboutComponent implements OnInit {
   texto:string="";
   editarParrafo=false;
   mostrarAlert=false;
+  
+  constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
 
+  ngOnInit(): void {
 
+    this.obtenerAbout().subscribe(about =>{
+       this.miPorfolio=about;      
+    });
+  }
+    
   userLogged=this.authService.getUserLogged();
- 
+
+  /********************************EDIT ABOUT************************************/
 
   habilitar_edicion(){
-    this.editarParrafo=true;
-   
- 
+    this.editarParrafo=true; 
   };
 
   aceptar_edicion(){
@@ -34,39 +41,21 @@ export class AboutComponent implements OnInit {
       this.mostrarAlert=false;
 
       this.datosPorfolio.guardarAbout(this.miPorfolio).subscribe(() =>{
-     
-      
         this.ngOnInit();
-      }
-    )
-
+      })
     }    
   }
 
   cancelar_edicion(){
     this.editarParrafo=false;
-    this.mostrarAlert=false;
- 
- 
+    this.mostrarAlert=false; 
   }
+
+  /*************************GET ABOUT********************/
 
   obtenerAbout(){
     return this.datosPorfolio.cargarDatos();
   }
   
-
-  constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
-
-  
-
-  ngOnInit(): void {
-
-    this.obtenerAbout().subscribe(about =>{
-       this.miPorfolio=about;
-      
-    });
-
-
-  }
 
 }

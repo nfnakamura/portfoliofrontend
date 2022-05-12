@@ -13,7 +13,6 @@ export class AuthService {
    
    }
 
-
   async register(email: string, password: string){
     try{
       return await this.afauth.createUserWithEmailAndPassword(email, password);
@@ -22,7 +21,6 @@ export class AuthService {
       return null;
     }
   }
-
   async login(email:string, password:string){
     try{
       return await firebase.auth().setPersistence('session').then(()=>this.afauth.signInWithEmailAndPassword(email, password));
@@ -32,7 +30,7 @@ export class AuthService {
     }
   }
 
-
+/*
   async loginWithGoogle(email:string, password:string){
     try{
       return await firebase.auth().setPersistence('session').then(()=>this.afauth.signInWithPopup(new firebase.auth.GoogleAuthProvider()));
@@ -40,7 +38,7 @@ export class AuthService {
       console.log("error en login con google", err);
       return null;
     }
-  }
+  }*/
 
   getUserLogged(){
     return this.afauth.authState;

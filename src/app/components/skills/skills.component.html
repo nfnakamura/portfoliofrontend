@@ -6,8 +6,6 @@
     <div class="container">
       <div class="skills-bar">
 
-        
-       
         <div *ngFor="let aptitud of listaAptitudes; let i=index" class="bar">
           <div class="info">
             <span class="habilidad-nombre">{{aptitud.name}}
@@ -17,38 +15,28 @@
           </div>
           <div class="progress-line {{aptitud.value}}"><span [ngStyle]="{'width': aptitud.progress + '%'}"><span id="porcentajeSpan">{{aptitud.progress}}%</span></span></div>
         </div>
-      
 
-
+        
+      <!----------------------------------------- AGREGAR HABILIDAD -------------------------------------------------------->
           <div class="overlay" *ngIf="agregaHabilidad"> 
-              <div class="agrega-habilidad">
-                
+              <div class="agrega-habilidad">                
                 <h4>Agregar habilidad</h4>
                 <label>Habilidad*</label>        
-                <input class="form-control" type="text" [(ngModel)]="habilidad" autofocus>
-                
-                
+                <input class="form-control" type="text" [(ngModel)]="habilidad" autofocus>               
                 <label>%*</label>        
-                <input class="form-control"  type="text" [(ngModel)]="porcentaje">
-                
+                <input class="form-control"  type="text" [(ngModel)]="porcentaje">                
                 <div class="alert-container" *ngIf="mostrarAlert">
                   <p id="alert">Debe indicar habilidad y porcentaje de progreso(*)</p>
                 </div>
-
                 <div class="alert-container" *ngIf="alertPorcentaje">
                   <p id="alert">El valor del porcentaje debe ser entre 0 y 100</p>
                 </div>
-
                 <div class="botones">
                 <input class="btn btn-success botones" type="submit" value="Agregar" (click)="aceptarHabilidad()" > 
                 <input class="btn btn-danger botones" type="submit" value="Cancelar" (click)="cancelarHabilidad()"> 
-                </div>
-
-              
+                </div>             
               </div>
            </div>
-
-
       </div>
     </div>
 </div> 

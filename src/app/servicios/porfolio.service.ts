@@ -39,11 +39,10 @@ export class PorfolioService {
   constructor(private http:HttpClient) { }
 
 
-  /*GET*/
-  cargarDatos():Observable<any>{
-      
-     return this.http.get(this.urlBack+'ver/personas/1');
+  /*********************************************GET***********************************************/
 
+  cargarDatos():Observable<any>{      
+  return this.http.get(this.urlBack+'ver/personas/1');
  }
 
 cargarExperiencia():Observable<any>{
@@ -62,7 +61,7 @@ cargarExperiencia():Observable<any>{
     return this.http.get(this.urlBack+'ver/proyectos')
  }
 
- /*DELETE*/
+ /**************************************************DELETE***************************************************/
  
  eliminarDatos():Observable<any>{
    return this.http.delete('https://portfolio-7c37f-default-rtdb.firebaseio.com/.json')
@@ -85,7 +84,7 @@ eliminarEducacion(idEducacion:number): Observable<ExpEducationComponent>{
   return this.http.delete<ExpEducationComponent>(this.urlBack+`delete/persona/1/educacion/${idEducacion}`);
 }
 
-  /*POST*/  
+  /***************************************************GUARDAR*********************************************************/  
 
   guardarProyecto(proyecto:ProyectsComponent[]): Observable<ProyectsComponent>{                 
     return this.http.post<ProyectsComponent>(this.urlBack+'new/persona/1/proyecto', proyecto, httpOptions);
@@ -104,7 +103,7 @@ eliminarEducacion(idEducacion:number): Observable<ExpEducationComponent>{
   }
 
 
-  /*PATCH - PUT*/
+  /*************************************************EDIT***************************************************************/
 
   guardarAbout(about:AboutComponent[]): Observable<AboutComponent>{
     return this.http.patch<AboutComponent>(this.urlBack+'edit/persona/1', about, httpOptions);
@@ -134,50 +133,38 @@ eliminarEducacion(idEducacion:number): Observable<ExpEducationComponent>{
     return this.http.patch<ExpEducationComponent>(this.urlBack+`edit/persona/1/experiencia/${idExperiencia}`, experiencia, httpOptions);
   }
 
-/* Guardando en el storage de Firebase*/
-  async guardarImagenPerfil(nombre:string, imgBase64:any){
+/************************************** SUBIENDO IMAGENES A FIREBASE***************************************************************/
 
+  async guardarImagenPerfil(nombre:string, imgBase64:any){
     try{
       let respuesta = await this.storageRef.child("users/"+nombre).putString(imgBase64, 'data_url')     
-      return await respuesta.ref.getDownloadURL();
-      
+      return await respuesta.ref.getDownloadURL();      
     }catch(err){
       console.log(err);
       return null;
     }
-
   }
 
   async guardarImagenExp(nombre:string, imgBase64:any){
-
     try{
       let respuesta = await this.storageRef.child("experiencia/"+nombre).putString(imgBase64, 'data_url')     
-      return await respuesta.ref.getDownloadURL();
-      
+      return await respuesta.ref.getDownloadURL();      
     }catch(err){
       console.log(err);
       return null;
     }
-
   }
 
 
   async guardarImagenEdu(nombre:string, imgBase64:any){
-
     try{
       let respuesta = await this.storageRef.child("educacion/"+nombre).putString(imgBase64, 'data_url')     
-      return await respuesta.ref.getDownloadURL();
-      
+      return await respuesta.ref.getDownloadURL();      
     }catch(err){
       console.log(err);
       return null;
     }
-
   }
-
-
-
-
 
 
 }

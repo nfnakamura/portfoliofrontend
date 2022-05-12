@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/servicios/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-
   usuario = {
   email: '',
   password: ''
@@ -19,12 +18,16 @@ errorIngresoMail=false;
 errorVacio=false;
 
 
+constructor(private authService: AuthService, private router:Router) { }
+
+ngOnInit(): void {
+}
+
 redirigir(){
   this.router.navigate(['/home']);
 }
 
 ingresar(){
-
   const {email, password} = this.usuario;
   if (email=="" || password==""){
       this.errorVacio=true;
@@ -54,10 +57,6 @@ ingresarConGoogle(){
 }
 */
 
-  constructor(private authService: AuthService, private router:Router) { }
-
-  ngOnInit(): void {
-  }
 
 
   logout(){

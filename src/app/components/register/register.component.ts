@@ -17,6 +17,13 @@ export class RegisterComponent implements OnInit {
 errorRegistrando=false;
 errorVacio=false;
 
+
+constructor(private authService: AuthService, private router:Router) { }
+
+ngOnInit(): void {
+}
+
+
 redirigir(){
   this.router.navigate(['/home']);
 }
@@ -40,11 +47,6 @@ registrarse(){
   })
 } 
 }
-
-  constructor(private authService: AuthService, private router:Router) { }
-
-  ngOnInit(): void {
-  }
 
 
 }

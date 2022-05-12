@@ -26,17 +26,27 @@ export class HeaderComponent implements OnInit {
   trabajos:string="";
   lugar:string="";
 
-
   expAceptada=false;
 
   nombreApellido:any=[];
   
   imagenes:any=[];
+  
+  constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
 
+  ngOnInit(): void {
+
+    this.datosPorfolio.cargarDatos().subscribe(data =>{
+       this.miPorfolio=data;
+       this.load=true;
+    });
+  }
   
   userLogged=this.authService.getUserLogged();
 
   
+  /*************************ELEGIR SECCION PARA AGREGAR*************************/
+
   agregarSeccion(){
     this.agregaSeccion=true;
     this.muestraAgregaSeccion=false;    
@@ -75,19 +85,14 @@ export class HeaderComponent implements OnInit {
     this.muestraAgregaSeccion=true;  
   }
 
-
+  /***************************EDIT INFO HEADER***************************************/
 
   editarInfo(){
     this.editaInfo=true;
-   
-    
-  }
-
-  
+  }  
 
   cancelarEdicion(){
     this.editaInfo=false;   
-    
   }
 
   aceptarEdicion(){    
@@ -135,19 +140,12 @@ export class HeaderComponent implements OnInit {
 
             )       
           }                         
-            this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(()=>{
-           
-           })
-           this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(()=>{
-           
-          })
-           
-         
-          
-    }   
-     
+          this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(()=>{
+           })                
+    }        
   }
 
+/********************SUBIENDO IMAGEN A FIREBASE*********************************/
 
  cargarImagen(event:any){  
     console.log(event.target.files);   
@@ -167,6 +165,8 @@ export class HeaderComponent implements OnInit {
     }        
   }
 
+/**********************SUBIENDO BANNER A FIREBASE****************************/
+
   cargarBanner(event:any){  
     console.log(event.target.files);   
     let archivo = event.target.files  
@@ -184,27 +184,13 @@ export class HeaderComponent implements OnInit {
       })     
     }        
   }
-    
-
-
 
   infoContacto(){
-
     Swal.fire({
       icon: 'info',
-      title: 'Nahuel Nakamura',
+      title: `${this.miPorfolio.nombre} ${this.miPorfolio.apellido}`,
       text: 'mail: nfn1991@hotmail.com',            
     })
   }
 
-
-  constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
-
-  ngOnInit(): void {
-
-    this.datosPorfolio.cargarDatos().subscribe(data =>{
-       this.miPorfolio=data;
-       this.load=true;
-    });
-  }
 }

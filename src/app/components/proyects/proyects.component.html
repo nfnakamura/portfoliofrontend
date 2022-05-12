@@ -6,43 +6,31 @@
   </div>
 
 
-
-
   <div class="achivements">
     <div class="titulo">  
-
-      <h3 class="data-proyectos">{{proyectosLista.length}} </h3>
-    
+      <h3 class="data-proyectos">{{proyectosLista.length}} </h3>    
       <div class="project-title">
           <h3 class="data-proyectos">Proyectos</h3>
       </div>
     </div> 
-
     
   
     <div class="project-container">
       <ul class="project-list">
         <li *ngFor="let proyect of proyectosLista; let i = index" >
           <div class="proyecto-titulo-icono">
-            <a target="_blank" href="{{proyect.link}}"><h2 class="titulo-proyecto">{{proyect.format}} - {{proyect.name}}</h2></a> 
-            
-            <i *ngIf="userLogged|async" (click)="editarProyecto(i)" class="fa fa-pen btn-right btn-edit" ></i>            
-        
+            <a target="_blank" href="{{proyect.link}}"><h2 class="titulo-proyecto">{{proyect.format}} - {{proyect.name}}</h2></a>             
+            <i *ngIf="userLogged|async" (click)="editarProyecto(i)" class="fa fa-pen btn-right btn-edit" ></i>  
             <i *ngIf="userLogged|async" (click)="borrarProyecto(i)" class="fas fa-trash-alt btn"></i>
-
            </div>
           <a target="_blank" href="{{proyect.link}}"><p>-<span style="font-style: oblique;">{{proyect.link}}</span>-</p></a>                             
-          <p>{{proyect.description}}</p>     
-        
-          
-
+          <p>{{proyect.description}}</p>   
         </li>
-      </ul>            
-
+      </ul>          
     </div>
   </div>
 
-<!-- agrega proyecto -->
+<!-------------------------------------- AGREGA PROYECTO ------------------------->
 <div class="overlay" *ngIf="agregaProyecto">
  
   <form class="agregar-proyecto" >
@@ -55,8 +43,7 @@
       type="text" 
       name="formatoProyecto" 
       [(ngModel)]="formatoProyecto" 
-      autofocus>
-    
+      autofocus>    
     <div>
       <label>Nombre del proyecto*</label>
     </div> 
@@ -64,15 +51,13 @@
       class="form-control input-agregar" 
       name="nombreProyecto" 
       [(ngModel)]="nombreProyecto">  
-
       <div>
         <label>Link del proyecto</label>
       </div> 
         <input type="text"
         class="form-control input-agregar"
          name="linkProyecto" 
-         [(ngModel)]="linkProyecto">    
-    
+         [(ngModel)]="linkProyecto">  
     <div>
       <div id="titulo-textarea">
         <label>Breve descripción del proyecto:</label>
