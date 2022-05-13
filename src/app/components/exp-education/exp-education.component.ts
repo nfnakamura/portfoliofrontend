@@ -185,9 +185,9 @@ export class ExpEducationComponent implements OnInit {
           name:'Educacion',
           imgProfile: urlImagen,
       }        
-        this.educacionList.image=urlImagen;
+        this.educacionList.image=urlImagen;      
       })
-    }     
+    }   
   }
   cancelarEdu(){
     this.agregaEdu=false;
