@@ -1,4 +1,4 @@
-import { Component, OnInit,Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { PorfolioService } from 'src/app/servicios/porfolio.service';
 import Swal from 'sweetalert2';
@@ -104,43 +104,18 @@ export class HeaderComponent implements OnInit {
       this.mostrarAlert=false;
       
           if(this.nombre !=""){
-              this.miPorfolio.nombre = this.nombre; 
-
-              this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(() =>{
-              
-              this.ngOnInit();  
-              }
-            )          
+              this.miPorfolio.nombre = this.nombre;   
           }
           if(this.apellido !=""){            
             this.miPorfolio.apellido = this.apellido;
-
-            this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(() =>{
-            
-            this.ngOnInit();  
-            }
-          )
           }
           if(this.trabajos!=""){   
             this.miPorfolio.position=this.trabajos;
-
-            this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(() =>{
-             
-              this.ngOnInit();  
-              }
-            )     
           }              
           if(this.lugar!=""){
             this.miPorfolio.ubication=this.lugar;
-
-            this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(()=>{
-              
-              this.ngOnInit();  
-              }
-
-            )       
           }                         
-          this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(()=>{
+          this.datosPorfolio.guardarPersona(this.miPorfolio).subscribe(()=>{            
            })                
     }        
   }
@@ -148,7 +123,7 @@ export class HeaderComponent implements OnInit {
 /********************SUBIENDO IMAGEN A FIREBASE*********************************/
 
  cargarImagen(event:any){  
-    console.log(event.target.files);   
+     
     let archivo = event.target.files  
     let nombre = "Nahuel";
     let reader = new FileReader();
@@ -168,7 +143,7 @@ export class HeaderComponent implements OnInit {
 /**********************SUBIENDO BANNER A FIREBASE****************************/
 
   cargarBanner(event:any){  
-    console.log(event.target.files);   
+  
     let archivo = event.target.files  
     let nombre = "Banner";
     let reader = new FileReader();

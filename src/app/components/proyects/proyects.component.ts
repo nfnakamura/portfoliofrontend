@@ -49,6 +49,13 @@ export class ProyectsComponent implements OnInit {
     
   userLogged=this.authService.getUserLogged();
 
+
+/*********************************GET PROYECTOS*******************************************/
+ 
+obtenerProyectos(){
+  return this.datosPorfolio.cargarProyectos();
+}
+
 /*********************************AGREGAR PROYECTO********************************************/
 
   agregarProy(){
@@ -67,10 +74,8 @@ export class ProyectsComponent implements OnInit {
 
       this.proyectosLista.push(miProyecto);
       let proyectoPost = this.proyectosLista.slice(-1)[0]; 
-      this.datosPorfolio.guardarProyecto(proyectoPost).subscribe(() =>{     
-        this.ngOnInit();
-      }        
-      )
+      this.datosPorfolio.guardarProyecto(proyectoPost).subscribe(() =>{         
+      })
     }
   }
 
@@ -78,13 +83,6 @@ export class ProyectsComponent implements OnInit {
     this.agregaProyecto=false;
     this.mostrarAlert=false;    
   }
-
-/*********************************GET PROYECTOS**************************************/
- 
-  obtenerProyectos(){
-    return this.datosPorfolio.cargarProyectos();
-  }
-
 
 /*********************************DELETE PROYECTO***********************************/
 
@@ -111,7 +109,7 @@ export class ProyectsComponent implements OnInit {
         )
         this.datosPorfolio.eliminarProyecto(this.proyectosLista[indice].id).subscribe(()=>{
            this.proyectosLista.splice(indice, 1);           
-     })
+        })
       }
     })
   }
@@ -181,7 +179,5 @@ export class ProyectsComponent implements OnInit {
       }
     })
   }
-
-
 
 }

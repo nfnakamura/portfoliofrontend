@@ -82,6 +82,17 @@ export class ExpEducationComponent implements OnInit {
 
   userLogged=this.authService.getUserLogged(); 
 
+  
+  /***************************************GET EXPERIENCIA Y EDUCACION*********************************/
+
+  obtenerExperiencia(){
+    return this.datosPorfolio.cargarExperiencia();
+  }
+  obtenerEducacion(){
+    return this.datosPorfolio.cargarEducacion();
+  }
+
+
   /****************************AGREGAR EXPERIENCIA*************************/
  
   agregar_experiencia(){      
@@ -103,16 +114,12 @@ export class ExpEducationComponent implements OnInit {
       let experienciaPost = this.experienciaList.slice(-1)[0];
      
       this.datosPorfolio.guardarExperiencia(experienciaPost).subscribe(() =>{
-     
-        this.ngOnInit();
-        }      
-      )
+      })
     }
   }
 
   cargarImagen(event:any){    
-
-    console.log(event.target.files);   
+    
     let archivo = event.target.files  
     let nombre = "Experiencia";
     let reader = new FileReader();
@@ -133,8 +140,7 @@ export class ExpEducationComponent implements OnInit {
 
   cancelarExp(){
     this.agregaexperiencia=false;
-    this.mostrarAlert=false;
-   
+    this.mostrarAlert=false;   
   }
 
   /*******************************AGREGAR EDUCACION******************************/
@@ -158,10 +164,8 @@ export class ExpEducationComponent implements OnInit {
 
       let educacionPost = this.educacionList.slice(-1)[0];
       
-      this.datosPorfolio.guardarEducacion(educacionPost).subscribe(() =>{  
-        this.ngOnInit();
-      }       
-      )
+      this.datosPorfolio.guardarEducacion(educacionPost).subscribe(() =>{       
+      })
     }    
   }
 
@@ -188,15 +192,6 @@ export class ExpEducationComponent implements OnInit {
   cancelarEdu(){
     this.agregaEdu=false;
     this.mostrarAlertEdu=false;
-  }
-
-  /***************************************GET EXPERIENCIA Y EDUCACION*********************************/
-
-  obtenerExperiencia(){
-    return this.datosPorfolio.cargarExperiencia();
-  }
-  obtenerEducacion(){
-    return this.datosPorfolio.cargarEducacion();
   }
 
   /*******************************EDIT EXPERIENCIA*******************************************/
@@ -339,8 +334,7 @@ export class ExpEducationComponent implements OnInit {
           Swal.showValidationMessage(`Debe editar al menos un campo para aceptar!`)
         }          
         
-        this.datosPorfolio.editarEducacion(this.educacionList[indice], this.educacionList[indice].id).subscribe(()=>{  
-              
+        this.datosPorfolio.editarEducacion(this.educacionList[indice], this.educacionList[indice].id).subscribe(()=>{                
       })
       }  
     }).then((result) => {
@@ -379,10 +373,9 @@ export class ExpEducationComponent implements OnInit {
         )
         this.datosPorfolio.eliminarExperiencia(this.experienciaList[indice].id).subscribe(()=>{
           this.experienciaList.splice(indice, 1);
-     })
+        })
       }
-    })
-    
+    })    
   }
 
   /*************************DELETE EDUCACION*******************************/
@@ -414,6 +407,5 @@ export class ExpEducationComponent implements OnInit {
      })
       }
     })
-  }
-  
+  }  
 }

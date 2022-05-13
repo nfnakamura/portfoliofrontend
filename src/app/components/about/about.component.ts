@@ -26,6 +26,12 @@ export class AboutComponent implements OnInit {
     
   userLogged=this.authService.getUserLogged();
 
+  /*************************GET ABOUT********************/
+
+    obtenerAbout(){
+      return this.datosPorfolio.cargarDatos();
+    }
+
   /********************************EDIT ABOUT************************************/
 
   habilitar_edicion(){
@@ -40,8 +46,7 @@ export class AboutComponent implements OnInit {
       this.editarParrafo=false;      
       this.mostrarAlert=false;
 
-      this.datosPorfolio.guardarAbout(this.miPorfolio).subscribe(() =>{
-        this.ngOnInit();
+      this.datosPorfolio.guardarAbout(this.miPorfolio).subscribe(() =>{       
       })
     }    
   }
@@ -51,11 +56,6 @@ export class AboutComponent implements OnInit {
     this.mostrarAlert=false; 
   }
 
-  /*************************GET ABOUT********************/
 
-  obtenerAbout(){
-    return this.datosPorfolio.cargarDatos();
-  }
-  
 
 }

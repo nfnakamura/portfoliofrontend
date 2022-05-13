@@ -38,7 +38,6 @@ export class SkillsComponent implements OnInit{
       })
       this.listaAptitudes=habilidades;
     });
-
     this.datosPorfolio.DisparadorDeAgregaHab.subscribe(()=>{
       this.agregarHabilidad();
     })
@@ -46,6 +45,12 @@ export class SkillsComponent implements OnInit{
 
 
   userLogged=this.authService.getUserLogged();
+
+  /*********************GET HABILIDAD***************************/
+
+  obtenerHabilidad(){
+    return this.datosPorfolio.cargarHabilidades();
+  }
 
   /*******************AGREGAR HABILIDAD*************************/
 
@@ -72,11 +77,8 @@ export class SkillsComponent implements OnInit{
 
       let habilidadPost = this.listaAptitudes.slice(-1)[0];
 
-      this.datosPorfolio.guardarHabilidad(habilidadPost).subscribe(() =>{
-        
-        this.ngOnInit();
-      }        
-      )          
+      this.datosPorfolio.guardarHabilidad(habilidadPost).subscribe(() =>{        
+      })          
     }    
   }
   
@@ -84,12 +86,6 @@ export class SkillsComponent implements OnInit{
     this.agregaHabilidad=false;
     this.alertPorcentaje=false;
     this.mostrarAlert=false;
-  }
-
-  /*********************GET HABILIDAD***************************/
-
-  obtenerHabilidad(){
-    return this.datosPorfolio.cargarHabilidades();
   }
 
   /*******************EDIT HABILIDAD***************************/
