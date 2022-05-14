@@ -21,6 +21,7 @@ div#profile-background {
     
     display: flex;
     z-index: 1;
+  
 }
 div#profile-background img {
     
@@ -60,8 +61,7 @@ div#profile-background img {
 }
 
 .contenedor figure .capa{
-    text-align: center;
-  
+    text-align: center;  
     position:absolute;
     top: 0;
     width: 100%;
@@ -92,11 +92,21 @@ div#profile-background img {
     color: rgb(230, 227, 227);
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.5em;    
+}
 
+#cargando{
+    font-size: 1.8em;
+    margin-top:40%;
+    color: rgba(255, 255, 255, 0.596);;
+}
 
+.imgLoading{
+    margin-left: 5%;
+    width:90%;   
     
 }
+
 
 
 
@@ -171,7 +181,6 @@ span a{
 }
 
 
-
 @media screen and (max-width: 768px){
     .profile-image {
         border-radius: 50%;
@@ -183,6 +192,10 @@ span a{
 
 
 }
+
+
+
+
 
 @media screen and (max-width: 600px){
     .profile-image {

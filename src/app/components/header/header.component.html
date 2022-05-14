@@ -3,10 +3,18 @@
   <div class="card mat-card" id="first-card">
     <div class="contenedor">  
       <figure>
-        <div id="profile-background"><img id="info-back-img" [src]="miPorfolio.backImage"></div>
+        <div id="profile-background">
+          <img *ngIf="load; else loadingImg" id="info-back-img" [src]="miPorfolio.backImage">
+          <ng-template #loadingImg><div class="imgLoading">
+            <img src="https://images.squarespace-cdn.com/content/v1/5b57c77f45776e84ca9708ea/1579152465015-ENY9DK9VH23I31EDODZK/fill-color.gif">
+            
+          </div>
+           </ng-template>
+        </div>
         <div class="capa">
           <h2 *ngIf="load"> {{miPorfolio.nombre}}<span>  {{miPorfolio.apellido}}</span></h2>
-          <p>Web Developer </p>         
+          <p *ngIf="load">Web Developer</p>
+          <p id="cargando" *ngIf="!load">CARGANDO...</p>         
         </div>
       </figure> 
     </div>  
