@@ -41,6 +41,8 @@ export class ExpEducationComponent implements OnInit {
 
   imagenes:any=[];
 
+  imagenExpEdit:string | null="";
+
   
   
   constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
@@ -197,7 +199,7 @@ export class ExpEducationComponent implements OnInit {
   /*******************************EDIT EXPERIENCIA*******************************************/
 
   editarExperiencia(indice:number){
-    Swal.fire({
+     Swal.fire({
       title: `Editar Experiencia #${indice + 1}`,
       html: `
       <label class="label-edit">Cargo</label>      
@@ -212,6 +214,8 @@ export class ExpEducationComponent implements OnInit {
       <input  type="text" id="finalizacion" class="form-control">
       <label class="label-edit">Duración</label>      
       <input type="text" id="duracion" class="form-control">
+      <label class="label-edit">Url Imagen</label>      
+      <input type="text" id="urlImagen" class="form-control">
       `,    
       showCancelButton: true,
       allowOutsideClick:false,  
@@ -234,8 +238,9 @@ export class ExpEducationComponent implements OnInit {
         const formato =(<HTMLInputElement>document.querySelector('#formato')).value
         const inicio =(<HTMLInputElement>document.querySelector('#inicio')).value 
         const finalizacion =(<HTMLInputElement>document.querySelector('#finalizacion')).value  
-        const duracion =(<HTMLInputElement>document.querySelector('#duracion')).value    
-
+        const duracion =(<HTMLInputElement>document.querySelector('#duracion')).value
+        const imagen =(<HTMLInputElement>document.querySelector('#urlImagen')).value       
+             
         if(cargo!=""){
           this.experienciaList[indice].position=cargo;
         }
@@ -254,8 +259,13 @@ export class ExpEducationComponent implements OnInit {
         if(duracion!=""){
           this.experienciaList[indice].timeElapsed=duracion;
         }
-              
-        if (!cargo && !lugar && !formato && !inicio && !finalizacion && !duracion) {
+        if(imagen!=""){
+          this.experienciaList[indice].img=imagen;
+        }
+       
+        console.log(this.experienciaList);
+                      
+        if (!cargo && !lugar && !formato && !inicio && !finalizacion && !duracion && !imagen) {
           Swal.showValidationMessage(`Debe editar al menos un campo para aceptar!`)
         }          
         this.datosPorfolio.editarExperiencia(this.experienciaList[indice], this.experienciaList[indice].id).subscribe(()=>{         
@@ -289,6 +299,8 @@ export class ExpEducationComponent implements OnInit {
       <input type="text" id="inicio" class="form-control">
       <label class="label-edit">Finalización</label>      
       <input type="text" id="finalizacion" class="form-control">
+      <label class="label-edit">Url Imagen</label>      
+      <input type="text" id="urlImagen" class="form-control">      
       `,
       
       allowOutsideClick:false,    
@@ -313,6 +325,7 @@ export class ExpEducationComponent implements OnInit {
         const tipo =(<HTMLInputElement>document.querySelector('#tipo')).value
         const inicio=(<HTMLInputElement>document.querySelector('#inicio')).value 
         const finalizacion =(<HTMLInputElement>document.querySelector('#finalizacion')).value 
+        const imagen =(<HTMLInputElement>document.querySelector('#urlImagen')).value 
 
         if(institucion!=""){
           this.educacionList[indice].school=institucion;
@@ -329,8 +342,11 @@ export class ExpEducationComponent implements OnInit {
         if(finalizacion!=""){
           this.educacionList[indice].ended=finalizacion;
         }
+        if(imagen!=""){
+          this.educacionList[indice].img=imagen;
+        }
       
-        if (!institucion && !titulo && !tipo && !inicio && !finalizacion) {
+        if (!institucion && !titulo && !tipo && !inicio && !finalizacion && !imagen) {
           Swal.showValidationMessage(`Debe editar al menos un campo para aceptar!`)
         }          
         
