@@ -1,0 +1,31 @@
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;      
+    background-color: rgba(0, 0, 0, 0.486);
+    padding:1%;
+}
+
+.iconos{
+    margin-top: -5px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;       
+}
+
+.iconos i{
+    color:rgb(233, 231, 231);
+}
+.iconos i:hover{
+    color: white;
+}
+
+p{  
+   padding-top: 30px;
+    font-style:oblique;
+    font-weight: 500;
+    font-size: 1.2em;
+    color:rgb(233, 231, 231);
+}
+

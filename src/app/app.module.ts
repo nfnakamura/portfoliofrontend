@@ -17,6 +17,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     NavbarComponent,
     RegisterComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FooterComponent
     
   ],
   imports: [
