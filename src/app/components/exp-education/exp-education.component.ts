@@ -17,6 +17,7 @@ export class ExpEducationComponent implements OnInit {
   educacionList:any=[];
   experienciaList:any=[];
   
+  isLoad=false;
   agregaexperiencia=false;
   aceptaExp=false;
   agregaEdu=false;
@@ -69,7 +70,8 @@ export class ExpEducationComponent implements OnInit {
           return 1;
         }
       })        
-      this.experienciaList=experiencias;      
+      this.experienciaList=experiencias;
+      this.isLoad=true;      
     })
 
     this.datosPorfolio.DisparadorDeAgregaExp.subscribe(()=>{

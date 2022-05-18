@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   editaInfo=false;
   aceptaEdicion=false;
   mostrarAlert=false;
-  load=false;
+  isLoad=false;
   agregaSeccion=false;
   muestraAgregaSeccion=true;
 
@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
 
     this.datosPorfolio.cargarDatos().subscribe(data =>{
        this.miPorfolio=data;
-       this.load=true;
+       this.isLoad=true;
     });
   }
   

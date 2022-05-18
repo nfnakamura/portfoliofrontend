@@ -21,7 +21,8 @@ export class ProyectsComponent implements OnInit {
   aceptaBorrarProyecto=false;
   editaProyecto=false;
   aceptaEdit=false;
-    
+  isLoad=false;
+  
   formatoProyecto:string="";
   nombreProyecto:string="";
   linkProyecto:string="";
@@ -40,6 +41,7 @@ export class ProyectsComponent implements OnInit {
       }
     })       
     this.proyectosLista=proyectos;
+    this.isLoad=true;
   });
 
   this.datosPorfolio.DisparadorDeAgregaProy.subscribe(()=>{

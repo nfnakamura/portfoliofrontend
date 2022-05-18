@@ -19,6 +19,7 @@ export class SkillsComponent implements OnInit{
 
   mostrarAlert=false;
   alertPorcentaje=false;
+  isLoad=false;
 
   habilidad:string="";
   porcentaje:string="";
@@ -37,6 +38,7 @@ export class SkillsComponent implements OnInit{
         }
       })
       this.listaAptitudes=habilidades;
+      this.isLoad=true;
     });
     this.datosPorfolio.DisparadorDeAgregaHab.subscribe(()=>{
       this.agregarHabilidad();

@@ -1,5 +1,5 @@
 
-<div class="card mat-card">
+<div *ngIf="isLoad" class="card mat-card">
   <div class="card-titles">
     <h2>Logros</h2>
   <div *ngIf="userLogged|async" class="btn-edit"(click)="agregarProy()"> <i class="fa fa-plus btn-right"></i></div>    

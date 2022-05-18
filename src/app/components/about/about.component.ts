@@ -14,13 +14,15 @@ export class AboutComponent implements OnInit {
   texto:string="";
   editarParrafo=false;
   mostrarAlert=false;
+  isLoad=false;
   
   constructor(private datosPorfolio:PorfolioService, private authService:AuthService) { }
 
   ngOnInit(): void {
 
     this.obtenerAbout().subscribe(about =>{
-       this.miPorfolio=about;      
+       this.miPorfolio=about;  
+       this.isLoad=true;    
     });
   }
     

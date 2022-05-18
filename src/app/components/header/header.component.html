@@ -4,7 +4,7 @@
     <div class="contenedor">  
       <figure>
         <div id="profile-background">
-          <img *ngIf="load; else loadingImg" id="info-back-img" [src]="miPorfolio.backImage">
+          <img *ngIf="isLoad; else loadingImg" id="info-back-img" [src]="miPorfolio.backImage">
           <ng-template #loadingImg><div class="imgLoading">
             <img src="https://images.squarespace-cdn.com/content/v1/5b57c77f45776e84ca9708ea/1579152465015-ENY9DK9VH23I31EDODZK/fill-color.gif">
             
@@ -12,16 +12,16 @@
            </ng-template>
         </div>
         <div class="capa">
-          <h2 *ngIf="load"> {{miPorfolio.nombre}}<span>  {{miPorfolio.apellido}}</span></h2>
-          <p *ngIf="load">Web Developer</p>
-          <p id="cargando" *ngIf="!load">CARGANDO...</p>         
+          <h2 *ngIf="isLoad"> {{miPorfolio.nombre}}<span>  {{miPorfolio.apellido}}</span></h2>
+          <p *ngIf="isLoad">Web Developer</p>
+          <p id="cargando" *ngIf="!isLoad">CARGANDO...</p>         
         </div>
       </figure> 
     </div>  
 
        <div id="info" style="padding: 16px">
         <div id="info-img">
-           <img id="info-user-img" class="profile-image" [src]="miPorfolio.image">
+           <img *ngIf="isLoad" id="info-user-img" class="profile-image" [src]="miPorfolio.image">
           <div *ngIf="userLogged|async" class="btn-edit" (click)="editarInfo()"><i class="fa fa-pen btn-right"></i></div>
         </div>
         <div id="info-data">
@@ -30,7 +30,7 @@
            
             <div id="info-position">{{miPorfolio.position}}</div>
            
-            <div id="info-contact">
+            <div *ngIf="isLoad" id="info-contact">
               <span id="info-ubication">{{miPorfolio.ubication}} </span>
               <span><a (click)="infoContacto()">Información de contacto</a></span>
             </div>
