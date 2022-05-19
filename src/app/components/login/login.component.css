@@ -8,7 +8,13 @@
 }
 
 .card-body{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
     padding:4%;
+    width: 400px;
+    height: 300px;
 }
 
 label{
@@ -35,4 +41,22 @@ button{
     float:left;
     font-weight: bold;
     color:red;
+}
+
+@media screen and (max-width: 400px){
+
+    .card-body{
+        width:300px;
+    }
+
+    .card-body input{
+        width: 250px !important;
+        
+    }
+
+    button{
+        width:250px !important;
+    }
+    
+    
 }

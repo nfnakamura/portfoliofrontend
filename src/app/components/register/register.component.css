@@ -43,3 +43,20 @@ button{
     font-weight: bold;
     color:red;
 }
+
+@media screen and (max-width: 400px){
+
+
+    .card-body{
+        width:300px;
+    }
+
+    .card-body input{
+        width: 250px !important;
+        
+    }
+
+    button{
+        width:250px !important;
+    }
+}
